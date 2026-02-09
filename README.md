@@ -75,7 +75,7 @@ Website:
 <a href="https://indiedesk.link" target="_blank">indiedesk.link</a>
 
 Buy here:  
-<a href="https://eugeniogiusti./l/indiedesk" target="_blank">Buy IndieDesk</a>
+<a href="https://eugeniogiusti.gumroad.com/l/indiedesk" target="_blank">Buy IndieDesk</a>
 
 ⸻
 
