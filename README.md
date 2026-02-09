@@ -13,7 +13,7 @@ IndieDesk is a Laravel template designed around how indie developers
 actually manage projects.
 
 Instead of juggling spreadsheets, notes and tools, IndieDesk keeps
-tasks, documents, costs, payments and stats tied to each project —
+tasks, documents, costs, payments and stats tied to each project
 with full control over your code and data.
 
 You self-host it. You own it. You adapt it to your workflow.
