@@ -3,7 +3,7 @@
 A self-hosted Laravel workspace for indie developers  
 to track projects, revenue and costs — without spreadsheets.
 
-![IndieDesk – Project overview](./screens/project-overview.png)
+![IndieDesk – Project overview](./screens/overview.gif)
 
 ---
 
