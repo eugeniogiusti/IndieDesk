@@ -69,7 +69,13 @@ It’s probably **not** for you if:
 ---
 
 Full documentation is available here:  
-[Read the documentation](https://your-docs-url.com){:target="_blank"}
+<a href="https://docs.indiedesk.link" target="_blank">Read the documentation</a>
+
+Website:  
+<a href="https://indiedesk.link" target="_blank">indiedesk.link</a>
+
+Buy here:  
+<a href="https://eugeniogiusti./l/indiedesk" target="_blank">Buy IndieDesk</a>
 
 ⸻
 
