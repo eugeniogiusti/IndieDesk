@@ -52,10 +52,10 @@ It’s probably **not** for you if:
 ![Project overview](./screens/ai_task.png)
 
 ### Dashboard
-![Invoice drafts](./screens/dashboard.png)
+![Dashboard](./screens/dashboard.png)
 
 ### Stats
-![Customization](./screens/stats.png)
+![Stats](./screens/stats.png)
 
 ---
 
