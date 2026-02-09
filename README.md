@@ -49,13 +49,13 @@ It’s probably **not** for you if:
 ## Screenshots
 
 ### Project overview
-![Project overview](./screens/project-overview.png)
+![Project overview](./screens/ai_task.png)
 
-### Invoice drafts & costs
-![Invoice drafts](./screens/invoice-drafts.png)
+### Dashboard
+![Invoice drafts](./screens/dashboard.png)
 
-### Customizable workflows
-![Customization](./screens/customization.png)
+### Stats
+![Customization](./screens/stats.png)
 
 ---
 
