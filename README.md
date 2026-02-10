@@ -77,7 +77,15 @@ Website:
 Buy here:  
 <a href="https://eugeniogiusti.gumroad.com/l/indiedesk" target="_blank">Buy IndieDesk</a>
 
-⸻
+---
+
+Multi-language ready.
+IndieDesk ships with built-in translations. No setup required.
+
+🇬🇧 🇮🇹 🇪🇸 🇫🇷 🇩🇪 🇵🇹 🇳🇱 🇩🇰 🇷🇴 🇵🇱 🇷🇺 🇺🇦 🇨🇳
+13 languages included.
+
+---
 
 ## License
 
