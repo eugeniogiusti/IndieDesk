@@ -43,6 +43,7 @@ It’s probably **not** for you if:
 - Invoice drafts generated per project  
 - Customizable workflows (clean Laravel code)  
 - Optional AI assistant with project context  
+- GitHub integration (heatmap & commits)
 
 ---
 
