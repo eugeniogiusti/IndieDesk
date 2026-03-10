@@ -65,7 +65,8 @@ It’s probably **not** for you if:
 - Laravel  
 - Blade  
 - Tailwind CSS  
-- Alpine.js  
+- Alpine.js 
+- SQLite, Mysql 
 
 ---
 
