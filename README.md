@@ -44,6 +44,7 @@ It’s probably **not** for you if:
 - Customizable workflows (clean Laravel code)  
 - Optional AI assistant with project context  
 - GitHub integration (heatmap & commits)
+- Tax Tracker
 
 ---
 
