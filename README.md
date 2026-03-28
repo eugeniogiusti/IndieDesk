@@ -5,6 +5,8 @@ to track projects, revenue and costs, without spreadsheets.
 
 ![IndieDesk – Project overview](./screens/overview.gif)
 
+▶ [Watch the demo on YouTube](https://www.youtube.com/watch?v=Z-LmKAyYH0k&t=1s)
+
 ---
 
 ## What is IndieDesk?
