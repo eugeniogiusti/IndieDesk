@@ -19,7 +19,7 @@
             @endif
         </div>
         <div class="invoice-col">
-            <div class="invoice-number">{{ __('invoices.invoice') }} #{{ $invoice_number }}</div>
+            {{-- <div class="invoice-number">{{ __('invoices.invoice') }} #{{ $invoice_number }}</div> --}}
             <div class="invoice-date">{{ $invoice_date }}</div>
         </div>
     </div>
