@@ -25,7 +25,7 @@ class StoreClientRequest extends FormRequest
             // Required fields
             'name' => 'required|string|max:255',
             'email' => 'required|email|max:255|unique:clients,email',
-            'status' => 'required|in:lead,active,archived',
+            'status' => 'required|in:lead,prospect,active,archived',
             
             // Optional contact fields
             'vat_number' => 'nullable|string|max:20',

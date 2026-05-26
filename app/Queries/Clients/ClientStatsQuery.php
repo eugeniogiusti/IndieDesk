@@ -38,6 +38,7 @@ class ClientStatsQuery
         return [
             'total' => $total,
             'lead' => $byStatus['lead'] ?? 0,
+            'prospect' => $byStatus['prospect'] ?? 0,
             'active' => $byStatus['active'] ?? 0,
             'archived' => $byStatus['archived'] ?? 0,
             'new_this_month' => $newThisMonth,

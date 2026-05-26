@@ -33,7 +33,7 @@ class UpdateClientRequest extends FormRequest
                 'max:255',
                 Rule::unique('clients')->ignore($client->id),
             ],
-            'status' => 'required|in:lead,active,archived',
+            'status' => 'required|in:lead,prospect,active,archived',
             
             // Optional contact fields
             'vat_number' => 'nullable|string|max:20',

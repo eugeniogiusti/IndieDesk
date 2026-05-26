@@ -52,6 +52,7 @@ return [
 
     // Status options
     'status_lead' => '潜在客户',
+    'status_prospect' => 'Prospect',
     'status_active' => '活跃',
     'status_archived' => '已归档',
 

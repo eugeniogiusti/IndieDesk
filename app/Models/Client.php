@@ -103,6 +103,14 @@ class Client extends Model
     }
 
     /**
+     * Scope a query to only include prospects.
+     */
+    public function scopeProspects($query)
+    {
+        return $query->where('status', 'prospect');
+    }
+
+    /**
      * Scope a query to only include archived clients.
      */
     public function scopeArchived($query)

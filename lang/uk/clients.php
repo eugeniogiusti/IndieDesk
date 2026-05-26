@@ -52,6 +52,7 @@ return [
 
     // Status options
     'status_lead' => 'Лід',
+    'status_prospect' => 'Prospect',
     'status_active' => 'Активний',
     'status_archived' => 'Архівований',
 
