@@ -11,8 +11,4 @@
             </p>
         </div>
     </div>
-    <div class="flex items-center gap-1 text-sm">
-        <span class="text-green-600 dark:text-green-400 font-medium">↗ +{{ $stats['new_this_month'] }}</span>
-        <span class="text-gray-600 dark:text-gray-400">{{ __('clients.stats.this_month') }}</span>
-    </div>
 </div>

@@ -11,7 +11,4 @@
             </p>
         </div>
     </div>
-    <div class="flex items-center gap-1 text-sm">
-        <span class="text-gray-600 dark:text-gray-400">{{ $stats['lead_percentage'] }}% {{ __('clients.stats.of_total') }}</span>
-    </div>
 </div>

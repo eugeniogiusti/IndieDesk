@@ -21,6 +21,7 @@ export default function clientModal() {
                 name: '',
                 email: '',
                 status: 'lead',
+                acquisition_source: '',
                 vat_number: '',
                 phone_prefix: '',
                 phone: '',

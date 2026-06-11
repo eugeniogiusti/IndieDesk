@@ -133,6 +133,54 @@
         </div>
     </div>
 
+    {{-- Acquisition Source --}}
+    <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            {{ __('clients.acquisition_source') }}
+        </label>
+        <select name="acquisition_source" x-model="formData.acquisition_source"
+                class="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-emerald-500">
+            <option value="">-- Seleziona --</option>
+
+            <optgroup label="{{ __('clients.acquisition_sources.categories.direct_search') }}">
+                <option value="search_linkedin">{{ __('clients.acquisition_sources.options.search_linkedin') }}</option>
+                <option value="search_google">{{ __('clients.acquisition_sources.options.search_google') }}</option>
+                <option value="search_instagram">{{ __('clients.acquisition_sources.options.search_instagram') }}</option>
+                <option value="search_x">{{ __('clients.acquisition_sources.options.search_x') }}</option>
+                <option value="search_facebook">{{ __('clients.acquisition_sources.options.search_facebook') }}</option>
+                <option value="search_thread">{{ __('clients.acquisition_sources.options.search_thread') }}</option>
+                <option value="search_bluesky">{{ __('clients.acquisition_sources.options.search_bluesky') }}</option>
+            </optgroup>
+
+            <optgroup label="{{ __('clients.acquisition_sources.categories.organic') }}">
+                <option value="organic_website">{{ __('clients.acquisition_sources.options.organic_website') }}</option>
+                <option value="organic_blog">{{ __('clients.acquisition_sources.options.organic_blog') }}</option>
+                <option value="organic_facebook">{{ __('clients.acquisition_sources.options.organic_facebook') }}</option>
+                <option value="organic_instagram">{{ __('clients.acquisition_sources.options.organic_instagram') }}</option>
+                <option value="organic_reddit">{{ __('clients.acquisition_sources.options.organic_reddit') }}</option>
+                <option value="organic_x">{{ __('clients.acquisition_sources.options.organic_x') }}</option>
+                <option value="organic_thread">{{ __('clients.acquisition_sources.options.organic_thread') }}</option>
+                <option value="organic_bluesky">{{ __('clients.acquisition_sources.options.organic_bluesky') }}</option>
+            </optgroup>
+
+            <optgroup label="{{ __('clients.acquisition_sources.categories.ads') }}">
+                <option value="ads_google">{{ __('clients.acquisition_sources.options.ads_google') }}</option>
+                <option value="ads_facebook">{{ __('clients.acquisition_sources.options.ads_facebook') }}</option>
+                <option value="ads_instagram">{{ __('clients.acquisition_sources.options.ads_instagram') }}</option>
+                <option value="ads_reddit">{{ __('clients.acquisition_sources.options.ads_reddit') }}</option>
+            </optgroup>
+
+            <optgroup label="{{ __('clients.acquisition_sources.categories.sponsorship') }}">
+                <option value="sponsorship_influencer">{{ __('clients.acquisition_sources.options.sponsorship_influencer') }}</option>
+            </optgroup>
+
+            <optgroup label="{{ __('clients.acquisition_sources.categories.other') }}">
+                <option value="other_word_of_mouth">{{ __('clients.acquisition_sources.options.other_word_of_mouth') }}</option>
+                <option value="other_cold_contact">{{ __('clients.acquisition_sources.options.other_cold_contact') }}</option>
+            </optgroup>
+        </select>
+    </div>
+
     {{-- Phone --}}
     <div class="grid grid-cols-4 gap-3">
         <div>

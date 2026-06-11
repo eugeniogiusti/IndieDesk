@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\AcquisitionSource;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -19,6 +20,7 @@ class Client extends Model
         'name',
         'email',
         'status',
+        'acquisition_source',
         'vat_number',
         'phone_prefix',
         'phone',
@@ -43,6 +45,7 @@ class Client extends Model
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
+        'acquisition_source' => AcquisitionSource::class,
     ];
 
 
@@ -85,6 +88,60 @@ class Client extends Model
         return "https://wa.me/{$number}";
     }
 
+    public function getAcquisitionSourceBadgeClass(): string
+    {
+        if (!$this->acquisition_source) {
+            return '';
+        }
+
+        $colorMap = [
+            'direct_search' => 'bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200',
+            'organic' => 'bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200',
+            'ads' => 'bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200',
+            'sponsorship' => 'bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200',
+            'other' => 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200',
+        ];
+
+        return $colorMap[$this->acquisition_source->category()] ?? $colorMap['other'];
+    }
+
+    public function getAcquisitionSourcePlatform(): string
+    {
+        if (!$this->acquisition_source) {
+            return '';
+        }
+
+        $platformMap = [
+            'search_linkedin' => 'LinkedIn',
+            'search_google' => 'Google',
+            'search_instagram' => 'Instagram',
+            'search_x' => 'X',
+            'search_facebook' => 'Facebook',
+            'search_thread' => 'Thread',
+            'search_bluesky' => 'Bluesky',
+
+            'organic_website' => 'Sito Web',
+            'organic_blog' => 'Blog',
+            'organic_facebook' => 'Facebook',
+            'organic_instagram' => 'Instagram',
+            'organic_reddit' => 'Reddit',
+            'organic_x' => 'X',
+            'organic_thread' => 'Thread',
+            'organic_bluesky' => 'Bluesky',
+
+            'ads_google' => 'Google',
+            'ads_facebook' => 'Facebook',
+            'ads_instagram' => 'Instagram',
+            'ads_reddit' => 'Reddit',
+
+            'sponsorship_influencer' => 'Influencer',
+
+            'other_word_of_mouth' => 'Passaparola',
+            'other_cold_contact' => 'Contatto dal vivo',
+        ];
+
+        return $platformMap[$this->acquisition_source->value] ?? '';
+    }
 
     /**
      * Scope a query to only include active clients.

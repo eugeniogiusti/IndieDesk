@@ -28,6 +28,7 @@ return [
     'name' => 'Nome / Ragione Sociale',
     'email' => 'Email',
     'status' => 'Stato',
+    'acquisition_source' => 'Fonte di Acquisizione',
     'vat_number' => 'Partita IVA',
     'phone_prefix' => 'Prefisso',
     'select_prefix' => 'Seleziona',
@@ -55,6 +56,46 @@ return [
     'status_prospect' => 'Prospect',
     'status_active' => 'Attivo',
     'status_archived' => 'Archiviato',
+
+    // Acquisition sources
+    'all_acquisition_sources' => 'Tutte le fonti',
+    'acquisition_sources' => [
+        'categories' => [
+            'direct_search' => 'Ricerca diretta',
+            'organic' => 'Organico',
+            'ads' => 'ADS (Campagne)',
+            'sponsorship' => 'Sponsorship',
+            'other' => 'Altro',
+        ],
+        'options' => [
+            'search_linkedin' => 'Ricerca diretta su LinkedIn',
+            'search_google' => 'Ricerca diretta su Google',
+            'search_instagram' => 'Ricerca diretta su Instagram',
+            'search_x' => 'Ricerca diretta su X',
+            'search_facebook' => 'Ricerca diretta su Facebook',
+            'search_thread' => 'Ricerca diretta su Thread',
+            'search_bluesky' => 'Ricerca diretta su Bluesky',
+
+            'organic_website' => 'Organico tramite sito web',
+            'organic_blog' => 'Organico tramite blog',
+            'organic_facebook' => 'Facebook',
+            'organic_instagram' => 'Instagram',
+            'organic_reddit' => 'Reddit',
+            'organic_x' => 'X',
+            'organic_thread' => 'Thread',
+            'organic_bluesky' => 'Bluesky',
+
+            'ads_google' => 'ADS Google',
+            'ads_facebook' => 'ADS Facebook',
+            'ads_instagram' => 'ADS Instagram',
+            'ads_reddit' => 'ADS Reddit',
+
+            'sponsorship_influencer' => 'Sponsorship influencer',
+
+            'other_word_of_mouth' => 'Passaparola',
+            'other_cold_contact' => 'Contatto a freddo dal vivo',
+        ],
+    ],
 
     // Messages
     'created_successfully' => 'Cliente creato con successo',
@@ -142,6 +183,7 @@ return [
     'stats' => [
         'total' => 'Totale Clienti',
         'lead' => 'Lead',
+        'prospect' => 'Prospect',
         'active' => 'Attivi',
         'archived' => 'Archiviati',
         'this_month' => 'questo mese',

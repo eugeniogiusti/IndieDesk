@@ -4,6 +4,7 @@
     @include('clients.index.client-table._row-email')
     @include('clients.index.client-table._row-phone')
     @include('clients.index.client-table._row-status')
+    @include('clients.index.client-table._row-acquisition-source')
     @include('clients.index.client-table._row-created-at')
     @include('clients.index.client-table._row-actions')
 </tr>

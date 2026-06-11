@@ -42,6 +42,29 @@
     @endif
 </div>
 
+{{-- Acquisition Source --}}
+@if($client->acquisition_source)
+<div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-5">
+    <div class="flex items-center gap-2 mb-4">
+        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+        </svg>
+        <h3 class="font-semibold text-gray-900 dark:text-white">
+            {{ __('clients.acquisition_source') }}
+        </h3>
+    </div>
+
+    <div class="space-y-3">
+        <span class="inline-block px-3 py-1 text-xs font-semibold rounded-full {{ $client->getAcquisitionSourceBadgeClass() }} w-fit">
+            {{ __('clients.acquisition_sources.categories.' . $client->acquisition_source->category()) }}
+        </span>
+        <div class="text-sm text-gray-700 dark:text-gray-300">
+            {{ __('clients.acquisition_sources.options.' . $client->acquisition_source->value) }}
+        </div>
+    </div>
+</div>
+@endif
+
 {{-- Billing Info --}}
 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-5">
     <div class="flex items-center gap-2 mb-4">
