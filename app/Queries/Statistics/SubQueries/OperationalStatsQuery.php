@@ -60,6 +60,8 @@ class OperationalStatsQuery
 
     private function getNewClients(): int
     {
-        return Client::whereBetween('created_at', [$this->startDate, $this->endDate])->count();
+        return Client::where('status', 'active')
+            ->whereBetween('created_at', [$this->startDate, $this->endDate])
+            ->count();
     }
 }
