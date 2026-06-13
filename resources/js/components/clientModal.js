@@ -60,6 +60,9 @@ export default function clientModal() {
             this.clientId = clientData.id;
             this.backTo = clientData._back || '';
             this.formData = { ...this.getEmptyForm(), ...clientData };
+            if (this.formData.acquisition_source && typeof this.formData.acquisition_source === 'object') {
+                this.formData.acquisition_source = this.formData.acquisition_source.value || '';
+            }
             this.open = true;
         },
 
