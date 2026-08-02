@@ -18,6 +18,7 @@ return [
     'notes'          => 'Notes',
 
     'all_years'   => 'All Years',
+    'all_types'   => 'All Types',
     'all_statuses' => 'All',
     'paid'        => 'Paid',
     'unpaid'      => 'Unpaid',

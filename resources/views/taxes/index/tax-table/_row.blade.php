@@ -1,43 +1,62 @@
 {{-- Table Row --}}
 <tr class="hover:bg-gray-50 dark:hover:bg-gray-700 transition">
-    {{-- Description --}}
+    {{-- Description + Type Badge --}}
     <td class="px-6 py-4">
-        <span class="text-sm font-medium text-gray-900 dark:text-white">{{ $tax->description }}</span>
+        <div class="flex items-center gap-2 mb-1">
+            <span class="text-sm font-medium text-gray-900 dark:text-white">{{ $tax->description }}</span>
+            @if($tax->type === 'F24')
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-300">
+                    F24
+                </span>
+            @else
+                <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                    {{ __('taxes.type_dichiarazione_redditi') }}
+                </span>
+            @endif
+        </div>
         @if($tax->notes)
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5 truncate max-w-xs">{{ $tax->notes }}</p>
+            <p class="text-xs text-gray-500 dark:text-gray-400 truncate max-w-xs">{{ $tax->notes }}</p>
         @endif
     </td>
 
     {{-- Amount --}}
     <td class="px-6 py-4 whitespace-nowrap">
-        <span class="text-sm font-semibold text-gray-900 dark:text-white">
-            {{ $currencySymbol }} {{ number_format($tax->amount, 2, ',', '.') }}
-        </span>
+        @if($tax->amount !== null)
+            <span class="text-sm font-semibold text-gray-900 dark:text-white">
+                {{ $currencySymbol }} {{ number_format($tax->amount, 2, ',', '.') }}
+            </span>
+        @else
+            <x-not-set-badge />
+        @endif
     </td>
 
     {{-- Due Date --}}
     <td class="px-6 py-4 whitespace-nowrap">
-        <div class="flex items-center gap-2">
-            <span class="text-sm text-gray-700 dark:text-gray-300">
-                {{ $tax->due_date->format('d/m/Y') }}
-            </span>
-            @if(!$tax->paid_at && $tax->due_date->isPast())
-                <span class="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">
-                    {{ __('taxes.unpaid') }}
+        @if($tax->due_date)
+            <div class="flex items-center gap-2">
+                <span class="text-sm text-gray-700 dark:text-gray-300">
+                    {{ $tax->due_date->format('d/m/Y') }}
                 </span>
-            @endif
-            @if(!$tax->paid_at && $tax->googleCalendarUrl())
-                <a href="{{ $tax->googleCalendarUrl() }}"
-                   target="_blank"
-                   rel="noopener noreferrer"
-                   title="{{ __('taxes.add_to_calendar') }}"
-                   class="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 flex-shrink-0">
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
-                    </svg>
-                </a>
-            @endif
-        </div>
+                @if(!$tax->paid_at && $tax->due_date->isPast())
+                    <span class="inline-flex items-center px-1.5 py-0.5 rounded text-xs font-medium bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">
+                        {{ __('taxes.unpaid') }}
+                    </span>
+                @endif
+                @if(!$tax->paid_at && $tax->googleCalendarUrl())
+                    <a href="{{ $tax->googleCalendarUrl() }}"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       title="{{ __('taxes.add_to_calendar') }}"
+                       class="text-blue-500 hover:text-blue-700 dark:text-blue-400 dark:hover:text-blue-300 flex-shrink-0">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M19 3h-1V1h-2v2H8V1H6v2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V8h14v11zM7 10h5v5H7z"/>
+                        </svg>
+                    </a>
+                @endif
+            </div>
+        @else
+            <x-not-set-badge />
+        @endif
     </td>
 
     {{-- Paid At --}}

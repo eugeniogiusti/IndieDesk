@@ -14,6 +14,7 @@ return [
     'reset'  => 'Reimposta',   
     'actions'=> 'Azioni',    
     'none'   => 'Nessuno',
+    'select' => 'Seleziona',
     'search' => 'Cerca',
     'view_all' => 'Vedi Tutti',
     'not_set'     => 'N/D',

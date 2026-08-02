@@ -14,6 +14,7 @@ return [
     'reset'  => 'Reset',   
     'actions'=> 'Actions',    
     'none'   => 'None',
+    'select' => 'Select',
     'search' => 'Search',
     'view_all' => 'View All',
     'not_set'     => 'N/A',

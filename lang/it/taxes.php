@@ -9,6 +9,7 @@ return [
     'no_taxes_description' => 'Registra il tuo primo pagamento fiscale',
     'confirm_delete' => 'Sei sicuro di voler eliminare questa tassa?',
 
+    'type'           => 'Tipo',
     'description'    => 'Descrizione',
     'amount'         => 'Importo',
     'due_date'       => 'Scadenza',
@@ -17,7 +18,11 @@ return [
     'attachment'     => 'Documento fiscale',
     'notes'          => 'Note',
 
+    'type_f24'                       => 'F24',
+    'type_dichiarazione_redditi'     => 'Dichiarazione dei redditi',
+
     'all_years'    => 'Tutti gli Anni',
+    'all_types'    => 'Tutti i Tipi',
     'all_statuses' => 'Tutti',
     'paid'         => 'Pagato',
     'unpaid'       => 'Da pagare',

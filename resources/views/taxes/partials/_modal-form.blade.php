@@ -47,6 +47,7 @@
 
                 {{-- Form --}}
                 <form method="POST"
+                      enctype="multipart/form-data"
                       :action="isEdit
                           ? '{{ route('taxes.update', '__TAX_ID__') }}'.replace('__TAX_ID__', taxId)
                           : '{{ route('taxes.store') }}'">
@@ -64,8 +65,8 @@
                             {{ __('ui.cancel') }}
                         </button>
                         <button type="submit"
-                                :disabled="!formData.description || !formData.amount || !formData.due_date || !formData.reference_year"
-                                :class="(!formData.description || !formData.amount || !formData.due_date || !formData.reference_year) ? 'bg-gray-300 dark:bg-gray-600 cursor-not-allowed' : 'bg-amber-600 hover:bg-amber-700'"
+                                :disabled="!formData.type || !formData.description || !formData.reference_year || (formData.type === 'F24' && (!formData.amount || !formData.due_date))"
+                                :class="(!formData.type || !formData.description || !formData.reference_year || (formData.type === 'F24' && (!formData.amount || !formData.due_date))) ? 'bg-gray-300 dark:bg-gray-600 cursor-not-allowed' : 'bg-amber-600 hover:bg-amber-700'"
                                 class="px-3 py-1.5 text-sm text-white rounded-lg transition">
                             <span x-show="!isEdit">{{ __('ui.create') }}</span>
                             <span x-show="isEdit">{{ __('ui.save') }}</span>

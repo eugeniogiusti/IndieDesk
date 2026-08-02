@@ -24,8 +24,7 @@ class TaxStatsQuery
 
     private function getTotalThisYear(): float
     {
-        return Tax::paid()
-            ->whereYear('paid_at', now()->year)
+        return Tax::where('reference_year', now()->year - 1)
             ->sum('amount');
     }
 
@@ -36,6 +35,6 @@ class TaxStatsQuery
 
     private function getCountThisYear(): int
     {
-        return Tax::whereYear('due_date', now()->year)->count();
+        return Tax::where('reference_year', now()->year - 1)->count();
     }
 }

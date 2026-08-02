@@ -26,6 +26,7 @@ class Tax extends Model implements CalendarEventable
     }
 
     protected $fillable = [
+        'type',
         'description',
         'amount',
         'due_date',

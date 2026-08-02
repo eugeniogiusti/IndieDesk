@@ -13,12 +13,16 @@ class StoreTaxRequest extends FormRequest
 
     public function rules(): array
     {
+        $isDichiarazione = $this->input('type') === 'dichiarazione_redditi';
+
         return [
+            'type'           => ['required', 'in:F24,dichiarazione_redditi'],
             'description'    => ['required', 'string', 'max:255'],
-            'amount'         => ['required', 'numeric', 'min:0.01', 'max:999999.99'],
-            'due_date'       => ['required', 'date'],
+            'amount'         => $isDichiarazione ? ['nullable', 'numeric'] : ['required', 'numeric', 'min:0.01', 'max:999999.99'],
+            'due_date'       => $isDichiarazione ? ['nullable', 'date'] : ['required', 'date'],
             'paid_at'        => ['nullable', 'date'],
             'reference_year' => ['required', 'integer', 'min:2000', 'max:2100'],
+            'attachment'     => ['nullable', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:10240'],
             'notes'          => ['nullable', 'string'],
         ];
     }

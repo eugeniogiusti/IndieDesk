@@ -22,12 +22,18 @@ class TaxController extends Controller
 
     private function getAvailableYears(): array
     {
-        return range(now()->year, 2026);
+        return range(now()->year, now()->year - 2, -1);
     }
 
     public function store(StoreTaxRequest $request)
     {
-        Tax::create($request->validated());
+        $data = $request->validated();
+
+        if ($request->hasFile('attachment')) {
+            $data['attachment'] = $request->file('attachment')->store('taxes', 'local');
+        }
+
+        Tax::create($data);
 
         return redirect()
             ->route('taxes.index')
@@ -36,7 +42,16 @@ class TaxController extends Controller
 
     public function update(UpdateTaxRequest $request, Tax $tax)
     {
-        $tax->update($request->validated());
+        $data = $request->validated();
+
+        if ($request->hasFile('attachment')) {
+            if ($tax->attachment) {
+                \Illuminate\Support\Facades\Storage::disk('local')->delete($tax->attachment);
+            }
+            $data['attachment'] = $request->file('attachment')->store('taxes', 'local');
+        }
+
+        $tax->update($data);
 
         return redirect()
             ->route('taxes.index')

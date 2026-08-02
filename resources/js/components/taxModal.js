@@ -15,6 +15,7 @@ export default function taxModal() {
 
         getEmptyForm() {
             return {
+                type:           'F24',
                 description:    '',
                 amount:         '',
                 due_date:       '',
@@ -39,6 +40,7 @@ export default function taxModal() {
             this.isEdit = true;
             this.taxId = taxData.id;
             this.formData = {
+                type:           taxData.type || 'F24',
                 description:    taxData.description || '',
                 amount:         taxData.amount || '',
                 due_date:       this.formatDateForInput(taxData.due_date),
