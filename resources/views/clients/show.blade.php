@@ -14,8 +14,8 @@
             {{-- MAIN CONTENT (3/4) --}}
             <div class="lg:col-span-3 space-y-6">
 
-                {{-- Follow-up section (leads only) --}}
-                @if($client->isLead())
+                {{-- Follow-up section (leads and prospects only) --}}
+                @if($client->needsFollowup())
                     @include('clients.followups._section')
                 @endif
 
@@ -39,7 +39,7 @@
 
     {{-- Modals --}}
     @include('clients.modals._client-form')
-    @if($client->isLead())
+    @if($client->needsFollowup())
         @include('clients.modals._followup-form')
     @endif
 </x-app-layout>

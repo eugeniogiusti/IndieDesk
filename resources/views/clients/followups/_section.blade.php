@@ -1,4 +1,4 @@
-{{-- Follow-up section — visible only for leads --}}
+{{-- Follow-up section — visible for leads and prospects --}}
 <div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-amber-200 dark:border-amber-700/50">
 
     {{-- Header --}}

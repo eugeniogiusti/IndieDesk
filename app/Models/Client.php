@@ -66,11 +66,12 @@ class Client extends Model
     }
 
     /**
-     * Check if the client is a lead (not yet converted).
+     * Check if the client is still in the pipeline (lead or prospect) and
+     * therefore needs follow-up tracking, as opposed to active/archived clients.
      */
-    public function isLead(): bool
+    public function needsFollowup(): bool
     {
-        return $this->status === 'lead';
+        return in_array($this->status, ['lead', 'prospect'], true);
     }
 
     /**

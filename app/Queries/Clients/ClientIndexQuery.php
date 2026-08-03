@@ -2,14 +2,13 @@
 
 namespace App\Queries\Clients;
 
-use App\Enums\AcquisitionSource;
 use App\Models\Client;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 
 /**
  * Paginated query for the clients index page.
  *
- * Filters: status, acquisition_source_category, search (name/email/vat_number).
+ * Filters: status, acquisition_source, search (name/email/vat_number).
  * Sorting: whitelisted columns via sort_by/sort_direction params.
  * Pagination: 15 per page.
  */
@@ -24,13 +23,24 @@ class ClientIndexQuery
     public function handle(): LengthAwarePaginator
     {
         return Client::query()
+            ->withCount('followups')
+            ->withMax('followups', 'contacted_at')
             ->when(request('status'), function ($query) {
                 $query->where('status', request('status'));
             })
-            ->when(request('acquisition_source_category'), function ($query) {
-                $category = request('acquisition_source_category');
-                $sourcesByCategory = $this->getSourcesByCategory($category);
-                $query->whereIn('acquisition_source', $sourcesByCategory);
+            ->when(request('followup_status'), function ($query) {
+                $query->whereIn('status', ['lead', 'prospect']);
+
+                match (request('followup_status')) {
+                    'never' => $query->having('followups_count', '=', 0),
+                    'first_contact' => $query->having('followups_count', '=', 1),
+                    'second_contact' => $query->having('followups_count', '=', 2),
+                    'exhausted' => $query->having('followups_count', '>=', 3),
+                    default => null,
+                };
+            })
+            ->when(request('acquisition_source'), function ($query) {
+                $query->where('acquisition_source', request('acquisition_source'));
             })
             ->when(request('search'), function ($query) {
                 $search = request('search');
@@ -46,46 +56,6 @@ class ClientIndexQuery
             )
             ->paginate(15)
             ->appends(request()->query());
-    }
-
-    private function getSourcesByCategory(string $category): array
-    {
-        $categoryMap = [
-            'direct_search' => [
-                'search_linkedin',
-                'search_google',
-                'search_instagram',
-                'search_x',
-                'search_facebook',
-                'search_thread',
-                'search_bluesky',
-            ],
-            'organic' => [
-                'organic_website',
-                'organic_blog',
-                'organic_facebook',
-                'organic_instagram',
-                'organic_reddit',
-                'organic_x',
-                'organic_thread',
-                'organic_bluesky',
-            ],
-            'ads' => [
-                'ads_google',
-                'ads_facebook',
-                'ads_instagram',
-                'ads_reddit',
-            ],
-            'sponsorship' => [
-                'sponsorship_influencer',
-            ],
-            'other' => [
-                'other_word_of_mouth',
-                'other_cold_contact',
-            ],
-        ];
-
-        return $categoryMap[$category] ?? [];
     }
 
     private function getSortColumn(): string
