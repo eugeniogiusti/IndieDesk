@@ -33,7 +33,8 @@ export default function paymentModal() {
                 due_date: '',
                 method: 'bank',
                 reference: '',
-                notes: ''
+                notes: '',
+                client_id: ''
             };
         },
 
@@ -71,7 +72,8 @@ export default function paymentModal() {
                 due_date: this.parseDate(paymentData.due_date),
                 method: paymentData.method || 'bank',
                 reference: paymentData.reference || '',
-                notes: paymentData.notes || ''
+                notes: paymentData.notes || '',
+                client_id: paymentData.client_id || ''
             };
             this.open = true;
         },

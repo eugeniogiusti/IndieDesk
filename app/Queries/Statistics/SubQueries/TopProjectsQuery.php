@@ -35,7 +35,7 @@ class TopProjectsQuery
         // Merge all project IDs found in payments and costs
         $projectIds = $payments->keys()->merge($costs->keys())->unique();
 
-        $projects = Project::with('client')
+        $projects = Project::with(['client', 'clients'])
             ->whereIn('id', $projectIds)
             ->get()
             ->keyBy('id');

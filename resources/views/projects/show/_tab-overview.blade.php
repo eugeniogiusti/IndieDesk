@@ -1,5 +1,11 @@
 <div class="space-y-6">
 
+    {{-- Client --}}
+    @include('projects.show._client-info')
+
+    {{-- Divider --}}
+    <div class="border-t border-gray-200 dark:border-gray-700"></div>
+
     {{-- Description --}}
     <div class="border-l-4 border-emerald-500 pl-4"
          x-data="inlineField('{{ route('projects.patch-field', $project) }}', 'description', {{ json_encode($project->description) }}, '{{ __('ui.saved') }}', '{{ __('ui.error_saving') }}')">
@@ -101,6 +107,15 @@
             </div>
         </div>
 
+    </div>
+
+    {{-- Divider --}}
+    <div class="border-t border-gray-200 dark:border-gray-700"></div>
+
+    {{-- Quick Info + Quick Links --}}
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        @include('projects.show._quick-info')
+        @include('projects.show._quick-links')
     </div>
 
 </div>

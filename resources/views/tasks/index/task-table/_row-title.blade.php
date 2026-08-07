@@ -9,5 +9,8 @@
                 {{ Str::limit($task->description, 80) }}
             </div>
         @endif
+        <div class="mt-1">
+            <x-tasks.type-badge :type="$task->type" />
+        </div>
     </div>
 </td>

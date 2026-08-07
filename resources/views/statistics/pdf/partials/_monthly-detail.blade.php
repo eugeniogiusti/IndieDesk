@@ -28,8 +28,8 @@
                             <td>{{ $cost->paid_at->format('d/m') }}</td>
                             <td>
                                 {{ $cost->project->name }}
-                                @if($cost->project->client)
-                                    <br><span style="font-size: 8pt; color: #999;">{{ $cost->project->client->name }}</span>
+                                @if($cost->project->getClientLabel())
+                                    <br><span style="font-size: 8pt; color: #999;">{{ $cost->project->getClientLabel() }}</span>
                                 @else
                                     <br><span style="font-size: 8pt; color: #999; font-style: italic;">{{ __('statistics.detail_internal') }}</span>
                                 @endif
@@ -71,8 +71,8 @@
                             <td>{{ $payment->paid_at->format('d/m') }}</td>
                             <td>
                                 {{ $payment->project->name }}
-                                @if($payment->project->client)
-                                    <br><span style="font-size: 8pt; color: #999;">{{ $payment->project->client->name }}</span>
+                                @if($payment->getClientLabel())
+                                    <br><span style="font-size: 8pt; color: #999;">{{ $payment->getClientLabel() }}</span>
                                 @else
                                     <br><span style="font-size: 8pt; color: #999; font-style: italic;">{{ __('statistics.detail_internal') }}</span>
                                 @endif

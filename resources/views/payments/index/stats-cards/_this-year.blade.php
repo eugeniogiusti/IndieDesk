@@ -5,8 +5,8 @@
             <p class="text-xs font-medium text-purple-700 dark:text-purple-300 uppercase tracking-wide">
                 {{ __('payments.stats.this_year') }}
             </p>
-            <p class="text-3xl font-bold text-gray-900 dark:text-white mt-1" title="{{ $currencySymbol }} {{ number_format($stats['total_this_year'], 2, ',', '.') }}">
-                {{ $currencySymbol }} {{ \App\Models\Payment::formatCompactNumber($stats['total_this_year']) }}
+            <p class="text-3xl font-bold text-gray-900 dark:text-white mt-1">
+                {{ $currencySymbol }} {{ number_format($stats['total_this_year'], 2, ',', '.') }}
             </p>
         </div>
     </div>

@@ -49,9 +49,9 @@
                                        class="font-medium text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400">
                                         {{ $cost->project->name }}
                                     </a>
-                                    @if($cost->project->client)
+                                    @if($cost->project->getClientLabel())
                                         <span class="block text-xs text-gray-400 dark:text-gray-500">
-                                            {{ $cost->project->client->name }}
+                                            {{ $cost->project->getClientLabel() }}
                                         </span>
                                     @else
                                         <span class="block text-xs text-gray-400 dark:text-gray-500 italic">
@@ -118,9 +118,9 @@
                                        class="font-medium text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400">
                                         {{ $payment->project->name }}
                                     </a>
-                                    @if($payment->project->client)
+                                    @if($payment->getClientLabel())
                                         <span class="block text-xs text-gray-400 dark:text-gray-500">
-                                            {{ $payment->project->client->name }}
+                                            {{ $payment->getClientLabel() }}
                                         </span>
                                     @else
                                         <span class="block text-xs text-gray-400 dark:text-gray-500 italic">

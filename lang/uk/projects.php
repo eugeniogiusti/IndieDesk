@@ -15,6 +15,7 @@ return [
     // Form labels - Tab 1: Info Base
     'name' => 'Назва проєкту',
     'client' => 'Клієнт',
+    'clients' => 'Клієнти',
     'is_internal' => 'Внутрішній проєкт',
     'description' => 'Опис',
     'status' => 'Статус',
@@ -34,6 +35,7 @@ return [
     'type_product' => 'Продукт',
     'type_content' => 'Контент',
     'type_asset' => 'Asset',
+    'type_saas' => 'SaaS',
 
     // Dates
     'start_date' => 'Дата початку',
@@ -86,6 +88,7 @@ return [
 
     // Internal project label
     'internal_project' => 'Внутрішній проєкт',
+    'no_clients_linked' => 'Клієнтів не прив’язано',
     'internal_project_desc' => 'Це внутрішній проєкт. Інформація про клієнта відсутня.',
 
     // Buttons

@@ -17,6 +17,7 @@ return [
     'recent' => '最近',
 
     'project' => '项目',
+    'client' => '客户',
     'amount' => '金额',
     'currency' => '货币',
     'paid_at' => '支付日期',
@@ -75,6 +76,7 @@ return [
     'pending' => '待收',
     'overdue' => '逾期',
     'select_method' => '选择支付方式',
+    'select_client' => '选择客户',
     'method_not_set' => '未指定',
 
     'filters' => [

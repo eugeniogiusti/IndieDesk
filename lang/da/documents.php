@@ -48,7 +48,7 @@ return [
     ],
     
     // Hints
-    'file_requirements' => 'Accepterede formater: PDF, JPG, JPEG, PNG. Maks. størrelse: 10MB.',
+    'file_requirements' => 'Accepterede formater: PDF, JPG, JPEG, PNG, WEBP, ZIP, 7Z, RAR, DOC, DOCX, XLS, XLSX. Maks. størrelse: 30MB.',
     'labels_hint' => 'Vælg en eller flere etiketter for at organisere dette dokument.',
     
     // Stats

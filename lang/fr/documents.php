@@ -48,7 +48,7 @@ return [
     ],
     
     // Hints
-    'file_requirements' => 'Formats acceptés : PDF, JPG, JPEG, PNG. Taille maximale : 10 Mo.',
+    'file_requirements' => 'Formats acceptés : PDF, JPG, JPEG, PNG, WEBP, ZIP, 7Z, RAR, DOC, DOCX, XLS, XLSX. Taille maximale : 30 Mo.',
     'labels_hint' => 'Sélectionne une ou plusieurs étiquettes pour organiser ce document.',
     
     // Stats

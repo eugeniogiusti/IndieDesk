@@ -32,6 +32,7 @@ class StorePaymentRequest extends FormRequest
         return [
             'amount' => ['required', 'numeric', 'min:0.01', 'max:999999.99'],
             'currency' => ['required', 'string', 'size:3'],
+            'client_id' => ['nullable', 'exists:clients,id'],
             'paid_at' => ['nullable', 'date'],
             'due_date' => ['required_without:paid_at', 'nullable', 'date'],
             'method' => ['nullable', 'required_with:paid_at', 'in:cash,bank,stripe,paypal'],

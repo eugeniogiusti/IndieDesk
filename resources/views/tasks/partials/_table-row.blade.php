@@ -34,13 +34,11 @@
                         {{ Str::limit($task->description, 100) }}
                     </div>
                 @endif
+                <div class="mt-1">
+                    <x-tasks.type-badge :type="$task->type" />
+                </div>
             </div>
         </div>
-    </td>
-
-    {{-- Type Badge --}}
-    <td class="px-4 py-3">
-        <x-tasks.type-badge :type="$task->type" />
     </td>
 
     {{-- Status Badge (reactive to toggle) --}}

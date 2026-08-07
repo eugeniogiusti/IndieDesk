@@ -17,6 +17,7 @@ return [
     'recent' => 'Seneste',
     
     'project' => 'Projekt',
+    'client' => 'Kunde',
     'amount' => 'Beløb',
     'currency' => 'Valuta',
     'paid_at' => 'Betalt den',
@@ -75,6 +76,7 @@ return [
     'pending' => 'Til indkrævning',
     'overdue' => 'Forsinket',
     'select_method' => 'Vælg betalingsmetode',
+    'select_client' => 'Vælg kunde',
     'method_not_set' => 'Ikke angivet',
 
     'filters' => [

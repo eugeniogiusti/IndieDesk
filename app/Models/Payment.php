@@ -28,6 +28,7 @@ class Payment extends Model implements CalendarEventable
 
     protected $fillable = [
         'project_id',
+        'client_id',
         'amount',
         'currency',
         'paid_at',
@@ -60,6 +61,11 @@ class Payment extends Model implements CalendarEventable
     public function project(): BelongsTo
     {
         return $this->belongsTo(Project::class);
+    }
+
+    public function client(): BelongsTo
+    {
+        return $this->belongsTo(Client::class);
     }
 
     /* -----------------------------------------------------------------
@@ -145,32 +151,22 @@ class Payment extends Model implements CalendarEventable
         return self::CURRENCIES[$this->currency] ?? $this->currency;
     }
 
+    /**
+     * Client name to display for this payment: the specific payer if set
+     * (relevant for SaaS projects with multiple clients), otherwise the
+     * project's own client label.
+     */
+    public function getClientLabel(): ?string
+    {
+        return $this->client?->name ?? $this->project?->getClientLabel();
+    }
+
     public function getFormattedAmount(): string
     {
         $symbol = $this->getCurrencySymbol();
         $formatted = number_format($this->amount, 2, ',', '.');
 
         return "{$symbol} {$formatted}";
-    }
-
-    public function getCompactAmount(): string
-    {
-        $symbol = $this->getCurrencySymbol();
-
-        return "{$symbol} " . self::formatCompactNumber((float) $this->amount);
-    }
-
-    public static function formatCompactNumber(float $number): string
-    {
-        if ($number >= 1000000) {
-            return number_format($number / 1000000, 2, ',', '.') . 'M';
-        }
-
-        if ($number >= 1000) {
-            return number_format($number / 1000, 2, ',', '.') . 'K';
-        }
-
-        return number_format($number, 2, ',', '.');
     }
 
     public function isRecent(): bool

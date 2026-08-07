@@ -17,6 +17,7 @@ return [
     'recent' => 'Neu',
     
     'project' => 'Projekt',
+    'client' => 'Kunde',
     'amount' => 'Betrag',
     'currency' => 'Währung',
     'paid_at' => 'Bezahlt am',
@@ -75,6 +76,7 @@ return [
     'pending' => 'Ausstehend',
     'overdue' => 'Überfällig',
     'select_method' => 'Zahlungsmethode auswählen',
+    'select_client' => 'Kunde auswählen',
     'method_not_set' => 'Nicht angegeben',
 
     'filters' => [

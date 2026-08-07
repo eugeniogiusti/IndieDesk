@@ -65,6 +65,7 @@ class ProjectShowQuery
     private function getPayments(): Collection
     {
         return $this->project->payments()
+            ->with('client')
             ->latest('paid_at')
             ->take($this->limit)
             ->get()

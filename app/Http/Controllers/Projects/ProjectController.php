@@ -32,7 +32,15 @@ class ProjectController extends Controller
      */
     public function store(StoreProjectRequest $request)
     {
-        Project::create($request->validated());
+        $data = $request->validated();
+        $clientIds = $data['client_ids'] ?? [];
+        unset($data['client_ids']);
+
+        $project = Project::create($data);
+
+        if ($project->type === 'saas') {
+            $project->clients()->sync($clientIds);
+        }
 
         return redirect()->route('projects.index')
             ->with('success', __('projects.created_successfully'));
@@ -43,7 +51,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project, ProjectProfitStatsQuery $profitStats)
     {
-        $project->load('client');
+        $project->load(['client', 'clients']);
 
         // Load limited related data with counts
         $showData = (new ProjectShowQuery($project))->handle();
@@ -58,7 +66,15 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
-        $project->update($request->validated());
+        $data = $request->validated();
+        $clientIds = $data['client_ids'] ?? [];
+        unset($data['client_ids']);
+
+        $project->update($data);
+
+        // Keep the pivot in sync with the type: only saas projects carry
+        // multiple linked clients, so clear it if the type changed away.
+        $project->clients()->sync($project->type === 'saas' ? $clientIds : []);
 
         // if the request arrives from show, return to show
         if ($request->input('back') === 'show') {

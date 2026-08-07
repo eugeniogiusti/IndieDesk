@@ -17,6 +17,7 @@ return [
     'recent' => 'Останні',
 
     'project' => 'Проєкт',
+    'client' => 'Клієнт',
     'amount' => 'Сума',
     'currency' => 'Валюта',
     'paid_at' => 'Сплачено',
@@ -75,6 +76,7 @@ return [
     'pending' => 'До отримання',
     'overdue' => 'Прострочено',
     'select_method' => 'Оберіть спосіб оплати',
+    'select_client' => 'Виберіть клієнта',
     'method_not_set' => 'Не вказано',
 
     'filters' => [

@@ -15,6 +15,7 @@ return [
     // Form labels - Tab 1: Info Base
     'name' => 'Projektnavn',
     'client' => 'Kunde',
+    'clients' => 'Kunder',
     'is_internal' => 'Internt projekt',
     'description' => 'Beskrivelse',
     'status' => 'Status',
@@ -34,6 +35,7 @@ return [
     'type_product' => 'Produkt',
     'type_content' => 'Indhold',
     'type_asset' => 'Asset',
+    'type_saas' => 'SaaS',
 
     // Dates
     'start_date' => 'Startdato',
@@ -86,6 +88,7 @@ return [
     
     // Internal project label
     'internal_project' => 'Internt projekt',
+    'no_clients_linked' => 'Ingen kunder tilknyttet',
     'internal_project_desc' => 'Dette er et internt projekt. Der er ingen tilknyttede kundeoplysninger.',
     
     // Buttons

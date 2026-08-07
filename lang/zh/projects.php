@@ -15,6 +15,7 @@ return [
     // Form labels - Tab 1: Info Base
     'name' => '项目名称',
     'client' => '客户',
+    'clients' => '客户',
     'is_internal' => '内部项目',
     'description' => '描述',
     'status' => '状态',
@@ -34,6 +35,7 @@ return [
     'type_product' => '产品',
     'type_content' => '内容',
     'type_asset' => '资产',
+    'type_saas' => 'SaaS',
 
     // Dates
     'start_date' => '开始日期',
@@ -84,6 +86,7 @@ return [
 
     // Internal project label
     'internal_project' => '内部项目',
+    'no_clients_linked' => '未关联客户',
     'internal_project_desc' => '这是一个内部项目，不关联客户信息。',
 
     // Buttons

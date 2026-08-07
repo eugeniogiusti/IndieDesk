@@ -22,8 +22,8 @@
                         </p>
                         <p class="text-xs text-gray-500 dark:text-gray-400">
                             {{ $cost->project?->name ?? '—' }}
-                            @if($cost->project?->client)
-                                <span class="text-gray-400 dark:text-gray-500">· {{ $cost->project->client->name }}</span>
+                            @if($cost->project?->getClientLabel())
+                                <span class="text-gray-400 dark:text-gray-500">· {{ $cost->project->getClientLabel() }}</span>
                             @endif
                         </p>
                         <div class="mt-1"><x-costs.type-badge :type="$cost->type" /></div>

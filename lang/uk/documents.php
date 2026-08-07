@@ -48,7 +48,7 @@ return [
     ],
 
     // Hints
-    'file_requirements' => 'Допустимі формати: PDF, JPG, JPEG, PNG. Максимальний розмір: 10MB.',
+    'file_requirements' => 'Допустимі формати: PDF, JPG, JPEG, PNG, WEBP, ZIP, 7Z, RAR, DOC, DOCX, XLS, XLSX. Максимальний розмір: 30MB.',
     'labels_hint' => 'Виберіть одну або кілька міток для організації документа.',
 
     // Stats

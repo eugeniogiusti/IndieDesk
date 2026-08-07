@@ -113,12 +113,14 @@
                 <option value="product">{{ __('projects.type_product') }}</option>
                 <option value="content">{{ __('projects.type_content') }}</option>
                 <option value="asset">{{ __('projects.type_asset') }}</option>
+                <option value="saas">{{ __('projects.type_saas') }}</option>
             </select>
         </div>
     </div>
 
-{{-- Client Search con checkbox Interno --}}
-<div x-data="clientSearch()"
+{{-- Client Search con checkbox Interno (progetti non-SaaS) --}}
+<div x-show="formData.type !== 'saas'"
+     x-data="clientSearch()"
      @edit-project.window="syncFromProject($event.detail.client_id, $event.detail.client_name)"
      @open-project-modal.window="reset()">
     {{-- Checkbox Progetto Interno --}}
@@ -174,6 +176,61 @@
                 </svg>
             </button>
         </div>
+    </div>
+</div>
+
+{{-- Client Multi-Search (progetti SaaS: piu clienti collegati) --}}
+<div x-show="formData.type === 'saas'"
+     x-data="clientMultiSearch()"
+     @edit-project.window="syncFromProject($event.detail.clients)"
+     @open-project-modal.window="reset()">
+    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+        {{ __('projects.clients') }}
+    </label>
+
+    <div class="relative">
+        <input type="text" x-model="searchQuery"
+            @input.debounce.300ms="searchClients()"
+            @focus="if (searchResults.length > 0) { showDropdown = true; }"
+            @click.away="showDropdown = false"
+            placeholder="{{ __('projects.placeholder.client') }}"
+            class="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-emerald-500 transition">
+
+        <div x-show="isSearching" class="absolute right-3 top-2.5">
+            <svg class="animate-spin h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+        </div>
+
+        <div x-show="showDropdown && searchResults.length > 0" x-transition
+            class="absolute z-10 w-full mt-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 rounded-lg shadow-lg max-h-48 overflow-auto">
+            <template x-for="client in searchResults" :key="client.id">
+                <div @click="addClient(client)"
+                    class="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 cursor-pointer transition">
+                    <div class="text-sm font-medium text-gray-900 dark:text-white" x-text="client.name"></div>
+                    <div class="text-xs text-gray-500 dark:text-gray-400" x-text="client.email"></div>
+                </div>
+            </template>
+        </div>
+    </div>
+
+    {{-- Selected clients as removable chips --}}
+    <template x-for="client in selectedClients" :key="client.id">
+        <input type="hidden" name="client_ids[]" :value="client.id">
+    </template>
+
+    <div x-show="selectedClients.length > 0" class="mt-2 flex flex-wrap gap-1.5">
+        <template x-for="client in selectedClients" :key="client.id">
+            <span class="inline-flex items-center gap-1 pl-2.5 pr-1.5 py-1 bg-emerald-50 dark:bg-emerald-900/20 text-emerald-800 dark:text-emerald-200 text-xs font-medium rounded-full">
+                <span x-text="client.name"></span>
+                <button type="button" @click="removeClient(client.id)" class="text-emerald-600 hover:text-red-600 dark:text-emerald-400 dark:hover:text-red-400">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </span>
+        </template>
     </div>
 </div>
 

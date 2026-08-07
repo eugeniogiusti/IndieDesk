@@ -48,7 +48,7 @@ return [
     ],
 
     // Hints
-    'file_requirements' => '支持格式：PDF、JPG、JPEG、PNG。最大 10MB。',
+    'file_requirements' => '支持格式：PDF、JPG、JPEG、PNG、WEBP、ZIP、7Z、RAR、DOC、DOCX、XLS、XLSX。最大 30MB。',
     'labels_hint' => '选择一个或多个标签来组织该文档。',
 
     // Stats

@@ -27,7 +27,11 @@ class UpdateProjectRequest extends FormRequest
             'status' => 'required|in:draft,in_progress,completed,archived',
 
             // Project type (macro category)
-            'type' => 'required|in:client_work,product,content,asset',
+            'type' => 'required|in:client_work,product,content,asset,saas',
+
+            // Multiple clients (only relevant for type=saas)
+            'client_ids' => 'nullable|array',
+            'client_ids.*' => 'exists:clients,id',
 
             // Optional project start date (informational / target)
             'start_date' => 'nullable|date',

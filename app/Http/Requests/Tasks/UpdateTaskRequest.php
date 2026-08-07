@@ -30,7 +30,7 @@ class UpdateTaskRequest extends FormRequest
             'priority' => ['nullable', 'string', 'in:' . implode(',', Task::PRIORITIES)],
             'due_date' => ['nullable', 'date'],
             'order'         => ['nullable', 'integer', 'min:0'],
-            'file'          => ['nullable', 'file', 'max:30720', 'mimes:pdf,jpg,jpeg,png,webp,zip,7z,rar'],
+            'file'          => ['nullable', 'file', 'max:30720', 'mimes:pdf,jpg,jpeg,png,webp,zip,7z,rar,doc,docx,xls,xlsx'],
             'document_name' => ['nullable', 'string', 'max:255'],
         ];
     }

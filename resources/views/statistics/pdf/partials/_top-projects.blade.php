@@ -17,7 +17,7 @@
                     <tr>
                         <td>{{ $index + 1 }}</td>
                         <td>{{ $row['project']->name }}</td>
-                        <td>{{ $row['project']->client?->name ?? '—' }}</td>
+                        <td>{{ $row['project']->getClientLabel() ?? '—' }}</td>
                         <td class="text-right positive">+{{ number_format($row['income'], 2, ',', '.') }} {{ $currencySymbol }}</td>
                         <td class="text-right negative">-{{ number_format($row['costs'], 2, ',', '.') }} {{ $currencySymbol }}</td>
                         <td class="text-right {{ $row['profit'] >= 0 ? 'positive' : 'negative' }}">

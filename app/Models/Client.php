@@ -58,6 +58,14 @@ class Client extends Model
     }
 
     /**
+     * Get the SaaS projects (type=saas) this client is linked to.
+     */
+    public function saasProjects()
+    {
+        return $this->belongsToMany(Project::class, 'client_project');
+    }
+
+    /**
      * Get the followups for the client, ordered by most recent first.
      */
     public function followups()

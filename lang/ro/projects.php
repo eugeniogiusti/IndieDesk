@@ -15,6 +15,7 @@ return [
     // Form labels - Tab 1: Info Base
     'name' => 'Nume proiect',
     'client' => 'Client',
+    'clients' => 'Clienți',
     'is_internal' => 'Proiect intern',
     'description' => 'Descriere',
     'status' => 'Stare',
@@ -34,6 +35,7 @@ return [
     'type_product' => 'Produs',
     'type_content' => 'Conținut',
     'type_asset' => 'Asset',
+    'type_saas' => 'SaaS',
 
     // Dates
     'start_date' => 'Data de început',
@@ -86,6 +88,7 @@ return [
 
     // Internal project label
     'internal_project' => 'Proiect intern',
+    'no_clients_linked' => 'Niciun client asociat',
     'internal_project_desc' => 'Acesta este un proiect intern. Nu există informații despre client asociate.',
 
     // Buttons

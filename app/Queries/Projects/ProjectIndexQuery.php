@@ -22,18 +22,25 @@ class ProjectIndexQuery
      */
     public function handle(): LengthAwarePaginator
     {
-        return Project::with('client')
+        return Project::with(['client', 'clients'])
             ->when(request('status'), function ($query) {
                 $query->where('status', request('status'));
             })
             ->when(request('priority'), function ($query) {
                 $query->where('priority', request('priority'));
             })
+            ->when(request('client_id'), function ($query) {
+                $query->forClient(request('client_id'));
+            })
             ->when(request('search'), function ($query) {
                 $search = request('search');
                 $query->where(function($q) use ($search) {
                     $q->where('name', 'like', "%{$search}%")
                       ->orWhereHas('client', function($clientQuery) use ($search) {
+                          $clientQuery->where('name', 'like', "%{$search}%")
+                                      ->orWhere('vat_number', 'like', "%{$search}%");
+                      })
+                      ->orWhereHas('clients', function($clientQuery) use ($search) {
                           $clientQuery->where('name', 'like', "%{$search}%")
                                       ->orWhere('vat_number', 'like', "%{$search}%");
                       });

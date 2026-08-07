@@ -4,13 +4,13 @@
             @include('projects.show._header')
 
             {{-- Layout: Sidebar + Main Content --}}
-            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6">
-                
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-6"
+                 x-data="{ activeTab: '{{ request()->query('tab', 'overview') }}' }"
+                 x-cloak>
+
                 {{-- SIDEBAR (1/4) --}}
                 <div class="lg:col-span-1 space-y-6">
-                    @include('projects.show._client-info')
-                    @include('projects.show._quick-info')
-                    @include('projects.show._quick-links')
+                    @include('projects.show._tabs-nav')
                 </div>
 
                 {{-- MAIN CONTENT (3/4) --}}

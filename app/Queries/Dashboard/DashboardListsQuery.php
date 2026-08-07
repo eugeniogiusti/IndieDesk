@@ -77,6 +77,7 @@ class DashboardListsQuery
     private function getOverduePayments(): Collection
     {
         return Payment::query()
+            ->with('client:id,name')
             ->overdue()
             ->orderBy('due_date')
             ->take(5)
@@ -89,6 +90,7 @@ class DashboardListsQuery
     private function getRecentPayments(): Collection
     {
         return Payment::query()
+            ->with('client:id,name')
             ->paid()
             ->latest('paid_at')
             ->take(5)
@@ -119,8 +121,8 @@ class DashboardListsQuery
             return;
         }
 
-        $projects = Project::with('client:id,name')
-            ->select('id', 'name', 'client_id')
+        $projects = Project::with(['client:id,name', 'clients:id,name'])
+            ->select('id', 'name', 'client_id', 'type')
             ->whereIn('id', $projectIds)
             ->get()
             ->keyBy('id');
@@ -142,7 +144,7 @@ class DashboardListsQuery
      */
     private function getProjectsDueSoon(): Collection
     {
-        return Project::with('client:id,name')
+        return Project::with(['client:id,name', 'clients:id,name'])
             ->where('status', 'in_progress')
             ->whereNotNull('due_date')
             ->where('due_date', '>=', now())

@@ -48,7 +48,7 @@ return [
     ],
 
     // Hints
-    'file_requirements' => 'Допустимые форматы: PDF, JPG, JPEG, PNG. Максимальный размер: 10MB.',
+    'file_requirements' => 'Допустимые форматы: PDF, JPG, JPEG, PNG, WEBP, ZIP, 7Z, RAR, DOC, DOCX, XLS, XLSX. Максимальный размер: 30MB.',
     'labels_hint' => 'Выберите одну или несколько меток для организации документа.',
 
     // Stats

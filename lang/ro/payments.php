@@ -17,6 +17,7 @@ return [
     'recent' => 'Recent',
 
     'project' => 'Proiect',
+    'client' => 'Client',
     'amount' => 'Sumă',
     'currency' => 'Monedă',
     'paid_at' => 'Plătit la',
@@ -75,6 +76,7 @@ return [
     'pending' => 'De încasat',
     'overdue' => 'Întârziat',
     'select_method' => 'Selectează metoda de plată',
+    'select_client' => 'Selectează client',
     'method_not_set' => 'Nespecificat',
 
     'filters' => [

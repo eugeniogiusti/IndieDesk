@@ -17,6 +17,7 @@ return [
     'recent' => 'Recent',
     
     'project' => 'Project',
+    'client' => 'Client',
     'amount' => 'Amount',
     'currency' => 'Currency',
     'paid_at' => 'Paid At',
@@ -75,6 +76,7 @@ return [
     'pending' => 'Pending',
     'overdue' => 'Overdue',
     'select_method' => 'Select payment method',
+    'select_client' => 'Select client',
     'method_not_set' => 'Not specified',
 
     'filters' => [

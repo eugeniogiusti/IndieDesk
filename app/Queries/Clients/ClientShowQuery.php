@@ -26,7 +26,12 @@ class ClientShowQuery
         private Client $client,
         private int $limit = 5
     ) {
-        $this->projectIds = $client->projects()->pluck('id');
+        // Include both directly-owned projects (client_id) and SaaS
+        // projects this client is linked to via the client_project pivot.
+        $this->projectIds = $client->projects()->pluck('id')
+            ->merge($client->saasProjects()->pluck('projects.id'))
+            ->unique()
+            ->values();
     }
 
     public function handle(): array
@@ -58,7 +63,7 @@ class ClientShowQuery
 
     private function getProjects()
     {
-        return $this->client->projects()
+        return Project::whereIn('id', $this->projectIds)
             ->latest()
             ->take($this->limit)
             ->get();

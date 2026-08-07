@@ -35,7 +35,7 @@ class MonthlyDetailQuery
 
     private function getCosts()
     {
-        return Cost::with('project.client')
+        return Cost::with(['project.client', 'project.clients'])
             ->where('currency', $this->currency)
             ->whereBetween('paid_at', [$this->startDate, $this->endDate])
             ->orderBy('paid_at')
@@ -44,7 +44,7 @@ class MonthlyDetailQuery
 
     private function getPayments()
     {
-        return Payment::with('project.client')
+        return Payment::with(['project.client', 'project.clients', 'client'])
             ->paid()
             ->where('currency', $this->currency)
             ->whereBetween('paid_at', [$this->startDate, $this->endDate])

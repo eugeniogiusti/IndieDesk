@@ -98,7 +98,15 @@ class Project extends Model implements CalendarEventable
     {
         return $this->belongsTo(Client::class);
     }
-    
+
+    /**
+     * Relationship: Project (type=saas) belongs to many Clients (customers)
+     */
+    public function clients()
+    {
+        return $this->belongsToMany(Client::class, 'client_project');
+    }
+
     /**
      * Relationship: Project has many Tasks
      */
@@ -160,6 +168,24 @@ class Project extends Model implements CalendarEventable
     }
 
     /**
+     * Client name(s) to display for this project: the single client for
+     * regular projects, or the comma-joined linked clients for SaaS ones.
+     * Null when there's no client at all (internal project).
+     */
+    public function getClientLabel(): ?string
+    {
+        if ($this->client) {
+            return $this->client->name;
+        }
+
+        if ($this->type === 'saas' && $this->clients->isNotEmpty()) {
+            return $this->clients->pluck('name')->join(', ');
+        }
+
+        return null;
+    }
+
+    /**
      * Get available status values
      */
     public static function getStatusValues(): array
@@ -191,7 +217,10 @@ class Project extends Model implements CalendarEventable
      */
     public function scopeForClient($query, $clientId)
     {
-        return $query->where('client_id', $clientId);
+        return $query->where(function ($q) use ($clientId) {
+            $q->where('client_id', $clientId)
+              ->orWhereHas('clients', fn($sub) => $sub->where('clients.id', $clientId));
+        });
     }
 
     /**

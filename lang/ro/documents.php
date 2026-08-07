@@ -48,7 +48,7 @@ return [
     ],
 
     // Hints
-    'file_requirements' => 'Formate acceptate: PDF, JPG, JPEG, PNG. Dimensiune maximă: 10MB.',
+    'file_requirements' => 'Formate acceptate: PDF, JPG, JPEG, PNG, WEBP, ZIP, 7Z, RAR, DOC, DOCX, XLS, XLSX. Dimensiune maximă: 30MB.',
     'labels_hint' => 'Selectează una sau mai multe etichete pentru a organiza acest document.',
 
     // Stats

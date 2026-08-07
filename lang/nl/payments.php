@@ -17,6 +17,7 @@ return [
     'recent' => 'Recent',
     
     'project' => 'Project',
+    'client' => 'Klant',
     'amount' => 'Bedrag',
     'currency' => 'Valuta',
     'paid_at' => 'Betaald op',
@@ -75,6 +76,7 @@ return [
     'pending' => 'Te ontvangen',
     'overdue' => 'Achterstallig',
     'select_method' => 'Betaalmethode selecteren',
+    'select_client' => 'Selecteer klant',
     'method_not_set' => 'Niet opgegeven',
 
     'filters' => [

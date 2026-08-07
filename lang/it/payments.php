@@ -17,6 +17,7 @@ return [
     'recent' => 'Recente',
     
     'project' => 'Progetto',
+    'client' => 'Cliente',
     'amount' => 'Importo',
     'currency' => 'Valuta',
     'paid_at' => 'Pagato il',
@@ -75,6 +76,7 @@ return [
     'pending' => 'Da incassare',
     'overdue' => 'Scaduto',
     'select_method' => 'Seleziona metodo di pagamento',
+    'select_client' => 'Seleziona cliente',
     'method_not_set' => 'Non specificato',
 
     'filters' => [

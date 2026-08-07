@@ -3,6 +3,7 @@
 namespace App\Services\Settings;
 
 use App\Models\BusinessDocument;
+use App\Services\Documents\OfficeDocumentConverter;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -19,6 +20,10 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
  */
 class BusinessDocumentService
 {
+    public function __construct(
+        private OfficeDocumentConverter $officeConverter
+    ) {}
+
     public function upload(UploadedFile $file, array $data): BusinessDocument
     {
         $filename = $this->generateFilename($file);
@@ -35,6 +40,7 @@ class BusinessDocumentService
     public function delete(BusinessDocument $document): void
     {
         if ($document->file_path && Storage::exists($document->file_path)) {
+            $this->officeConverter->forgetPreview(Storage::path($document->file_path));
             Storage::delete($document->file_path);
         }
 
@@ -55,11 +61,11 @@ class BusinessDocumentService
         $this->abortIfMissing($document);
 
         $path     = Storage::path($document->file_path);
-        $mimeType = mime_content_type($path);
-        $filename = $document->name . '.' . $document->file_extension;
+        $preview  = $this->officeConverter->resolvePreview($path, $document->file_extension);
+        $filename = $document->name . '.' . $preview['extension'];
 
-        return response()->file($path, [
-            'Content-Type'           => $mimeType,
+        return response()->file($preview['path'], [
+            'Content-Type'           => $preview['mimeType'],
             'Content-Disposition'    => 'inline; filename="' . $filename . '"',
             'X-Content-Type-Options' => 'nosniff',
             'Cache-Control'          => 'private, no-store',

@@ -16,7 +16,7 @@ class PaymentIndexQuery
     public function handle()
     {
         return Payment::query()
-            ->with(['project.client'])
+            ->with(['project.client', 'client'])
             ->when(request('project_id'), fn($q, $projectId) => $q->forProject($projectId))
             ->when(request('status'), function($q, $status) {
                 match($status) {

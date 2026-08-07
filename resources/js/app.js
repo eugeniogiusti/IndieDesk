@@ -4,6 +4,7 @@ import Alpine from 'alpinejs'
 import createToastStore from './stores/toast'
 import projectSearch from './components/projectSearch'
 import clientSearch from './components/clientSearch'
+import clientMultiSearch from './components/clientMultiSearch'
 import clientModal from './components/clientModal';
 import clientFollowupModal from './components/clientFollowupModal';
 import projectModal from './components/projectModal';
@@ -85,6 +86,7 @@ Alpine.store('toast', createToastStore())
 // Components
 Alpine.data('projectSearch', projectSearch);
 Alpine.data('clientSearch', clientSearch);
+Alpine.data('clientMultiSearch', clientMultiSearch);
 Alpine.data('labelModal', labelModal);
 Alpine.data('annualTrendChart', annualTrendChart);
 Alpine.data('repositoryTab', repositoryTab);
