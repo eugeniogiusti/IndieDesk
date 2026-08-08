@@ -6,6 +6,7 @@ return [
     'client' => '客户',
     'clients_list' => '客户列表',
     'create_client' => '新建客户',
+    'export_excel' => '导出 Excel',
     'edit_client' => '编辑客户',
     'all_statuses' => '所有状态',
     'client_details' => '客户详情',

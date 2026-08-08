@@ -6,6 +6,7 @@ return [
     'client' => 'Klant',
     'clients_list' => 'Klantenlijst',
     'create_client' => 'Nieuwe klant',
+    'export_excel' => 'Excel exporteren',
     'edit_client' => 'Klant bewerken',
     'all_statuses' => 'Alle statussen',
     'client_details' => 'Klantgegevens',

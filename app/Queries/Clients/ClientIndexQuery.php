@@ -4,6 +4,7 @@ namespace App\Queries\Clients;
 
 use App\Models\Client;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Builder;
 
 /**
  * Paginated query for the clients index page.
@@ -21,6 +22,17 @@ class ClientIndexQuery
      * Handle the query
      */
     public function handle(): LengthAwarePaginator
+    {
+        return $this->query()
+            ->paginate(15)
+            ->appends(request()->query());
+    }
+
+    /**
+     * Build the filtered/sorted query without pagination, so it can be
+     * reused for exports (e.g. Excel) honoring the same filters.
+     */
+    public function query(): Builder
     {
         return Client::query()
             ->withCount('followups')
@@ -53,9 +65,7 @@ class ClientIndexQuery
             ->orderBy(
                 $this->getSortColumn(),
                 $this->getSortDirection()
-            )
-            ->paginate(15)
-            ->appends(request()->query());
+            );
     }
 
     private function getSortColumn(): string

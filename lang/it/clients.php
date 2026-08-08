@@ -6,6 +6,7 @@ return [
     'client' => 'Cliente',
     'clients_list' => 'Lista Clienti',
     'create_client' => 'Nuovo Cliente',
+    'export_excel' => 'Esporta Excel',
     'edit_client' => 'Modifica Cliente',
     'all_statuses' => 'Tutti gli stati',
     'client_details' => 'Dettagli Cliente',

@@ -16,14 +16,25 @@
         </div>
     </div>
     
-    <x-button 
-        variant="primary"
-        x-data
-        @click="$dispatch('open-client-modal')"
-    >
-        <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
-        </svg>
-        {{ __('clients.create_client') }}
-    </x-button>
+    <div class="flex items-center gap-2">
+        <a href="{{ route('clients.export', request()->query()) }}"
+           class="inline-flex items-center px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg text-sm font-medium text-gray-700 dark:text-gray-300 bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700 transition">
+            <svg class="w-5 h-5 mr-2 text-emerald-600 dark:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <rect x="3" y="3" width="18" height="18" rx="2" stroke-width="2" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9h18M3 15h18M9 3v18M15 3v18" />
+            </svg>
+            {{ __('clients.export_excel') }}
+        </a>
+
+        <x-button
+            variant="primary"
+            x-data
+            @click="$dispatch('open-client-modal')"
+        >
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
+            </svg>
+            {{ __('clients.create_client') }}
+        </x-button>
+    </div>
 </div>

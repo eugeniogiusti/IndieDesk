@@ -9,6 +9,7 @@ use App\Http\Requests\Clients\UpdateClientRequest;
 use App\Queries\Clients\ClientIndexQuery;
 use App\Queries\Clients\ClientShowQuery;
 use App\Queries\Clients\ClientStatsQuery;
+use App\Services\Clients\ClientExcelExporter;
 
 class ClientController extends Controller
 {
@@ -21,6 +22,14 @@ class ClientController extends Controller
         $stats = (new ClientStatsQuery())->handle();
 
         return view('clients.index', compact('clients', 'stats'));
+    }
+
+    /**
+     * Export the filtered clients list to an .xlsx file.
+     */
+    public function export(ClientExcelExporter $exporter)
+    {
+        return $exporter->download();
     }
 
     /**

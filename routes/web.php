@@ -94,6 +94,10 @@ Route::middleware(['auth', 'verified', '2fa'])->group(function () {
     // CLIENTS MODULE
     // ==========================================
 
+    // Export (must be registered before the resource route to avoid
+    // colliding with GET /clients/{client})
+    Route::get('/clients/export', [ClientController::class, 'export'])->name('clients.export');
+
     // Resource routes (index, create, store, show, edit, update, destroy)
     Route::resource('clients', ClientController::class);
 
