@@ -19,6 +19,7 @@ class Client extends Model
     protected $fillable = [
         'name',
         'email',
+        'stripe_customer_id',
         'status',
         'acquisition_source',
         'vat_number',
@@ -80,6 +81,32 @@ class Client extends Model
     public function needsFollowup(): bool
     {
         return in_array($this->status, ['lead', 'prospect'], true);
+    }
+
+    /**
+     * Total projects linked to this client: directly-owned (client_id) plus
+     * SaaS projects linked via the client_project pivot.
+     */
+    public function totalProjectsCount(): int
+    {
+        return $this->projects->count() + $this->saasProjects->count();
+    }
+
+    /**
+     * Stripe dashboard URL for this client's customer record, or null if
+     * not linked to Stripe. Points to test or live mode based on which
+     * kind of secret key is currently configured.
+     */
+    public function getStripeDashboardUrl(): ?string
+    {
+        if (!$this->stripe_customer_id) {
+            return null;
+        }
+
+        $isTestMode = str_starts_with((string) config('services.stripe.secret'), 'sk_test_');
+        $path = $isTestMode ? 'test/customers' : 'customers';
+
+        return "https://dashboard.stripe.com/{$path}/{$this->stripe_customer_id}";
     }
 
     /**

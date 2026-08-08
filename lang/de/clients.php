@@ -49,6 +49,7 @@ return [
 
     // Contact info
     'contact_info' => 'Kontaktinformationen',
+    'connected_to_stripe' => 'Mit Stripe verbunden',
     'web_social' => 'Web & Social',
 
     // Status options

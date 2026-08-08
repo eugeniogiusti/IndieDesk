@@ -19,7 +19,12 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             '2fa' => \App\Http\Middleware\TwoFactor\EnsureTwoFactorAuthenticated::class,
         ]);
-        
+
+        // Stripe calls this directly — it can't send a CSRF token
+        $middleware->validateCsrfTokens(except: [
+            'stripe/webhook',
+        ]);
+
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

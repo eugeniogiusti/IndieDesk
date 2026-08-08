@@ -38,9 +38,17 @@
                             {{ __('projects.title') }}:
                         </span>
                         <span class="text-sm text-gray-700 dark:text-gray-300">
-                            {{ $client->projects->count() }}
+                            {{ $client->totalProjectsCount() }}
                         </span>
                     </div>
+
+                    {{-- Stripe connection --}}
+                    @if($client->stripe_customer_id)
+                        <a href="{{ $client->getStripeDashboardUrl() }}" target="_blank" rel="noopener"
+                           class="flex items-center gap-1.5 text-sm text-purple-600 dark:text-purple-400 hover:text-purple-800 dark:hover:text-purple-300 transition">
+                            🔗 {{ __('clients.connected_to_stripe') }}
+                        </a>
+                    @endif
 
                     {{-- Created at --}}
                     <div class="flex items-center gap-2">

@@ -49,6 +49,7 @@ return [
 
     // Contact info
     'contact_info' => '联系信息',
+    'connected_to_stripe' => '已连接 Stripe',
     'web_social' => '网站与社交',
 
     // Status options

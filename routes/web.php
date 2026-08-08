@@ -34,6 +34,7 @@ use App\Http\Controllers\Trash\TrashController;
 use App\Http\Controllers\Timesheets\TimesheetController;
 use App\Http\Controllers\Taxes\TaxController;
 use App\Http\Controllers\Taxes\TaxAttachmentController;
+use App\Http\Controllers\Webhooks\StripeWebhookController;
 
 // Redirect root to login
 Route::get('/', fn () => redirect()->route('login'));
@@ -387,6 +388,12 @@ Route::middleware(['auth', 'verified', '2fa'])->group(function () {
         Route::delete('/empty', [TrashController::class, 'emptyAll'])->name('empty');
     });
 
-}); 
+});
+
+// ==========================================
+// WEBHOOKS (no auth — called directly by external services)
+// ==========================================
+
+Route::post('/stripe/webhook', StripeWebhookController::class)->name('stripe.webhook');
 
 require __DIR__.'/auth.php';

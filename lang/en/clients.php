@@ -50,6 +50,7 @@ return [
 
     // Contact info
     'contact_info' => 'Contact Information',
+    'connected_to_stripe' => 'Connected to Stripe',
     'web_social' => 'Web & Social',
 
     // Status options

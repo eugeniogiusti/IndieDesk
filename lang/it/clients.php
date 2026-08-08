@@ -50,6 +50,7 @@ return [
 
     // Contact info
     'contact_info' => 'Informazioni Contatto',
+    'connected_to_stripe' => 'Collegato a Stripe',
     'web_social' => 'Web & Social',
 
     // Status options

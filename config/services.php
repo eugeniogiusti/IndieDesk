@@ -39,4 +39,9 @@ return [
         'calendar_embed_url' => env('GOOGLE_CALENDAR_EMBED_URL'),
     ],
 
+    'stripe' => [
+        'secret' => env('STRIPE_SECRET'),
+        'webhook_secret' => env('STRIPE_WEBHOOK_SECRET'),
+    ],
+
 ];

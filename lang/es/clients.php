@@ -49,6 +49,7 @@ return [
 
     // Contact info
     'contact_info' => 'Información de contacto',
+    'connected_to_stripe' => 'Conectado a Stripe',
     'web_social' => 'Web y redes',
 
     // Status options

@@ -1,6 +1,7 @@
 *.log
 .DS_Store
 .env
+.codex/
 database.sqlite
 database.sqlite-shm
 database.sqlite-wal

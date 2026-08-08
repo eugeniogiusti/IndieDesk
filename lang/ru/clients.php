@@ -49,6 +49,7 @@ return [
 
     // Contact info
     'contact_info' => 'Контактная информация',
+    'connected_to_stripe' => 'Подключено к Stripe',
     'web_social' => 'Веб и соцсети',
 
     // Status options
