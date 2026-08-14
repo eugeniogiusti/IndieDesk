@@ -55,7 +55,7 @@ return [
         'this_year' => 'Quest\'Anno',
         'currencies' => 'Valute',
         'estimated_tax' => 'Tasse stimate',
-        'no_tax_estimate_all_time' => 'Stima tasse non disponibile sullo storico: le aliquote cambiano nel tempo, il calcolo vale solo per l\'anno corrente.',
+        'no_tax_estimate_all_time' => 'Importo lordo, tasse non stimate.',
     ],
 
     'placeholder' => [
