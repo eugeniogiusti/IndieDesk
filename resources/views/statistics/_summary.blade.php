@@ -15,11 +15,11 @@
                     <p class="text-xl font-bold {{ $stats['summary']['display_profit'] >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400' }}">
                         {{ $stats['summary']['display_profit'] >= 0 ? '+' : '' }}{{ number_format($stats['summary']['display_profit'], 2, ',', '.') }} {{ $currencySymbol }}
                     </p>
-                    <div class="mt-2 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
-                        <span class="text-emerald-600">+{{ number_format($stats['summary']['payments'], 2, ',', '.') }}</span>
-                        <span class="text-red-500">-{{ number_format($stats['summary']['costs'], 2, ',', '.') }}</span>
+                    <div class="mt-2 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400 flex-wrap">
+                        <span class="text-emerald-600">{{ __('statistics.gross') }}: +{{ number_format($stats['summary']['payments'], 2, ',', '.') }}</span>
+                        <span class="text-red-500">{{ __('statistics.costs') }}: -{{ number_format($stats['summary']['costs'], 2, ',', '.') }}</span>
                         @if($stats['summary']['estimated_tax'] !== null)
-                            <span class="text-amber-500">-{{ number_format($stats['summary']['estimated_tax'], 2, ',', '.') }} {{ __('dashboard.taxes_abbr') }}</span>
+                            <span class="text-amber-500">{{ __('statistics.estimated_tax') }}: -{{ number_format($stats['summary']['estimated_tax'], 2, ',', '.') }}</span>
                         @endif
                     </div>
                 </div>
@@ -35,7 +35,7 @@
                     </svg>
                 </div>
                 <div class="min-w-0">
-                    <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('statistics.payments') }}</p>
+                    <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('statistics.payments') }} ({{ __('statistics.gross') }})</p>
                     <p class="text-xl font-bold text-gray-900 dark:text-white">
                         {{ number_format($stats['summary']['payments'], 2, ',', '.') }} {{ $currencySymbol }}
                     </p>

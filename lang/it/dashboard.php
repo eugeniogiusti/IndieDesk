@@ -16,7 +16,6 @@ return [
 
     // Stats Cards
     'profit_this_month' => 'Profitto Questo Mese',
-    'taxes_abbr' => 'tasse',
     'set_aside' => 'Da accantonare',
     'pending_payments' => 'Pagamenti da Incassare',
     'active_projects' => 'Progetti Attivi',

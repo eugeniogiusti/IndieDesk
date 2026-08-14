@@ -8,11 +8,11 @@
             <p class="mt-2 text-3xl font-bold {{ $stats['profit_this_month']['amount'] >= 0 ? 'text-emerald-600' : 'text-red-600' }}">
                 {{ number_format($stats['profit_this_month']['amount'], 2) }} {{ $currencySymbol }}
             </p>
-            <div class="mt-2 flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
-                <span class="text-emerald-600">+{{ number_format($stats['profit_this_month']['payments'], 2) }}</span>
-                <span class="text-red-500">-{{ number_format($stats['profit_this_month']['costs'], 2) }}</span>
+            <div class="mt-2 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400 flex-wrap">
+                <span class="text-emerald-600">{{ __('statistics.gross') }}: +{{ number_format($stats['profit_this_month']['payments'], 2) }}</span>
+                <span class="text-red-500">{{ __('statistics.costs') }}: -{{ number_format($stats['profit_this_month']['costs'], 2) }}</span>
                 @if($stats['profit_this_month']['estimated_tax'] !== null)
-                    <span class="text-amber-500">-{{ number_format($stats['profit_this_month']['estimated_tax'], 2) }} {{ __('dashboard.taxes_abbr') }}</span>
+                    <span class="text-amber-500">{{ __('statistics.estimated_tax') }}: -{{ number_format($stats['profit_this_month']['estimated_tax'], 2) }}</span>
                 @endif
             </div>
         </div>
