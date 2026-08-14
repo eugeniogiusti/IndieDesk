@@ -52,6 +52,11 @@
             <span style="float: right; font-weight: normal; color: #16a34a;">
                 {{ number_format($stats['detail']['payments']->sum('amount'), 2, ',', '.') }} {{ $currencySymbol }}
             </span>
+            @if($stats['summary']['estimated_tax'] !== null)
+                <div style="text-align: right; font-size: 8pt; color: #999; font-weight: normal;">
+                    {{ __('statistics.estimated_tax') }}: {{ number_format($stats['summary']['estimated_tax'], 2, ',', '.') }} {{ $currencySymbol }}
+                </div>
+            @endif
         </div>
 
         @if($stats['detail']['payments']->isEmpty())

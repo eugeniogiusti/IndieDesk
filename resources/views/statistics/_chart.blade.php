@@ -29,18 +29,18 @@
                 @endif
             </h3>
         </div>
-        <div class="flex items-center gap-4 text-xs">
+        <div class="flex items-center gap-4 text-xs flex-wrap">
             <span class="flex items-center gap-1.5">
                 <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                {{ __('statistics.payments') }}
+                {{ __('statistics.payments') }}: {{ number_format($stats['summary']['payments'], 2, ',', '.') }} {{ $currencySymbol }}
             </span>
             <span class="flex items-center gap-1.5">
                 <span class="w-3 h-3 rounded-full bg-red-500"></span>
-                {{ __('statistics.costs') }}
+                {{ __('statistics.costs') }}: {{ number_format($stats['summary']['costs'], 2, ',', '.') }} {{ $currencySymbol }}
             </span>
             <span class="flex items-center gap-1.5">
                 <span class="w-3 h-3 rounded-full bg-indigo-500"></span>
-                {{ __('statistics.profit') }}
+                {{ __('statistics.profit') }}: {{ number_format($stats['summary']['display_profit'], 2, ',', '.') }} {{ $currencySymbol }}
             </span>
         </div>
     </div>

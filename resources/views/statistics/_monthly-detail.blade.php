@@ -82,9 +82,16 @@
                 </svg>
                 {{ __('statistics.detail_payments') }}
             </h3>
-            <span class="text-sm font-medium text-blue-600 dark:text-blue-400">
-                {{ number_format($stats['summary']['payments'], 2, ',', '.') }} {{ $currencySymbol }}
-            </span>
+            <div class="text-right">
+                <span class="text-sm font-medium text-blue-600 dark:text-blue-400">
+                    {{ number_format($stats['summary']['payments'], 2, ',', '.') }} {{ $currencySymbol }}
+                </span>
+                @if($stats['summary']['estimated_tax'] !== null)
+                    <p class="text-xs text-gray-400 dark:text-gray-500">
+                        {{ __('statistics.estimated_tax') }}: {{ number_format($stats['summary']['estimated_tax'], 2, ',', '.') }} {{ $currencySymbol }}
+                    </p>
+                @endif
+            </div>
         </div>
 
         @if($stats['detail']['payments']->isEmpty())

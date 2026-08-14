@@ -5,6 +5,7 @@ namespace App\Queries\Dashboard;
 use App\Models\BusinessSettings;
 use App\Models\Cost;
 use App\Models\Payment;
+use App\Services\Taxes\PaymentTaxCalculator;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
@@ -12,7 +13,9 @@ use Illuminate\Support\Facades\DB;
  * Annual trend chart data for the dashboard.
  *
  * Returns 12-month arrays: labels (translated month abbreviations),
- * payments, costs, and profit (payments - costs) per month.
+ * payments, costs, and profit (payments - costs) per month, plus a
+ * `totals` array (year-to-date payments/costs/profit/estimated_tax/
+ * display_profit) for the chart card header.
  * All amounts filtered by the default currency from BusinessSettings.
  */
 class DashboardChartQuery
@@ -27,13 +30,44 @@ class DashboardChartQuery
 
         $payments = $this->getMonthlyPayments($months);
         $costs = $this->getMonthlyCosts($months);
+        $totalPayments = array_sum($payments);
+        $totalCosts = array_sum($costs);
+        $totalProfit = $totalPayments - $totalCosts;
+        $estimatedTax = $this->getEstimatedTaxThisYear();
 
         return [
             'labels' => $months->pluck('label')->toArray(),
             'payments' => $payments,
             'costs' => $costs,
             'profit' => collect($payments)->map(fn($p, $i) => $p - $costs[$i])->values()->toArray(),
+            'totals' => [
+                'payments' => $totalPayments,
+                'costs' => $totalCosts,
+                'profit' => $totalProfit,
+                'estimated_tax' => $estimatedTax,
+                'display_profit' => $estimatedTax === null ? $totalProfit : round($totalProfit - $estimatedTax, 2),
+            ],
         ];
+    }
+
+    private function getEstimatedTaxThisYear(): ?float
+    {
+        $calculator = new PaymentTaxCalculator();
+
+        if (!$calculator->isConfigured()) {
+            return null;
+        }
+
+        $payments = Payment::paid()
+            ->where('currency', $this->currency)
+            ->thisYear()
+            ->get(['id', 'paid_at', 'amount']);
+
+        return round(
+            $calculator->calculateForPayments($payments)
+                ->sum(fn ($estimate) => $estimate->inpsAmount + $estimate->taxAmount),
+            2
+        );
     }
 
     private function getCurrentYearMonths(): Collection

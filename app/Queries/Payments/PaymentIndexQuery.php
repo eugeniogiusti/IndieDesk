@@ -9,7 +9,8 @@ use App\Models\Payment;
  *
  * Filters: project_id, method, currency, date_from/date_to, search (reference/notes/project name).
  * Eager loads: project.client.
- * Sorting: paid_at desc. Pagination: 15 per page.
+ * Sorting: created_at desc (registration order) — not paid_at, which is null for
+ * pending payments and would sink them to the bottom until marked paid. Pagination: 15 per page.
  */
 class PaymentIndexQuery
 {
@@ -37,7 +38,7 @@ class PaymentIndexQuery
                           ->orWhereHas('project', fn($q) => $q->where('name', 'like', "%{$search}%"));
                 });
             })
-            ->orderBy('paid_at', 'desc')
+            ->orderBy('created_at', 'desc')
             ->paginate(15);
     }
 }

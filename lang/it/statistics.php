@@ -50,6 +50,7 @@ return [
     'detail_internal' => 'Interno',
     'detail_empty' => 'Nessun dato per questo mese',
     'top_projects_title' => 'I 10 Progetti Più Profittevoli',
+    'top_projects_gross_note' => 'Valori lordi, tasse escluse: non attribuibili a un singolo progetto.',
     'top_projects_project' => 'Progetto',
     'top_projects_client' => 'Cliente',
     'top_projects_income' => 'Entrate',

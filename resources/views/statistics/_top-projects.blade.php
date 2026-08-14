@@ -6,6 +6,9 @@
         </svg>
         <h3 class="font-semibold text-gray-900 dark:text-white">{{ __('statistics.top_projects_title') }}</h3>
     </div>
+    <p class="px-4 pt-3 text-xs text-gray-400 dark:text-gray-500">
+        {{ __('statistics.top_projects_gross_note') }}
+    </p>
 
     <div class="overflow-x-auto">
         <table class="w-full text-sm">

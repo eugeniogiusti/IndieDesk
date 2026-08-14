@@ -69,7 +69,7 @@ class ProjectShowQuery
     {
         return $this->project->payments()
             ->with('client')
-            ->latest('paid_at')
+            ->latest()
             ->take($this->limit)
             ->get()
             ->each->setRelation('project', $this->project);

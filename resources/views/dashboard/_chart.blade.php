@@ -23,18 +23,18 @@
                 {{ __('dashboard.annual_trend') }} {{ now()->year }}
             </h3>
         </div>
-        <div class="flex items-center gap-4 text-xs">
+        <div class="flex items-center gap-4 text-xs flex-wrap">
             <span class="flex items-center gap-1.5">
                 <span class="w-3 h-3 rounded-full bg-emerald-500"></span>
-                {{ __('dashboard.chart_payments') }}
+                {{ __('dashboard.chart_payments') }}: {{ number_format($chart['totals']['payments'], 2) }} {{ $currencySymbol }}
             </span>
             <span class="flex items-center gap-1.5">
                 <span class="w-3 h-3 rounded-full bg-red-500"></span>
-                {{ __('dashboard.chart_costs') }}
+                {{ __('dashboard.chart_costs') }}: {{ number_format($chart['totals']['costs'], 2) }} {{ $currencySymbol }}
             </span>
             <span class="flex items-center gap-1.5">
                 <span class="w-3 h-3 rounded-full bg-indigo-500"></span>
-                {{ __('dashboard.chart_profit') }}
+                {{ __('dashboard.chart_profit') }}: {{ number_format($chart['totals']['display_profit'], 2) }} {{ $currencySymbol }}
             </span>
         </div>
     </div>
