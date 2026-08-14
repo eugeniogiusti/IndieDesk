@@ -13,4 +13,9 @@
     <div class="flex items-center gap-1 text-sm">
         <span class="text-gray-600 dark:text-gray-400">{{ now()->year }}</span>
     </div>
+    @if($stats['estimated_tax_this_year'] !== null)
+        <p class="text-xs text-gray-500 dark:text-gray-400 mt-2">
+            {{ __('payments.stats.estimated_tax') }}: {{ $currencySymbol }} {{ number_format($stats['estimated_tax_this_year'], 2, ',', '.') }}
+        </p>
+    @endif
 </div>

@@ -12,9 +12,11 @@ return [
 
     // Summary cards - Financial
     'profit' => 'Profitto',
+    'gross' => 'Lordo',
     'payments' => 'Incassi',
     'costs' => 'Costi',
     'pending' => 'Da incassare',
+    'estimated_tax' => 'Tasse stimate',
 
     // Summary cards - Operational
     'projects_started' => 'Progetti Avviati',

@@ -26,6 +26,9 @@
         {{-- Summary Cards --}}
         @include('statistics._summary')
 
+        {{-- Tax Fund: saldo conto tasse vs stimato --}}
+        @include('statistics._tax-fund')
+
         {{-- Chart (solo vista anno) --}}
         @if($stats['chart'])
             @include('statistics._chart')

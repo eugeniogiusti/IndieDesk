@@ -163,8 +163,13 @@ class Payment extends Model implements CalendarEventable
 
     public function getFormattedAmount(): string
     {
+        return $this->formatCurrency((float) $this->amount);
+    }
+
+    public function formatCurrency(float $amount): string
+    {
         $symbol = $this->getCurrencySymbol();
-        $formatted = number_format($this->amount, 2, ',', '.');
+        $formatted = number_format($amount, 2, ',', '.');
 
         return "{$symbol} {$formatted}";
     }

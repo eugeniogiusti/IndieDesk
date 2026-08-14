@@ -7,6 +7,7 @@ use App\Models\Meeting;
 use App\Models\Payment;
 use App\Models\Project;
 use App\Models\Task;
+use App\Services\Taxes\PaymentTaxCalculator;
 use Illuminate\Support\Collection;
 
 /**
@@ -40,6 +41,7 @@ class DashboardListsQuery
             'upcoming_meetings' => $upcomingMeetings,
             'overdue_payments' => $overduePayments,
             'recent_payments' => $recentPayments,
+            'recent_payments_tax_estimates' => (new PaymentTaxCalculator())->calculateForPayments($recentPayments),
             'recent_costs' => $recentCosts,
             'projects_due_soon' => $projectsDueSoon,
         ];

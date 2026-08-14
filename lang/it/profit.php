@@ -3,6 +3,7 @@
 return [
     'title' => 'Profitto',
     'subtitle' => 'Panoramica finanziaria',
+    'gross_values_note' => 'Valori lordi, tasse escluse. La stima di INPS e imposta sostitutiva è nella tab Pagamenti.',
     'total_profit' => 'Profitto Totale',
     'total_payments' => 'Entrate Totali',
     'total_costs' => 'Costi Totali',

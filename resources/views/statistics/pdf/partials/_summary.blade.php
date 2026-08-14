@@ -14,9 +14,15 @@
             </div>
             <div class="summary-cell">
                 <div class="summary-label">{{ __('statistics.profit') }}</div>
-                <div class="summary-value {{ $stats['summary']['profit'] >= 0 ? 'positive' : 'negative' }}">
-                    {{ $stats['summary']['profit'] >= 0 ? '+' : '' }}{{ number_format($stats['summary']['profit'], 2, ',', '.') }} {{ $currencySymbol }}
+                <div class="summary-value {{ $stats['summary']['display_profit'] >= 0 ? 'positive' : 'negative' }}">
+                    {{ $stats['summary']['display_profit'] >= 0 ? '+' : '' }}{{ number_format($stats['summary']['display_profit'], 2, ',', '.') }} {{ $currencySymbol }}
                 </div>
+                @if($stats['summary']['net_profit'] !== null)
+                    <div class="summary-note">
+                        {{ __('statistics.gross') }}: {{ number_format($stats['summary']['profit'], 2, ',', '.') }} {{ $currencySymbol }}
+                        &middot; {{ __('statistics.estimated_tax') }}: {{ number_format($stats['summary']['estimated_tax'], 2, ',', '.') }} {{ $currencySymbol }}
+                    </div>
+                @endif
             </div>
             <div class="summary-cell">
                 <div class="summary-label">{{ __('statistics.pending') }}</div>

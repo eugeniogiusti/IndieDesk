@@ -13,4 +13,7 @@
     <div class="flex items-center gap-1 text-sm">
         <span class="text-gray-600 dark:text-gray-400">{{ __('payments.stats.all_projects') }}</span>
     </div>
+    <p class="text-xs text-gray-400 dark:text-gray-500 mt-2">
+        {{ __('payments.stats.no_tax_estimate_all_time') }}
+    </p>
 </div>

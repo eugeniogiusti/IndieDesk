@@ -14,7 +14,11 @@
 
     {{-- Table ( partial) --}}
     @if($showData['paymentsCount'] > 0)
-        @include('payments.partials._payment-table', ['payments' => $showData['payments'], 'project' => $project])
+        @include('payments.partials._payment-table', [
+            'payments' => $showData['payments'],
+            'project' => $project,
+            'taxEstimates' => $showData['paymentTaxEstimates'],
+        ])
 
         {{-- Link  --}}
         @if($showData['paymentsCount'] > 50)

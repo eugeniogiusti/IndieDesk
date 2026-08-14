@@ -20,6 +20,9 @@ return [
     'client' => 'Cliente',
     'amount' => 'Importo',
     'currency' => 'Valuta',
+    'set_aside' => 'Da accantonare',
+    'tax' => 'Tasse',
+    'tax_estimate_unavailable' => 'Imposta le aliquote in Impostazioni > Business per vedere la stima',
     'paid_at' => 'Pagato il',
     'due_date' => 'Scadenza',
     'due' => 'Scadenza',
@@ -51,6 +54,8 @@ return [
         'this_month' => 'Questo Mese',
         'this_year' => 'Quest\'Anno',
         'currencies' => 'Valute',
+        'estimated_tax' => 'Tasse stimate',
+        'no_tax_estimate_all_time' => 'Stima tasse non disponibile sullo storico: le aliquote cambiano nel tempo, il calcolo vale solo per l\'anno corrente.',
     ],
 
     'placeholder' => [

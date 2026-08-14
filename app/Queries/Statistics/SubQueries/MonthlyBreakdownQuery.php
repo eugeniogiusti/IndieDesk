@@ -8,6 +8,7 @@ use App\Models\Cost;
 use App\Models\Payment;
 use App\Models\Project;
 use App\Models\Task;
+use App\Services\Taxes\PaymentTaxCalculator;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
@@ -15,7 +16,8 @@ use Illuminate\Support\Collection;
  * Monthly breakdown table for the statistics page (sub-query of StatisticsQuery).
  *
  * Returns a collection of 12 months, each with: payments, costs, profit,
- * projects created, tasks completed, new clients.
+ * net_profit (profit minus estimated tax, null if fiscal rates aren't
+ * configured), estimated_tax, projects created, tasks completed, new clients.
  * Financial amounts filtered by the default currency from BusinessSettings.
  */
 class MonthlyBreakdownQuery
@@ -36,22 +38,58 @@ class MonthlyBreakdownQuery
         $projects = $this->getProjectsData();
         $tasks = $this->getTasksData();
         $clients = $this->getClientsData();
+        $taxByMonth = $this->getEstimatedTaxByMonth();
 
-        return $months->map(function ($m) use ($payments, $costs, $projects, $tasks, $clients) {
+        return $months->map(function ($m) use ($payments, $costs, $projects, $tasks, $clients, $taxByMonth) {
             $p = (float) ($payments[$m['key']] ?? 0);
             $c = (float) ($costs[$m['key']] ?? 0);
+            $profit = $p - $c;
+            $estimatedTax = $taxByMonth === null ? null : ($taxByMonth[$m['key']] ?? 0.0);
+            $netProfit = $estimatedTax === null ? null : round($profit - $estimatedTax, 2);
 
             return [
                 'month' => $m['month'],
                 'label' => $m['label'],
+                'is_current_month' => $m['month'] === now()->month && $this->year === now()->year,
                 'payments' => $p,
                 'costs' => $c,
-                'profit' => $p - $c,
+                'profit' => $profit,
+                'estimated_tax' => $estimatedTax,
+                'net_profit' => $netProfit,
+                'display_profit' => $netProfit ?? $profit,
                 'projects' => (int) ($projects[$m['key']] ?? 0),
                 'tasks' => (int) ($tasks[$m['key']] ?? 0),
                 'clients' => (int) ($clients[$m['key']] ?? 0),
             ];
         });
+    }
+
+    /**
+     * Estimated INPS + imposta sostitutiva per month, keyed like the other
+     * per-month maps ("Y-m"). Null (not an empty collection) if the fiscal
+     * rates aren't configured, so callers can tell "no estimate possible"
+     * apart from "zero tax this month".
+     */
+    private function getEstimatedTaxByMonth(): ?Collection
+    {
+        $calculator = new PaymentTaxCalculator();
+
+        if (!$calculator->isConfigured()) {
+            return null;
+        }
+
+        $payments = Payment::paid()
+            ->where('currency', $this->currency)
+            ->whereYear('paid_at', $this->year)
+            ->get(['id', 'paid_at', 'amount']);
+
+        $monthByPaymentId = $payments->mapWithKeys(
+            fn (Payment $payment) => [$payment->id => $payment->paid_at->format('Y-m')]
+        );
+
+        return $calculator->calculateForPayments($payments)
+            ->groupBy(fn ($estimate, $id) => $monthByPaymentId[$id])
+            ->map(fn (Collection $estimates) => round($estimates->sum(fn ($e) => $e->inpsAmount + $e->taxAmount), 2));
     }
 
     private function getMonthsStructure(): Collection

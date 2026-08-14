@@ -58,6 +58,8 @@ class UpdateBusinessSettingsRequest extends FormRequest
             'substitute_tax_rate' => ['nullable', 'numeric', 'min:0', 'max:100'],
             'profitability_coefficient' => ['nullable', 'numeric', 'min:0', 'max:100'],
             'annual_revenue_cap' => ['nullable', 'numeric', 'min:0'],
+            'inps_rate' => ['nullable', 'numeric', 'min:0', 'max:100'],
+            'inps_ceiling' => ['nullable', 'numeric', 'min:0'],
             'business_start_date' => ['nullable', 'date'],
 
             // Pension

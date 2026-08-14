@@ -15,4 +15,5 @@
             {{ Str::limit($payment->notes, 50) }}
         </div>
     @endif
+    @include('payments.partials.payment-table._row-tax-estimate', ['payment' => $payment, 'taxEstimate' => $taxEstimate ?? null])
 </td>

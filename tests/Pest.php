@@ -49,3 +49,34 @@ function something()
 {
     // ..
 }
+
+/**
+ * BusinessSettings::current() memoizes the singleton in a static property
+ * for the lifetime of the PHP process, so it must be cleared between tests
+ * (RefreshDatabase resets the DB, not this in-memory cache).
+ */
+function resetBusinessSettingsCache(): void
+{
+    $property = (new ReflectionClass(\App\Models\BusinessSettings::class))->getProperty('cachedInstance');
+    $property->setAccessible(true);
+    $property->setValue(null, null);
+}
+
+/**
+ * Sets the fiscal rates used by PaymentTaxCalculator / TaxFundService on the
+ * BusinessSettings singleton, defaulting to EUR + the rates quoted in the
+ * original spec (67% coefficient, 26.07% INPS, 15% imposta sostitutiva).
+ */
+function configureTaxSettings(array $overrides = []): \App\Models\BusinessSettings
+{
+    $settings = \App\Models\BusinessSettings::current();
+
+    $settings->update(array_merge([
+        'default_currency' => 'EUR',
+        'profitability_coefficient' => 67.00,
+        'inps_rate' => 26.07,
+        'substitute_tax_rate' => 15.00,
+    ], $overrides));
+
+    return $settings->fresh();
+}

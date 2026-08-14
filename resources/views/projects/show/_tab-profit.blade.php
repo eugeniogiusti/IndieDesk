@@ -1,5 +1,9 @@
 <div class="space-y-6">
-    
+
+    <p class="text-xs text-gray-400 dark:text-gray-500">
+        {{ __('profit.gross_values_note') }}
+    </p>
+
     {{-- Main Stats --}}
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         

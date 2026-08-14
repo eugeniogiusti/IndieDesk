@@ -19,8 +19,8 @@
                         <td>{{ $row['label'] }}</td>
                         <td class="text-right">{{ number_format($row['payments'], 2, ',', '.') }} {{ $currencySymbol }}</td>
                         <td class="text-right">{{ number_format($row['costs'], 2, ',', '.') }} {{ $currencySymbol }}</td>
-                        <td class="text-right {{ $row['profit'] >= 0 ? 'positive' : 'negative' }}">
-                            {{ $row['profit'] >= 0 ? '+' : '' }}{{ number_format($row['profit'], 2, ',', '.') }} {{ $currencySymbol }}
+                        <td class="text-right {{ $row['display_profit'] >= 0 ? 'positive' : 'negative' }}">
+                            {{ $row['display_profit'] >= 0 ? '+' : '' }}{{ number_format($row['display_profit'], 2, ',', '.') }} {{ $currencySymbol }}
                         </td>
                         <td class="text-center">{{ $row['projects'] }}</td>
                         <td class="text-center">{{ $row['tasks'] }}</td>
@@ -33,8 +33,8 @@
                     <td>{{ __('statistics.total') }}</td>
                     <td class="text-right">{{ number_format($stats['summary']['payments'], 2, ',', '.') }} {{ $currencySymbol }}</td>
                     <td class="text-right">{{ number_format($stats['summary']['costs'], 2, ',', '.') }} {{ $currencySymbol }}</td>
-                    <td class="text-right {{ $stats['summary']['profit'] >= 0 ? 'positive' : 'negative' }}">
-                        {{ $stats['summary']['profit'] >= 0 ? '+' : '' }}{{ number_format($stats['summary']['profit'], 2, ',', '.') }} {{ $currencySymbol }}
+                    <td class="text-right {{ $stats['summary']['display_profit'] >= 0 ? 'positive' : 'negative' }}">
+                        {{ $stats['summary']['display_profit'] >= 0 ? '+' : '' }}{{ number_format($stats['summary']['display_profit'], 2, ',', '.') }} {{ $currencySymbol }}
                     </td>
                     <td class="text-center">{{ $stats['summary']['projects_started'] }}</td>
                     <td class="text-center">{{ $stats['summary']['tasks_completed'] }}</td>

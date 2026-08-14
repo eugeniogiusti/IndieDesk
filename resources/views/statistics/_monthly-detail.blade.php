@@ -128,8 +128,11 @@
                                         </span>
                                     @endif
                                 </td>
-                                <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium text-blue-600 dark:text-blue-400">
-                                    {{ number_format($payment->amount, 2, ',', '.') }} {{ $currencySymbol }}
+                                <td class="px-4 py-3 whitespace-nowrap text-right text-sm">
+                                    <div class="font-medium text-blue-600 dark:text-blue-400">
+                                        {{ number_format($payment->amount, 2, ',', '.') }} {{ $currencySymbol }}
+                                    </div>
+                                    @include('payments.partials.payment-table._row-tax-estimate', ['payment' => $payment, 'taxEstimate' => $stats['detail']['payment_tax_estimates']->get($payment->id), 'showBreakdown' => false])
                                 </td>
                             </tr>
                         @endforeach

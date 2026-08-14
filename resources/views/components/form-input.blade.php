@@ -18,7 +18,7 @@
             @endif
         </label>
     @endif
-    
+
     @php
     $displayValue = old($name, $value);
     if (is_string($displayValue)) {
@@ -26,7 +26,7 @@
     }
     @endphp
 
-<input 
+<input
     type="{{ $type }}"
     id="{{ $name }}"
     name="{{ $name }}"

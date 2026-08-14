@@ -86,6 +86,48 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {{-- INPS Rate (Gestione Separata) --}}
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        {{ __('business_settings.inps_rate') }}
+                    </label>
+                    <div class="flex items-center gap-2">
+                        <input type="number"
+                               name="inps_rate"
+                               value="{{ $settings->inps_rate }}"
+                               step="0.01" min="0" max="100"
+                               placeholder="{{ __('business_settings.placeholder.inps_rate') }}"
+                               class="flex-1 px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-emerald-500 transition">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">%</span>
+                    </div>
+                    <p class="mt-1 text-xs text-gray-400 dark:text-gray-500">{{ __('business_settings.inps_rate_hint') }}</p>
+                    @error('inps_rate')
+                        <p class="mt-1 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
+                    @enderror
+                </div>
+
+                {{-- INPS Ceiling (massimale contributivo) --}}
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+                        {{ __('business_settings.inps_ceiling') }}
+                    </label>
+                    <div class="flex items-center gap-2">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">{{ $currencySymbol }}</span>
+                        <input type="number"
+                               name="inps_ceiling"
+                               value="{{ $settings->inps_ceiling }}"
+                               step="0.01" min="0"
+                               placeholder="{{ __('business_settings.placeholder.inps_ceiling') }}"
+                               class="flex-1 px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-emerald-500 transition">
+                    </div>
+                    <p class="mt-1 text-xs text-gray-400 dark:text-gray-500">{{ __('business_settings.inps_ceiling_hint') }}</p>
+                    @error('inps_ceiling')
+                        <p class="mt-1 text-xs text-red-600 dark:text-red-400">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {{-- Annual Revenue Cap --}}
                 <div>
                     <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">

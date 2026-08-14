@@ -8,6 +8,7 @@ use App\Models\Meeting;
 use App\Models\Payment;
 use App\Models\Project;
 use App\Models\Task;
+use App\Services\Taxes\PaymentTaxCalculator;
 
 /**
  * KPI statistics for the dashboard stat cards.
@@ -42,11 +43,36 @@ class DashboardStatsQuery
             ->whereBetween('paid_at', [now()->startOfMonth(), now()->endOfMonth()])
             ->sum('amount');
 
+        $profit = $payments - $costs;
+        $estimatedTax = $this->getEstimatedTaxThisMonth();
+
         return [
-            'amount' => $payments - $costs,
+            'amount' => $estimatedTax === null ? $profit : round($profit - $estimatedTax, 2),
+            'gross_amount' => $profit,
             'payments' => $payments,
             'costs' => $costs,
+            'estimated_tax' => $estimatedTax,
         ];
+    }
+
+    private function getEstimatedTaxThisMonth(): ?float
+    {
+        $calculator = new PaymentTaxCalculator();
+
+        if (!$calculator->isConfigured()) {
+            return null;
+        }
+
+        $payments = Payment::paid()
+            ->where('currency', $this->currency)
+            ->whereBetween('paid_at', [now()->startOfMonth(), now()->endOfMonth()])
+            ->get(['id', 'paid_at', 'amount']);
+
+        return round(
+            $calculator->calculateForPayments($payments)
+                ->sum(fn ($estimate) => $estimate->inpsAmount + $estimate->taxAmount),
+            2
+        );
     }
 
     /**

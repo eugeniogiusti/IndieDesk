@@ -97,6 +97,11 @@
         font-size: 14pt;
         font-weight: bold;
     }
+    .summary-note {
+        font-size: 7pt;
+        color: #999;
+        margin-top: 4px;
+    }
     .positive { color: #16a34a; }
     .negative { color: #dc2626; }
 

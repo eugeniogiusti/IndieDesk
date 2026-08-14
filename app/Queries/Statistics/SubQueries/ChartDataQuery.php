@@ -49,6 +49,7 @@ class ChartDataQuery
 
         return [
             'type' => 'monthly',
+            'title' => __('statistics.chart_title'),
             'labels' => $months->pluck('label')->toArray(),
             'payments' => $paymentsArray,
             'costs' => $costsArray,
@@ -73,6 +74,7 @@ class ChartDataQuery
 
         return [
             'type' => 'daily',
+            'title' => __('statistics.chart_title_monthly'),
             'labels' => $days->pluck('label')->toArray(),
             'payments' => $paymentsArray,
             'costs' => $costsArray,

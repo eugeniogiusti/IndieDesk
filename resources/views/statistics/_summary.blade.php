@@ -2,19 +2,26 @@
 <div class="space-y-4">
     {{-- Financial Stats --}}
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        {{-- Profit --}}
+        {{-- Profit (net of estimated tax when the fiscal rates are configured) --}}
         <div class="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-5 transition-transform duration-200 hover:scale-105">
             <div class="flex items-center gap-3">
-                <div class="p-2 rounded-lg {{ $stats['summary']['profit'] >= 0 ? 'bg-emerald-100 dark:bg-emerald-900/30' : 'bg-red-100 dark:bg-red-900/30' }}">
-                    <svg class="w-5 h-5 {{ $stats['summary']['profit'] >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="p-2 rounded-lg {{ $stats['summary']['display_profit'] >= 0 ? 'bg-emerald-100 dark:bg-emerald-900/30' : 'bg-red-100 dark:bg-red-900/30' }}">
+                    <svg class="w-5 h-5 {{ $stats['summary']['display_profit'] >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400' }}" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
                     </svg>
                 </div>
                 <div class="min-w-0">
                     <p class="text-sm text-gray-500 dark:text-gray-400">{{ __('statistics.profit') }}</p>
-                    <p class="text-xl font-bold {{ $stats['summary']['profit'] >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400' }}">
-                        {{ $stats['summary']['profit'] >= 0 ? '+' : '' }}{{ number_format($stats['summary']['profit'], 2, ',', '.') }} {{ $currencySymbol }}
+                    <p class="text-xl font-bold {{ $stats['summary']['display_profit'] >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400' }}">
+                        {{ $stats['summary']['display_profit'] >= 0 ? '+' : '' }}{{ number_format($stats['summary']['display_profit'], 2, ',', '.') }} {{ $currencySymbol }}
                     </p>
+                    <div class="mt-2 flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+                        <span class="text-emerald-600">+{{ number_format($stats['summary']['payments'], 2, ',', '.') }}</span>
+                        <span class="text-red-500">-{{ number_format($stats['summary']['costs'], 2, ',', '.') }}</span>
+                        @if($stats['summary']['estimated_tax'] !== null)
+                            <span class="text-amber-500">-{{ number_format($stats['summary']['estimated_tax'], 2, ',', '.') }} {{ __('dashboard.taxes_abbr') }}</span>
+                        @endif
+                    </div>
                 </div>
             </div>
         </div>

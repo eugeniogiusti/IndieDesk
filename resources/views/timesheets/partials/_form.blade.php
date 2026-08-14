@@ -27,28 +27,27 @@
                 <tbody class="divide-y divide-gray-100 dark:divide-gray-700">
                     @foreach($weeks as $week)
                         <tr class="divide-x divide-gray-100 dark:divide-gray-700">
-                            @for($dow = 1; $dow <= 7; $dow++)
-                                @php $day = $week[$dow]; $isWeekend = $dow >= 6; @endphp
-                                <td class="p-1.5 align-top {{ $isWeekend ? 'bg-gray-50/80 dark:bg-gray-900/30' : 'bg-white dark:bg-gray-800' }}">
-                                    @if($day)
-                                        <div class="text-xs font-medium {{ $isWeekend ? 'text-gray-400 dark:text-gray-500' : 'text-gray-700 dark:text-gray-300' }} mb-1 text-center">
-                                            {{ $day }}
+                            @foreach($week as $cell)
+                                <td class="p-1.5 align-top {{ $cell['is_weekend'] ? 'bg-gray-50/80 dark:bg-gray-900/30' : 'bg-white dark:bg-gray-800' }}">
+                                    @if($cell['day'])
+                                        <div class="text-xs font-medium {{ $cell['is_weekend'] ? 'text-gray-400 dark:text-gray-500' : 'text-gray-700 dark:text-gray-300' }} mb-1 text-center">
+                                            {{ $cell['day'] }}
                                         </div>
                                         <input type="number"
-                                               name="daily_hours[{{ $day }}]"
-                                               x-model.number="hours[{{ $day }}]"
-                                               @input="hours[{{ $day }}] = parseFloat($event.target.value) || 0"
-                                               value="{{ $existingHours[$day] ?? '' }}"
+                                               name="daily_hours[{{ $cell['day'] }}]"
+                                               x-model.number="hours[{{ $cell['day'] }}]"
+                                               @input="hours[{{ $cell['day'] }}] = parseFloat($event.target.value) || 0"
+                                               value="{{ $existingHours[$cell['day']] ?? '' }}"
                                                min="0" max="24" step="0.5"
                                                placeholder="0"
                                                class="w-full text-center text-sm px-1 py-1 border rounded
-                                                      {{ $isWeekend
+                                                      {{ $cell['is_weekend']
                                                           ? 'border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700/50 text-gray-500 dark:text-gray-400'
                                                           : 'border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100' }}
                                                       focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500">
                                     @endif
                                 </td>
-                            @endfor
+                            @endforeach
                         </tr>
                     @endforeach
                 </tbody>

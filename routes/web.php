@@ -34,6 +34,7 @@ use App\Http\Controllers\Trash\TrashController;
 use App\Http\Controllers\Timesheets\TimesheetController;
 use App\Http\Controllers\Taxes\TaxController;
 use App\Http\Controllers\Taxes\TaxAttachmentController;
+use App\Http\Controllers\Taxes\TaxFundMovementController;
 use App\Http\Controllers\Webhooks\StripeWebhookController;
 
 // Redirect root to login
@@ -360,6 +361,15 @@ Route::middleware(['auth', 'verified', '2fa'])->group(function () {
 
     Route::get('/statistics', [StatisticsController::class, 'index'])->name('statistics.index');
     Route::get('/statistics/export-pdf', [StatisticsController::class, 'exportPdf'])->name('statistics.export-pdf');
+
+    // ==========================================
+    // TAX FUND MODULE
+    // ==========================================
+
+    Route::prefix('tax-fund-movements')->name('tax-fund-movements.')->group(function () {
+        Route::post('/', [TaxFundMovementController::class, 'store'])->name('store');
+        Route::delete('/{taxFundMovement}', [TaxFundMovementController::class, 'destroy'])->name('destroy');
+    });
 
     // ==========================================
     // TAXES MODULE

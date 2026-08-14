@@ -6,7 +6,10 @@
             
             <tbody class="bg-white dark:bg-gray-800 divide-y divide-gray-200 dark:divide-gray-700">
                 @foreach($payments as $payment)
-                    @include('payments.index.payment-table._row', ['payment' => $payment])
+                    @include('payments.index.payment-table._row', [
+                        'payment' => $payment,
+                        'taxEstimate' => $paymentTaxEstimates->get($payment->id),
+                    ])
                 @endforeach
             </tbody>
         </table>

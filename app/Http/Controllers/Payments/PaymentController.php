@@ -9,6 +9,7 @@ use App\Http\Requests\Payments\StorePaymentRequest;
 use App\Http\Requests\Payments\UpdatePaymentRequest;
 use App\Queries\Payments\PaymentIndexQuery;
 use App\Queries\Payments\PaymentStatsQuery;
+use App\Services\Taxes\PaymentTaxCalculator;
 
 class PaymentController extends Controller
 {
@@ -19,8 +20,9 @@ class PaymentController extends Controller
     {
         $payments = $indexQuery->handle();
         $stats = $statsQuery->handle();
-        
-        return view('payments.index', compact('payments', 'stats'));
+        $paymentTaxEstimates = (new PaymentTaxCalculator())->calculateForPayments($payments->getCollection());
+
+        return view('payments.index', compact('payments', 'stats', 'paymentTaxEstimates'));
     }
 
     /**

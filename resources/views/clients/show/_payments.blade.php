@@ -18,6 +18,7 @@
                             {{ number_format($payment->amount, 2) }} {{ $payment->currency }}
                         </p>
                         <p class="text-xs text-gray-500 dark:text-gray-400">{{ $payment->project->name }}</p>
+                        @include('payments.partials.payment-table._row-tax-estimate', ['payment' => $payment, 'taxEstimate' => $payment_tax_estimates->get($payment->id)])
                     </a>
                     <span class="text-xs text-gray-500 dark:text-gray-400 shrink-0">
                         @if($payment->paid_at)

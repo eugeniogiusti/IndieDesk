@@ -8,9 +8,14 @@ use App\Http\Requests\Taxes\UpdateTaxRequest;
 use App\Models\Tax;
 use App\Queries\Taxes\TaxIndexQuery;
 use App\Queries\Taxes\TaxStatsQuery;
+use App\Services\Taxes\TaxFundService;
 
 class TaxController extends Controller
 {
+    public function __construct(
+        private TaxFundService $taxFundService
+    ) {}
+
     public function index(TaxIndexQuery $indexQuery, TaxStatsQuery $statsQuery)
     {
         $taxes = $indexQuery->handle();
@@ -33,7 +38,8 @@ class TaxController extends Controller
             $data['attachment'] = $request->file('attachment')->store('taxes', 'local');
         }
 
-        Tax::create($data);
+        $tax = Tax::create($data);
+        $this->taxFundService->syncFromTax($tax);
 
         return redirect()
             ->route('taxes.index')
@@ -52,6 +58,7 @@ class TaxController extends Controller
         }
 
         $tax->update($data);
+        $this->taxFundService->syncFromTax($tax);
 
         return redirect()
             ->route('taxes.index')

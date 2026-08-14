@@ -54,6 +54,8 @@ class BusinessSettings extends Model
         'substitute_tax_rate',
         'profitability_coefficient',
         'annual_revenue_cap',
+        'inps_rate',
+        'inps_ceiling',
         'business_start_date',
         'pension_fund',
         'pension_registration_number',
@@ -67,6 +69,8 @@ class BusinessSettings extends Model
         'substitute_tax_rate' => 'decimal:2',
         'profitability_coefficient' => 'decimal:2',
         'annual_revenue_cap' => 'decimal:2',
+        'inps_rate' => 'decimal:2',
+        'inps_ceiling' => 'decimal:2',
         'github_pat' => 'encrypted',
     ];
 
@@ -97,6 +101,25 @@ class BusinessSettings extends Model
         $this->logo_path,
         now()->addMinutes(5)
         );
+    }
+
+    /**
+     * Get the absolute filesystem path to the logo file, checking both the
+     * public and private storage locations, or null if it doesn't exist.
+     */
+    public function logoAbsolutePath(): ?string
+    {
+        if (!$this->logo_path) {
+            return null;
+        }
+
+        $path = storage_path('app/'.$this->logo_path);
+
+        if (!file_exists($path)) {
+            $path = storage_path('app/private/'.$this->logo_path);
+        }
+
+        return file_exists($path) ? $path : null;
     }
 
     /**

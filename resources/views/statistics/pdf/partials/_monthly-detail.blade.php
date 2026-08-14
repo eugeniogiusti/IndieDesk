@@ -93,10 +93,19 @@
             <tbody>
                 <tr>
                     <td style="font-weight: bold; font-size: 11pt;">{{ __('statistics.profit') }}</td>
-                    <td class="text-right" style="font-weight: bold; font-size: 13pt; {{ $stats['summary']['profit'] >= 0 ? 'color: #16a34a;' : 'color: #dc2626;' }}">
-                        {{ $stats['summary']['profit'] >= 0 ? '+' : '' }}{{ number_format($stats['summary']['profit'], 2, ',', '.') }} {{ $currencySymbol }}
+                    <td class="text-right" style="font-weight: bold; font-size: 13pt; {{ $stats['summary']['display_profit'] >= 0 ? 'color: #16a34a;' : 'color: #dc2626;' }}">
+                        {{ $stats['summary']['display_profit'] >= 0 ? '+' : '' }}{{ number_format($stats['summary']['display_profit'], 2, ',', '.') }} {{ $currencySymbol }}
                     </td>
                 </tr>
+                @if($stats['summary']['net_profit'] !== null)
+                    <tr>
+                        <td style="font-size: 9pt; color: #999;">{{ __('statistics.gross') }} / {{ __('statistics.estimated_tax') }}</td>
+                        <td class="text-right" style="font-size: 9pt; color: #999;">
+                            {{ number_format($stats['summary']['profit'], 2, ',', '.') }} {{ $currencySymbol }}
+                            &middot; {{ number_format($stats['summary']['estimated_tax'], 2, ',', '.') }} {{ $currencySymbol }}
+                        </td>
+                    </tr>
+                @endif
             </tbody>
         </table>
     </div>

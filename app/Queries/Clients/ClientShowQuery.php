@@ -9,6 +9,7 @@ use App\Models\Meeting;
 use App\Models\Payment;
 use App\Models\Project;
 use App\Models\Task;
+use App\Services\Taxes\PaymentTaxCalculator;
 use Illuminate\Support\Collection;
 
 /**
@@ -56,6 +57,7 @@ class ClientShowQuery
             'tasks'     => $tasks,
             'meetings'  => $meetings,
             'payments'  => $payments,
+            'payment_tax_estimates' => (new PaymentTaxCalculator())->calculateForPayments($payments),
             'costs'     => $costs,
             'documents' => $documents,
         ];

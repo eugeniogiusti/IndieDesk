@@ -3,6 +3,7 @@
 namespace App\Queries\Projects;
 
 use App\Models\Project;
+use App\Services\Taxes\PaymentTaxCalculator;
 use Carbon\Carbon;
 use Illuminate\Support\Collection;
 
@@ -24,18 +25,20 @@ class ProjectShowQuery
     {
         $tsMonth = request()->integer('ts_month', now()->month);
         $tsYear  = request()->integer('ts_year', now()->year);
+        $payments = $this->getPayments();
 
         return array_merge([
-            'tasks'          => $this->getTasks(),
-            'tasksCount'     => $this->project->tasks()->count(),
-            'meetings'       => $this->getMeetings(),
-            'meetingsCount'  => $this->project->meetings()->count(),
-            'payments'       => $this->getPayments(),
-            'paymentsCount'  => $this->project->payments()->count(),
-            'costs'          => $this->getCosts(),
-            'costsCount'     => $this->project->costs()->count(),
-            'documents'      => $this->getDocuments(),
-            'documentsCount' => $this->project->documents()->count(),
+            'tasks'                => $this->getTasks(),
+            'tasksCount'           => $this->project->tasks()->count(),
+            'meetings'             => $this->getMeetings(),
+            'meetingsCount'        => $this->project->meetings()->count(),
+            'payments'             => $payments,
+            'paymentTaxEstimates'  => (new PaymentTaxCalculator())->calculateForPayments($payments),
+            'paymentsCount'        => $this->project->payments()->count(),
+            'costs'                => $this->getCosts(),
+            'costsCount'           => $this->project->costs()->count(),
+            'documents'            => $this->getDocuments(),
+            'documentsCount'       => $this->project->documents()->count(),
         ], $this->getTimesheetData($tsMonth, $tsYear));
     }
 
@@ -103,7 +106,7 @@ class ProjectShowQuery
         $totalHours    = $currentTs ? $currentTs->totalHours() : 0;
 
         return [
-            'currentTimesheet' => $currentTs,
+            'currentTs'        => $currentTs,
             'timesheetMonths'  => $this->project->timesheets()->get(['id', 'year', 'month']),
             'tsMonth'          => $tsMonth,
             'tsYear'           => $tsYear,
@@ -128,16 +131,21 @@ class ProjectShowQuery
         $firstDay    = Carbon::create($year, $month, 1);
         $daysInMonth = $firstDay->daysInMonth;
 
+        $emptyWeek = [];
+        for ($dow = 1; $dow <= 7; $dow++) {
+            $emptyWeek[$dow] = ['day' => null, 'is_weekend' => $dow >= 6];
+        }
+
         $weeks = [];
-        $week  = array_fill(1, 7, null);
+        $week  = $emptyWeek;
 
         for ($day = 1; $day <= $daysInMonth; $day++) {
-            $dow        = Carbon::create($year, $month, $day)->dayOfWeekIso;
-            $week[$dow] = $day;
+            $dow               = Carbon::create($year, $month, $day)->dayOfWeekIso;
+            $week[$dow]['day'] = $day;
 
             if ($dow === 7 || $day === $daysInMonth) {
                 $weeks[] = $week;
-                $week    = array_fill(1, 7, null);
+                $week    = $emptyWeek;
             }
         }
 

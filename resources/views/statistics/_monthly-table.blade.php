@@ -38,8 +38,7 @@
             </thead>
             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                 @foreach($stats['monthly'] as $row)
-                    @php $isCurrentMonth = $row['month'] == now()->month && $year == now()->year; @endphp
-                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 {{ $isCurrentMonth ? 'bg-emerald-50 dark:bg-emerald-900/20' : '' }}">
+                    <tr class="hover:bg-gray-50 dark:hover:bg-gray-700/30 {{ $row['is_current_month'] ? 'bg-emerald-50 dark:bg-emerald-900/20' : '' }}">
                         <td class="px-4 py-3 whitespace-nowrap">
                             <a href="{{ route('statistics.index', ['year' => $year, 'month' => $row['month']]) }}"
                                class="text-sm font-medium text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400">
@@ -52,8 +51,9 @@
                         <td class="px-4 py-3 whitespace-nowrap text-right text-sm text-gray-900 dark:text-white">
                             {{ number_format($row['costs'], 2, ',', '.') }} {{ $currencySymbol }}
                         </td>
-                        <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium {{ $row['profit'] >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400' }}">
-                            {{ $row['profit'] >= 0 ? '+' : '' }}{{ number_format($row['profit'], 2, ',', '.') }} {{ $currencySymbol }}
+                        <td class="px-4 py-3 whitespace-nowrap text-right text-sm font-medium {{ $row['display_profit'] >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400' }}"
+                            @if($row['net_profit'] !== null) title="{{ __('statistics.gross') }}: {{ number_format($row['profit'], 2, ',', '.') }} {{ $currencySymbol }} · {{ __('statistics.estimated_tax') }}: {{ number_format($row['estimated_tax'], 2, ',', '.') }} {{ $currencySymbol }}" @endif>
+                            {{ $row['display_profit'] >= 0 ? '+' : '' }}{{ number_format($row['display_profit'], 2, ',', '.') }} {{ $currencySymbol }}
                         </td>
                         <td class="px-4 py-3 whitespace-nowrap text-center text-sm text-gray-900 dark:text-white">
                             {{ $row['projects'] }}
@@ -78,8 +78,8 @@
                     <td class="px-4 py-3 text-right text-sm text-gray-900 dark:text-white">
                         {{ number_format($stats['summary']['costs'], 2, ',', '.') }} {{ $currencySymbol }}
                     </td>
-                    <td class="px-4 py-3 text-right text-sm {{ $stats['summary']['profit'] >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400' }}">
-                        {{ $stats['summary']['profit'] >= 0 ? '+' : '' }}{{ number_format($stats['summary']['profit'], 2, ',', '.') }} {{ $currencySymbol }}
+                    <td class="px-4 py-3 text-right text-sm {{ $stats['summary']['display_profit'] >= 0 ? 'text-emerald-600 dark:text-emerald-400' : 'text-red-600 dark:text-red-400' }}">
+                        {{ $stats['summary']['display_profit'] >= 0 ? '+' : '' }}{{ number_format($stats['summary']['display_profit'], 2, ',', '.') }} {{ $currencySymbol }}
                     </td>
                     <td class="px-4 py-3 text-center text-sm text-gray-900 dark:text-white">
                         {{ $stats['summary']['projects_started'] }}

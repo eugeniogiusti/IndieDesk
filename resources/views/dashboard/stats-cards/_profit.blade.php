@@ -11,6 +11,9 @@
             <div class="mt-2 flex items-center gap-4 text-xs text-gray-500 dark:text-gray-400">
                 <span class="text-emerald-600">+{{ number_format($stats['profit_this_month']['payments'], 2) }}</span>
                 <span class="text-red-500">-{{ number_format($stats['profit_this_month']['costs'], 2) }}</span>
+                @if($stats['profit_this_month']['estimated_tax'] !== null)
+                    <span class="text-amber-500">-{{ number_format($stats['profit_this_month']['estimated_tax'], 2) }} {{ __('dashboard.taxes_abbr') }}</span>
+                @endif
             </div>
         </div>
         <div class="p-3 rounded-full {{ $stats['profit_this_month']['amount'] >= 0 ? 'bg-emerald-100 dark:bg-emerald-900/30' : 'bg-red-100 dark:bg-red-900/30' }}">

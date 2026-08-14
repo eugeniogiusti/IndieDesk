@@ -96,16 +96,8 @@
     {{-- Header --}}
     <div class="header-row">
         <div class="logo-col">
-            @if($business->logo_path)
-                @php
-                    $logoPath = storage_path('app/' . $business->logo_path);
-                    if (!file_exists($logoPath)) {
-                        $logoPath = storage_path('app/private/' . $business->logo_path);
-                    }
-                @endphp
-                @if(file_exists($logoPath))
-                    <img src="{{ $logoPath }}" alt="Logo">
-                @endif
+            @if($business->logoAbsolutePath())
+                <img src="{{ $business->logoAbsolutePath() }}" alt="Logo">
             @endif
             @if($business->business_name)
                 <div class="business-name">{{ $business->business_name }}</div>

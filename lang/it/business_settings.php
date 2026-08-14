@@ -37,6 +37,10 @@ return [
     'substitute_tax_rate' => 'Imposta Sostitutiva',
     'profitability_coefficient' => 'Coeff. Redditività',
     'annual_revenue_cap' => 'Fatturato Annuo Massimo',
+    'inps_rate' => 'Aliquota INPS (Gestione Separata)',
+    'inps_rate_hint' => 'Usata per stimare i contributi dovuti sui pagamenti incassati. Se vuota, la stima non viene calcolata.',
+    'inps_ceiling' => 'Massimale Contributivo INPS',
+    'inps_ceiling_hint' => 'Tetto annuo oltre il quale non è più dovuta INPS sul cumulo dell\'anno. Se vuoto, nessun tetto viene applicato.',
     'business_start_date' => 'Inizio Attività',
 
     // Pension
@@ -101,6 +105,8 @@ return [
         'substitute_tax_rate' => 'es. 15',
         'profitability_coefficient' => 'es. 67',
         'annual_revenue_cap' => 'es. 85000',
+        'inps_rate' => 'es. 26.07',
+        'inps_ceiling' => 'es. 120607',
         'pension_fund' => 'es. GS INPS',
         'pension_registration_number' => 'es. 3300',
         'ateco_code' => 'es. 62.01',

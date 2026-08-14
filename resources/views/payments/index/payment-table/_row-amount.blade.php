@@ -10,4 +10,5 @@
             {{ $payment->client->name }}
         </div>
     @endif
+    @include('payments.partials.payment-table._row-tax-estimate', ['payment' => $payment, 'taxEstimate' => $taxEstimate ?? null, 'showBreakdown' => false])
 </td>

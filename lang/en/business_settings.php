@@ -37,6 +37,10 @@ return [
     'substitute_tax_rate' => 'Substitute Tax Rate',
     'profitability_coefficient' => 'Profitability Coefficient',
     'annual_revenue_cap' => 'Annual Revenue Cap',
+    'inps_rate' => 'INPS Rate (Gestione Separata)',
+    'inps_rate_hint' => 'Used to estimate the social security contributions due on cashed payments. If left empty, the estimate is not calculated.',
+    'inps_ceiling' => 'INPS Contribution Ceiling',
+    'inps_ceiling_hint' => 'Annual cap above which no further INPS is due on the year\'s cumulative income. If left empty, no cap is applied.',
     'business_start_date' => 'Business Start Date',
 
     // Pension
@@ -101,6 +105,8 @@ return [
         'substitute_tax_rate' => 'e.g. 15',
         'profitability_coefficient' => 'e.g. 67',
         'annual_revenue_cap' => 'e.g. 85000',
+        'inps_rate' => 'e.g. 26.07',
+        'inps_ceiling' => 'e.g. 120607',
         'pension_fund' => 'e.g. GS INPS',
         'pension_registration_number' => 'e.g. 3300',
         'ateco_code' => 'e.g. 62.01',

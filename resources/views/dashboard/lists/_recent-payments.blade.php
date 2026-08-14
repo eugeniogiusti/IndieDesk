@@ -27,6 +27,11 @@
                             @endif
                         </p>
                         <div class="mt-1"><x-payments.method-badge :method="$payment->method" /></div>
+                        @if($lists['recent_payments_tax_estimates']->get($payment->id))
+                            <p class="text-xs text-amber-600 dark:text-amber-500 mt-1">
+                                {{ __('dashboard.set_aside') }}: {{ $payment->formatCurrency($lists['recent_payments_tax_estimates']->get($payment->id)->setAsideAmount()) }}
+                            </p>
+                        @endif
                     </a>
                     <span class="text-xs text-gray-500 shrink-0">
                         {{ $payment->paid_at->format('d/m/Y') }}

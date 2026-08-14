@@ -1,20 +1,7 @@
-@php
-    $tsMonth         = $showData['tsMonth'];
-    $tsYear          = $showData['tsYear'];
-    $currentTs       = $showData['currentTimesheet'];
-    $timesheetMonths = $showData['timesheetMonths'];
-    $existingHours   = $showData['existingHours'];
-    $weeks           = $showData['weeks'];
-    $hourlyRate      = $showData['hourlyRate'];
-    $totalHours      = $showData['totalHours'];
-    $totalEarnings   = $showData['totalEarnings'];
-    $monthNames      = $showData['monthNames'];
-@endphp
-
 <div class="space-y-6">
 
     {{-- Navigazione mese --}}
-    @include('timesheets.partials._nav')
+    @include('timesheets.partials._nav', $showData)
 
     {{-- Avviso tariffa non impostata --}}
     @if(! $project->hourly_rate && $project->type === 'client_work')
@@ -22,11 +9,11 @@
     @endif
 
     {{-- Form mensile: griglia + note + riepilogo --}}
-    @include('timesheets.partials._form')
+    @include('timesheets.partials._form', $showData)
 
     {{-- Storico mesi salvati --}}
-    @if($timesheetMonths->count() > 0)
-        @include('timesheets.partials._history')
+    @if($showData['timesheetMonths']->count() > 0)
+        @include('timesheets.partials._history', $showData)
     @endif
 
 </div>

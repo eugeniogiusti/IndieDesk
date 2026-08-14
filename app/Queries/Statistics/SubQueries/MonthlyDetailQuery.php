@@ -5,6 +5,7 @@ namespace App\Queries\Statistics\SubQueries;
 use App\Models\BusinessSettings;
 use App\Models\Cost;
 use App\Models\Payment;
+use App\Services\Taxes\PaymentTaxCalculator;
 use Illuminate\Support\Carbon;
 
 /**
@@ -26,10 +27,12 @@ class MonthlyDetailQuery
     public function handle(): array
     {
         $this->currency = BusinessSettings::current()->default_currency;
+        $payments = $this->getPayments();
 
         return [
             'costs'    => $this->getCosts(),
-            'payments' => $this->getPayments(),
+            'payments' => $payments,
+            'payment_tax_estimates' => (new PaymentTaxCalculator())->calculateForPayments($payments),
         ];
     }
 

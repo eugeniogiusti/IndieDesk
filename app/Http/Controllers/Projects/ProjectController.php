@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Projects;
 
+use App\Models\AiSettings;
 use App\Models\Project;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Projects\StoreProjectRequest;
@@ -57,8 +58,9 @@ class ProjectController extends Controller
         $showData = (new ProjectShowQuery($project))->handle();
 
         $profitData = $profitStats->handle($project);
+        $aiSettings = AiSettings::current();
 
-        return view('projects.show', compact('project', 'profitData', 'showData'));
+        return view('projects.show', compact('project', 'profitData', 'showData', 'aiSettings'));
     }
 
     /**
