@@ -47,6 +47,7 @@ return [
     'billing_province' => 'Province',
     'billing_country' => 'Country',
     'billing_recipient_code' => 'Recipient Code',
+    'email_fatturazione' => 'Administration Email',
 
     // Contact info
     'contact_info' => 'Contact Information',
@@ -155,6 +156,7 @@ return [
         'billing_province' => 'E.g.: MI',
         'billing_country' => 'E.g.: IT',
         'billing_recipient_code' => 'E.g.: ABCDEFG',
+        'email_fatturazione' => 'E.g.: administration@acme.it',
         'search' => 'Search by name, email, or VAT...',
         'notes' => 'Add notes...',
     ],
@@ -164,6 +166,7 @@ return [
         'billing_country' => '2-character ISO code (IT, US, FR, etc.)',
         'billing_recipient_code' => 'Unique code for electronic invoicing (7 characters)',
         'billing_province' => 'Province abbreviation (e.g., RM, MI, NA)',
+        'email_fatturazione' => 'Email address to send invoices to, if different from the main email',
     ],
 
     // Empty states for details

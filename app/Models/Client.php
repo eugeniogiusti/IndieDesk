@@ -26,6 +26,7 @@ class Client extends Model
         'phone_prefix',
         'phone',
         'pec',
+        'email_fatturazione',
         'billing_address',
         'billing_city',
         'billing_zip',
@@ -51,6 +52,15 @@ class Client extends Model
 
 
         /**
+     * Store an empty email as null so the unique constraint doesn't clash
+     * across multiple clients without an email.
+     */
+    public function setEmailAttribute(?string $value): void
+    {
+        $this->attributes['email'] = $value === '' ? null : $value;
+    }
+
+    /**
      * Get the projects for the client.
      */
     public function projects()

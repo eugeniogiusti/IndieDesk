@@ -103,9 +103,9 @@
         </div>
         <div>
             <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
-                {{ __('clients.email') }} <span class="text-red-500">*</span>
+                {{ __('clients.email') }}
             </label>
-            <input type="email" name="email" x-model="formData.email" required placeholder="{{ __('clients.placeholder.email') }}"
+            <input type="email" name="email" x-model="formData.email" placeholder="{{ __('clients.placeholder.email') }}"
                    class="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-emerald-500">
         </div>
     </div>
@@ -253,6 +253,16 @@
         </div>
     </div>
 
+    {{-- Billing email --}}
+    <div>
+        <label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
+            {{ __('clients.email_fatturazione') }}
+        </label>
+        <input type="email" name="email_fatturazione" x-model="formData.email_fatturazione" placeholder="{{ __('clients.placeholder.email_fatturazione') }}"
+               class="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-emerald-500">
+        <p class="mt-0.5 text-xs text-gray-500 dark:text-gray-400">{{ __('clients.hint.email_fatturazione') }}</p>
+    </div>
+
     {{-- Country + SDI --}}
     <div class="grid grid-cols-2 gap-3">
         <div>
@@ -313,8 +323,8 @@
                             {{ __('clients.cancel') }}
                         </button>
                         <button type="submit"
-                                :disabled="!formData.name || !formData.email || !formData.status"
-                                :class="(!formData.name || !formData.email || !formData.status) ? 'bg-gray-300 dark:bg-gray-600 cursor-not-allowed' : 'bg-emerald-600 hover:bg-emerald-700'"
+                                :disabled="!formData.name || !formData.status"
+                                :class="(!formData.name || !formData.status) ? 'bg-gray-300 dark:bg-gray-600 cursor-not-allowed' : 'bg-emerald-600 hover:bg-emerald-700'"
                                 class="px-3 py-1.5 text-sm text-white rounded-lg transition">
                             <span x-show="!isEdit">{{ __('ui.create') }}</span>
                             <span x-show="isEdit">{{ __('ui.save') }}</span>

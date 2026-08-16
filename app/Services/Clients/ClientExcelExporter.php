@@ -25,6 +25,7 @@ class ClientExcelExporter
             __('clients.acquisition_source'),
             __('clients.vat_number'),
             __('clients.pec'),
+            __('clients.email_fatturazione'),
             __('clients.billing_city'),
             __('clients.billing_province'),
             __('clients.website'),
@@ -41,7 +42,7 @@ class ClientExcelExporter
         $sheet->setTitle(__('clients.title'));
 
         $sheet->fromArray($this->headers(), null, 'A1');
-        $sheet->getStyle('A1:K1')->getFont()->setBold(true);
+        $sheet->getStyle('A1:L1')->getFont()->setBold(true);
 
         $row = 2;
         foreach ($clients as $client) {
@@ -55,6 +56,7 @@ class ClientExcelExporter
                     : '',
                 $client->vat_number,
                 $client->pec,
+                $client->email_fatturazione,
                 $client->billing_city,
                 $client->billing_province,
                 $client->website,
@@ -63,7 +65,7 @@ class ClientExcelExporter
             $row++;
         }
 
-        foreach (range('A', 'K') as $column) {
+        foreach (range('A', 'L') as $column) {
             $sheet->getColumnDimension($column)->setAutoSize(true);
         }
 

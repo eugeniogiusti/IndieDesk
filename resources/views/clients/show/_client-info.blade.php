@@ -15,7 +15,7 @@
         <div class="space-y-3">
             {{-- Email --}}
             @if($client->email)
-                <x-email-link :email="$client->email" />
+                <x-email-link :email="$client->email" :label="__('clients.email')" />
             @endif
 
             {{-- Phone / WhatsApp --}}
@@ -25,14 +25,7 @@
 
             {{-- PEC --}}
             @if($client->pec)
-                <div class="flex items-center gap-2 text-sm">
-                    <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                    </svg>
-                    <a href="mailto:{{ $client->pec }}" class="text-gray-700 dark:text-gray-300 hover:text-emerald-600">
-                        {{ $client->pec }}
-                    </a>
-                </div>
+                <x-email-link :email="$client->pec" :label="__('clients.pec')" />
             @endif
         </div>
     @else
@@ -76,11 +69,16 @@
         </h3>
     </div>
 
-    @if($client->vat_number || $client->billing_address || $client->billing_recipient_code)
+    @if($client->vat_number || $client->billing_address || $client->billing_recipient_code || $client->email_fatturazione)
         <div class="space-y-3 text-sm">
             {{-- VAT --}}
             @if($client->vat_number)
                 <x-vat-display :vat="$client->vat_number" />
+            @endif
+
+            {{-- Billing Email --}}
+            @if($client->email_fatturazione)
+                <x-email-link :email="$client->email_fatturazione" :label="__('clients.email_fatturazione')" />
             @endif
 
             {{-- Address --}}

@@ -24,16 +24,17 @@ class StoreClientRequest extends FormRequest
         return [
             // Required fields
             'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:clients,email',
             'status' => 'required|in:lead,prospect,active,archived',
             'acquisition_source' => 'nullable|in:search_linkedin,search_google,search_instagram,search_x,search_facebook,search_thread,search_bluesky,organic_website,organic_blog,organic_facebook,organic_instagram,organic_reddit,organic_x,organic_thread,organic_bluesky,ads_google,ads_facebook,ads_instagram,ads_reddit,sponsorship_influencer,other_word_of_mouth,other_cold_contact',
-            
+
             // Optional contact fields
+            'email' => 'nullable|email|max:255|unique:clients,email',
             'vat_number' => 'nullable|string|max:20',
             'phone_prefix' => 'nullable|string|max:10',
             'phone' => 'nullable|string|max:20',
             'pec' => 'nullable|email|max:255',
-            
+            'email_fatturazione' => 'nullable|email|max:255',
+
             // Optional billing address fields
             'billing_address' => 'nullable|string',
             'billing_city' => 'nullable|string|max:100',
@@ -60,7 +61,6 @@ class StoreClientRequest extends FormRequest
     {
         return [
             'name.required' => __('clients.validation.name_required'),
-            'email.required' => __('clients.validation.email_required'),
             'email.email' => __('clients.validation.email_invalid'),
             'email.unique' => __('clients.validation.email_unique'),
             'status.required' => __('clients.validation.status_required'),

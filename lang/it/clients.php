@@ -47,6 +47,7 @@ return [
     'billing_province' => 'Provincia',
     'billing_country' => 'Nazione',
     'billing_recipient_code' => 'Codice Destinatario',
+    'email_fatturazione' => 'Email Amministrazione',
 
     // Contact info
     'contact_info' => 'Informazioni Contatto',
@@ -155,6 +156,7 @@ return [
         'billing_province' => 'Es: MI',
         'billing_country' => 'Es: IT',
         'billing_recipient_code' => 'Es: ABCDEFG',
+        'email_fatturazione' => 'Es: amministrazione@acme.it',
         'search' => 'Cerca per nome, email o piva...',
         'notes' => 'Aggiungi note...',
     ],
@@ -164,6 +166,7 @@ return [
         'billing_country' => 'Codice ISO a 2 caratteri (IT, US, FR, ecc.)',
         'billing_recipient_code' => 'Codice univoco per fatturazione elettronica (7 caratteri)',
         'billing_province' => 'Sigla provincia (es: RM, MI, NA)',
+        'email_fatturazione' => 'Email dell\'amministrazione a cui inviare le fatture, se diversa dall\'email principale',
     ],
 
     // Empty states for details

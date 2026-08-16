@@ -27,6 +27,7 @@ export default function clientModal() {
                 phone: '',
                 pec: '',
                 // Billing
+                email_fatturazione: '',
                 billing_address: '',
                 billing_city: '',
                 billing_zip: '',
