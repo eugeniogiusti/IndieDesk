@@ -89,4 +89,5 @@ return [
         'date_to' => 'A',
     ],
     'open_billing_tool' => 'Apri tool di fatturazione',
+    'open_invoice_wizard' => 'Genera fattura elettronica (Agenzia delle Entrate)',
 ];

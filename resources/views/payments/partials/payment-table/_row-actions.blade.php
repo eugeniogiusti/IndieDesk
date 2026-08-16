@@ -12,6 +12,17 @@
             </a>
         @endif
 
+        {{-- Agenzia Entrate — Fattura Elettronica --}}
+        <a href="https://ivaservizi.agenziaentrate.gov.it/ser/fatturewizard/#/generazione"
+           target="_blank"
+           rel="noopener noreferrer"
+           title="{{ __('payments.open_invoice_wizard') }}"
+           class="text-gray-500 hover:text-gray-700 dark:text-gray-400">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 21h18M4 21V8l8-5 8 5v13M9 21v-6h6v6" />
+            </svg>
+        </a>
+
         {{-- Billing Tool --}}
         @if($billingToolUrl)
             <a href="{{ $billingToolUrl }}"

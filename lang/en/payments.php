@@ -83,4 +83,5 @@ return [
         'date_from' => 'From',
         'date_to' => 'To',
     ],
+    'open_invoice_wizard' => 'Generate e-invoice (Agenzia delle Entrate)',
 ];
