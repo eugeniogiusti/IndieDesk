@@ -5,9 +5,6 @@
             {{ __('clients.table.name') }}
         </th>
         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
-            {{ __('clients.table.email') }}
-        </th>
-        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
             {{ __('clients.table.phone') }}
         </th>
         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
