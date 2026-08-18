@@ -36,6 +36,7 @@ use App\Http\Controllers\Taxes\TaxController;
 use App\Http\Controllers\Taxes\TaxAttachmentController;
 use App\Http\Controllers\Taxes\TaxFundMovementController;
 use App\Http\Controllers\Webhooks\StripeWebhookController;
+use App\Http\Controllers\Security\SecurityController;
 
 // Redirect root to login
 Route::get('/', fn () => redirect()->route('login'));
@@ -91,6 +92,9 @@ Route::middleware(['auth', 'verified', '2fa'])->group(function () {
 
     // LOCALE SWITCHING
     Route::get('/locale/{locale}', [LocaleController::class, 'switch'])->name('locale.switch');
+
+    // SECURITY MONITORING (login history, active sessions — separate from the business dashboard)
+    Route::get('/security', [SecurityController::class, 'index'])->name('security.index');
 
     // ==========================================
     // CLIENTS MODULE

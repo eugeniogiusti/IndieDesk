@@ -4,6 +4,7 @@ return [
     'dashboard' => 'Dashboard',
     'profile'   => 'Profilo',
     'settings'  => 'Impostazioni',
+    'security'  => 'Sicurezza',
     'logout'    => 'Esci',
     
     // Search
