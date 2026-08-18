@@ -3,11 +3,11 @@
 namespace App\Listeners\Security;
 
 use App\Models\LoginLog;
-use App\Models\User;
-use App\Notifications\Security\AccountLockoutAlert;
+// use App\Models\User;
+// use App\Notifications\Security\AccountLockoutAlert;
 use Illuminate\Auth\Events\Lockout;
 use Illuminate\Support\Carbon;
-use Illuminate\Support\Facades\Notification;
+// use Illuminate\Support\Facades\Notification;
 
 class LogLockout
 {
@@ -24,9 +24,10 @@ class LogLockout
             'user_agent' => $event->request->userAgent(),
         ]);
 
-        Notification::send(
-            User::all(),
-            new AccountLockoutAlert($attemptedEmail, $ipAddress, $occurredAt)
-        );
+        // Email alert disabled until server mail configuration is verified.
+        // Notification::send(
+        //     User::all(),
+        //     new AccountLockoutAlert($attemptedEmail, $ipAddress, $occurredAt)
+        // );
     }
 }
