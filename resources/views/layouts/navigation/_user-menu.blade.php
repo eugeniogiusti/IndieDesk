@@ -56,6 +56,10 @@
                 {{ __('navbar.profile') }}
             </x-dropdown-link>
 
+            <x-dropdown-link :href="route('security.index')">
+                {{ __('navbar.security') }}
+            </x-dropdown-link>
+
             {{-- Logout --}}
             <form method="POST" action="{{ route('logout') }}">
                 @csrf

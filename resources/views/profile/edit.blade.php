@@ -32,6 +32,22 @@
             </div>
 
 
+            {{-- Security monitoring --}}
+        <div id="security" class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+            <div class="max-w-xl">
+                    <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                        {{ __('security.title') }}
+                    </h2>
+                    <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                        {{ __('security.subtitle') }}
+                    </p>
+                    <a href="{{ route('security.index') }}"
+                       class="inline-flex items-center mt-4 px-4 py-2 bg-gray-800 dark:bg-gray-200 border border-transparent rounded-md font-semibold text-xs text-white dark:text-gray-800 uppercase tracking-widest hover:bg-gray-700 dark:hover:bg-white transition">
+                        {{ __('security.title') }}
+                    </a>
+                </div>
+            </div>
+
             {{-- Locale preference --}}
             <div id="locale-preference" class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
                 <div class="max-w-xl">
