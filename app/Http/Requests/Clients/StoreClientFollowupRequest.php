@@ -14,7 +14,7 @@ class StoreClientFollowupRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'type'         => ['required', 'string', 'in:call,email,whatsapp,linkedin,meeting,note'],
+            'type'         => ['required', 'string', 'in:call,email,whatsapp,linkedin'],
             'note'         => ['nullable', 'string'],
             'contacted_at' => ['required', 'date'],
             'completed'    => ['sometimes', 'boolean'],

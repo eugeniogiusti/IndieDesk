@@ -218,8 +218,6 @@ return [
         'type_email' => 'Email',
         'type_whatsapp' => 'WhatsApp',
         'type_linkedin' => 'LinkedIn',
-        'type_meeting' => 'Meeting',
-        'type_note' => 'Nota',
         'action_call' => 'Chiama',
         'action_email' => 'Email',
         'completed' => 'Effettuato',

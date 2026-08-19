@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class ClientFollowup extends Model implements CalendarEventable
 {
-    public const TYPES = ['call', 'email', 'whatsapp', 'linkedin', 'meeting', 'note'];
+    public const TYPES = ['call', 'email', 'whatsapp', 'linkedin'];
 
     protected $fillable = [
         'type',

@@ -67,8 +67,6 @@
                                     <option value="email">{{ __('clients.followup.type_email') }}</option>
                                     <option value="whatsapp">{{ __('clients.followup.type_whatsapp') }}</option>
                                     <option value="linkedin">{{ __('clients.followup.type_linkedin') }}</option>
-                                    <option value="meeting">{{ __('clients.followup.type_meeting') }}</option>
-                                    <option value="note">{{ __('clients.followup.type_note') }}</option>
                                 </select>
                             </div>
                             <div>

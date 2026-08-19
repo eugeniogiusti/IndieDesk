@@ -217,8 +217,6 @@ return [
         'type_email' => 'Email',
         'type_whatsapp' => 'WhatsApp',
         'type_linkedin' => 'LinkedIn',
-        'type_meeting' => 'Meeting',
-        'type_note' => 'Note',
         'action_call' => 'Call',
         'action_email' => 'Email',
         'completed' => 'Completed',
