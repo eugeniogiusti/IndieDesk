@@ -66,6 +66,7 @@
                                     <option value="call">{{ __('clients.followup.type_call') }}</option>
                                     <option value="email">{{ __('clients.followup.type_email') }}</option>
                                     <option value="whatsapp">{{ __('clients.followup.type_whatsapp') }}</option>
+                                    <option value="linkedin">{{ __('clients.followup.type_linkedin') }}</option>
                                     <option value="meeting">{{ __('clients.followup.type_meeting') }}</option>
                                     <option value="note">{{ __('clients.followup.type_note') }}</option>
                                 </select>
@@ -87,6 +88,16 @@
                             <textarea name="note" x-model="formData.note" rows="3"
                                       placeholder="{{ __('clients.followup.note_placeholder') }}"
                                       class="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 focus:ring-2 focus:ring-amber-500"></textarea>
+                        </div>
+
+                        {{-- Completed --}}
+                        <div class="flex items-center gap-2">
+                            <input type="hidden" name="completed" :value="formData.completed ? '1' : '0'">
+                            <input type="checkbox" id="followup-completed" x-model="formData.completed"
+                                   class="rounded border-gray-300 dark:border-gray-600 text-amber-500 focus:ring-amber-500">
+                            <label for="followup-completed" class="text-sm text-gray-700 dark:text-gray-300">
+                                {{ __('clients.followup.completed') }}
+                            </label>
                         </div>
 
                     </div>

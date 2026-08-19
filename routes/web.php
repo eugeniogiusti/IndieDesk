@@ -111,6 +111,7 @@ Route::middleware(['auth', 'verified', '2fa'])->group(function () {
     Route::post('/clients/{client}/followups', [ClientFollowupController::class, 'store'])->name('clients.followups.store');
     Route::patch('/clients/{client}/followups/{followup}', [ClientFollowupController::class, 'update'])->name('clients.followups.update');
     Route::delete('/clients/{client}/followups/{followup}', [ClientFollowupController::class, 'destroy'])->name('clients.followups.destroy');
+    Route::patch('/clients/{client}/followups/{followup}/toggle-complete', [ClientFollowupController::class, 'toggleComplete'])->name('clients.followups.toggle-complete');
 
     // Additional routes for soft delete management
     Route::post('/clients/{id}/restore', [ClientController::class, 'restore'])

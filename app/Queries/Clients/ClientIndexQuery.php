@@ -35,8 +35,8 @@ class ClientIndexQuery
     public function query(): Builder
     {
         return Client::query()
-            ->withCount('followups')
-            ->withMax('followups', 'contacted_at')
+            ->withCount(['followups' => fn (Builder $query) => $query->where('completed', true)])
+            ->withMax(['followups' => fn (Builder $query) => $query->where('completed', true)], 'contacted_at')
             ->when(request('status'), function ($query) {
                 $query->where('status', request('status'));
             })

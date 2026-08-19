@@ -25,7 +25,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-    <link rel="stylesheet" href="{{ asset('css/critical.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/critical.css') }}?v={{ filemtime(public_path('css/critical.css')) }}">
 
     <!-- Theme (no flash) -->
     <meta name="color-scheme" content="dark light">

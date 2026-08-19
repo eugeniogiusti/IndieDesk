@@ -11,6 +11,12 @@ export default function clientFollowupModal() {
 
         init() {
             this.formData = this.getEmptyForm();
+
+            this.$watch('formData.contacted_at', (value) => {
+                if (this.isEdit || !value) return;
+                const today = new Date().toISOString().split('T')[0];
+                this.formData.completed = value <= today;
+            });
         },
 
         getEmptyForm() {
@@ -19,6 +25,7 @@ export default function clientFollowupModal() {
                 type: 'call',
                 note: '',
                 contacted_at: today,
+                completed: true,
             };
         },
 
@@ -40,6 +47,7 @@ export default function clientFollowupModal() {
                 type: followupData.type || 'call',
                 note: followupData.note || '',
                 contacted_at: followupData.contacted_at || '',
+                completed: followupData.completed ?? true,
             };
             this.open = true;
         },

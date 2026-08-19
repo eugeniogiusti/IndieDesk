@@ -39,4 +39,14 @@ class ClientFollowupController extends Controller
 
         return redirect()->route('clients.show', $client)->with('success', __('clients.followup.deleted'));
     }
+
+    /**
+     * Toggle the completed state of a client follow-up.
+     */
+    public function toggleComplete(Client $client, ClientFollowup $followup)
+    {
+        $followup->update(['completed' => !$followup->completed]);
+
+        return redirect()->route('clients.show', $client)->with('success', __('clients.followup.updated'));
+    }
 }

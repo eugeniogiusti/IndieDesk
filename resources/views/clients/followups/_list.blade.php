@@ -22,6 +22,9 @@
                         <span class="text-xs text-gray-400 dark:text-gray-500">
                             {{ $followup->contacted_at->format('d/m/Y') }}
                         </span>
+                        <span class="text-xs font-medium px-1.5 py-0.5 rounded-full {{ $followup->completed ? 'bg-green-100 dark:bg-green-900/40 text-green-700 dark:text-green-400' : 'bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400' }}">
+                            {{ $followup->completed ? __('clients.followup.status_done') : __('clients.followup.status_pending') }}
+                        </span>
                     </div>
                     @if($followup->note)
                         <p class="text-sm text-gray-700 dark:text-gray-300 mt-0.5 whitespace-pre-wrap">{{ $followup->note }}</p>
@@ -29,7 +32,22 @@
                 </div>
 
                 {{-- Actions --}}
-                <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
+                <div class="flex items-center gap-1">
+
+                    {{-- Toggle completed --}}
+                    <form method="POST" action="{{ route('clients.followups.toggle-complete', [$client, $followup]) }}">
+                        @csrf
+                        @method('PATCH')
+                        <button type="submit"
+                                title="{{ $followup->completed ? __('clients.followup.mark_not_completed') : __('clients.followup.mark_completed') }}"
+                                class="{{ $followup->completed ? 'text-green-500 hover:text-gray-400' : 'text-amber-500 hover:text-green-500' }} transition">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </button>
+                    </form>
+
+                    <div class="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition">
 
                     {{-- Google Calendar --}}
                     @if($followup->googleCalendarUrl())
@@ -47,7 +65,7 @@
                     {{-- Edit --}}
                     <button type="button"
                             data-action="edit-followup"
-                            data-payload="{{ json_encode(['id' => $followup->id, 'type' => $followup->type, 'note' => $followup->note, 'contacted_at' => $followup->contacted_at->format('Y-m-d')]) }}"
+                            data-payload="{{ json_encode(['id' => $followup->id, 'type' => $followup->type, 'note' => $followup->note, 'contacted_at' => $followup->contacted_at->format('Y-m-d'), 'completed' => $followup->completed]) }}"
                             class="text-gray-400 hover:text-amber-500 dark:hover:text-amber-400 transition">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
@@ -66,6 +84,8 @@
                             </svg>
                         </button>
                     </form>
+
+                    </div>
 
                 </div>
 
