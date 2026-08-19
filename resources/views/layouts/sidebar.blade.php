@@ -13,7 +13,7 @@
             document.documentElement.classList.toggle('sidebar-collapsed', value);
         })
     "
-    class="sidebar-element min-h-screen bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col shrink-0"
+    class="sidebar-element min-h-screen bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col shrink-0 overflow-y-auto"
 >
 
     {{-- Brand + Toggle --}}

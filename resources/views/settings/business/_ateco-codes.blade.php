@@ -5,7 +5,7 @@
 
     {{-- Existing codes table --}}
     @if($atecoCodes->isNotEmpty())
-        <div class="mb-4 overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
+        <div class="mb-4 overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
             <table class="w-full text-sm">
                 <thead class="bg-gray-50 dark:bg-gray-700">
                     <tr>
@@ -59,9 +59,9 @@
     @endif
 
     {{-- Add new code form --}}
-    <form method="POST" action="{{ route('settings.ateco.store') }}" class="flex items-end gap-3">
+    <form method="POST" action="{{ route('settings.ateco.store') }}" class="flex flex-col sm:flex-row sm:items-end gap-3">
         @csrf
-        <div class="w-32">
+        <div class="sm:w-32">
             <label class="block text-xs font-medium text-gray-700 dark:text-gray-300 mb-1">
                 {{ __('business_settings.ateco_code') }}
             </label>

@@ -1,5 +1,17 @@
-{{-- FOOTER - Logout --}}
-<div class="p-4 border-t border-gray-200 dark:border-gray-700">
+{{-- FOOTER - Theme toggle + Logout --}}
+<div class="p-4 border-t border-gray-200 dark:border-gray-700 space-y-1">
+    <button
+        type="button"
+        onclick="toggleTheme()"
+        class="sidebar-nav-link flex items-center w-full px-3 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-md"
+        :title="collapsed ? '{{ __('ui.theme') }}' : ''"
+    >
+        <svg class="sidebar-icon w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+        </svg>
+        <span class="sidebar-label">{{ __('ui.theme') }}</span>
+    </button>
+
     <form method="POST" action="{{ route('logout') }}">
         @csrf
         <button

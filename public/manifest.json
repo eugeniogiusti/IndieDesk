@@ -1,0 +1,30 @@
+{
+    "name": "IndieDesk",
+    "short_name": "IndieDesk",
+    "description": "Gestionale per freelance e piccoli studi: clienti, progetti, task, scadenze.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#111827",
+    "theme_color": "#4f46e5",
+    "lang": "it",
+    "icons": [
+        {
+            "src": "/pwa-icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/pwa-icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "/pwa-icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}

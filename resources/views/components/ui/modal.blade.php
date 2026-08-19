@@ -26,20 +26,20 @@ $sizes = [
   <div class="fixed inset-0 bg-black/40" x-on:click="open = false"></div>
 
   <!-- panel -->
-  <div class="relative w-full {{ $sizes[$size] }} bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+  <div class="relative w-full {{ $sizes[$size] }} max-h-[90vh] bg-white dark:bg-gray-800 rounded-lg shadow-lg flex flex-col">
     @if($title)
-      <div class="px-4 py-3 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
+      <div class="shrink-0 px-4 py-3 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between">
         <h3 class="text-base font-semibold text-gray-900 dark:text-gray-100">{{ $title }}</h3>
         <button class="p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-700" x-on:click="open = false" aria-label="Close">✕</button>
       </div>
     @endif
 
-    <div class="p-4">
+    <div class="p-4 overflow-y-auto">
       {{ $slot }}
     </div>
 
     @isset($footer)
-      <div class="px-4 py-3 border-t border-gray-200 dark:border-gray-700">
+      <div class="shrink-0 px-4 py-3 border-t border-gray-200 dark:border-gray-700">
         {{ $footer }}
       </div>
     @endisset

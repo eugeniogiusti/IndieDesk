@@ -1,6 +1,6 @@
 {{-- Tabella riutilizzabile per show project --}}
 <div class="overflow-x-auto">
-    <table class="w-full">
+    <table class="min-w-[760px] w-full">
         <thead class="bg-gray-50 dark:bg-gray-700">
             <tr>
                 <th class="px-4 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase">

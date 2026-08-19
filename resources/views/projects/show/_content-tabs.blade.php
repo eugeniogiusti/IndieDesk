@@ -1,7 +1,7 @@
-<div class="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700">
+<div class="w-full overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm dark:border-gray-700 dark:bg-gray-800">
 
     {{-- Tab Content --}}
-    <div class="p-6">
+    <div class="p-4 sm:p-6">
 
         {{-- TAB: Overview --}}
         <div x-show="activeTab === 'overview'" x-cloak class="space-y-6">

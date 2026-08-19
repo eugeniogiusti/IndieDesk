@@ -25,4 +25,5 @@ return [
     'saved'        => 'Saved',
     'error_saving' => 'Error saving',
     'optional'     => 'optional',
+    'menu'         => 'Menu',
 ];
