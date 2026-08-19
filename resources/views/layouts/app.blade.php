@@ -59,7 +59,7 @@
              x-transition:leave-start="opacity-100"
              x-transition:leave-end="opacity-0"
              @click="drawerOpen = false"
-             class="fixed inset-0 z-30 bg-gray-900/60 md:hidden"></div>
+             class="fixed inset-0 z-40 bg-gray-900/60 md:hidden"></div>
 
         {{-- On the right --}}
         <div class="flex-1 flex flex-col min-w-0 overflow-hidden">
@@ -67,8 +67,8 @@
             @include('layouts.navigation')
 
             {{-- page content (scrollable) --}}
-            <div class="flex-1 overflow-y-auto flex flex-col pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0">
-                <main class="p-4 sm:p-6 flex-1">
+            <div class="flex-1 overflow-y-auto overflow-x-hidden flex flex-col pb-[calc(4rem+env(safe-area-inset-bottom))] md:pb-0">
+                <main class="min-w-0 max-w-full p-4 sm:p-6 flex-1">
                     {{ $slot }}
                 </main>
 

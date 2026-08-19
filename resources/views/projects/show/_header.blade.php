@@ -1,10 +1,10 @@
 {{-- resources/views/projects/show/_header.blade.php --}}
 
-<div class="sticky top-0 z-10 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 -mx-6 px-6 py-4 mb-6">
-    <div class="flex items-start justify-between gap-6">
+<div class="sticky top-0 z-10 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 -mx-4 sm:-mx-6 px-4 sm:px-6 py-4 mb-6">
+    <div class="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
 
         {{-- LEFT: Back + Title + Meta --}}
-        <div class="flex items-start gap-4 min-w-0">
+        <div class="flex items-start gap-3 sm:gap-4 min-w-0">
 
             {{-- Back --}}
             <a href="{{ route('projects.index') }}"
@@ -17,15 +17,15 @@
 
             {{-- Title + meta --}}
             <div class="min-w-0">
-                <h1 class="text-2xl font-bold text-gray-900 dark:text-white truncate">
+                <h1 class="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white break-words sm:truncate">
                     {{ $project->name }}
                 </h1>
 
                 {{-- META ROW (one line, spaced, wrap only if needed) --}}
-                <div class="mt-2 flex flex-wrap items-center gap-x-6 gap-y-2">
+                <div class="mt-2 grid grid-cols-1 gap-2 sm:flex sm:flex-wrap sm:items-center sm:gap-x-6 sm:gap-y-2">
 
                     {{-- Project type --}}
-                    <div class="flex items-center gap-2">
+                    <div class="flex min-w-0 items-center gap-2">
                         <span class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
                             {{ __('projects.type') }}:
                         </span>
@@ -33,7 +33,7 @@
                     </div>
 
                     {{-- State --}}
-                    <div class="flex items-center gap-2">
+                    <div class="flex min-w-0 items-center gap-2">
                         <span class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
                             {{ __('projects.status') }}:
                         </span>
@@ -41,7 +41,7 @@
                     </div>
 
                     {{-- Priority --}}
-                    <div class="flex items-center gap-2">
+                    <div class="flex min-w-0 items-center gap-2">
                         <span class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
                             {{ __('projects.priority') }}:
                         </span>
@@ -50,7 +50,7 @@
 
                     {{-- Due Date (only if exists) --}}
                     @if($project->due_date)
-                        <div class="flex items-center gap-2">
+                        <div class="flex min-w-0 items-center gap-2">
                             <span class="text-xs font-semibold uppercase tracking-wide text-gray-500 dark:text-gray-400">
                                 {{ __('projects.due_date') }}:
                             </span>
@@ -63,12 +63,12 @@
         </div>
 
         {{-- RIGHT: Actions --}}
-<div class="flex items-center gap-2 shrink-0">
+<div class="flex items-center gap-2 sm:shrink-0">
     <button
         type="button"
         data-action="edit-project"
         data-payload="{{ json_encode(array_merge($project->toFormPayload(['client_name' => $project->client?->name, 'clients' => $project->clients->map(fn($c) => ['id' => $c->id, 'name' => $c->name])->values()->toArray()]), ['_back' => 'show']), JSON_HEX_TAG | JSON_HEX_APOS | JSON_HEX_QUOT | JSON_HEX_AMP) }}"
-        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white transition">
+        class="inline-flex w-full sm:w-auto items-center justify-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white transition">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
         </svg>
