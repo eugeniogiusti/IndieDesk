@@ -32,6 +32,7 @@ class Meeting extends Model implements CalendarEventable
      */
     protected $casts = [
         'scheduled_at' => 'datetime',
+        'duration_minutes' => 'integer',
     ];
 
     /* -----------------------------------------------------------------
