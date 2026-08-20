@@ -22,7 +22,7 @@ class ClientStatsQuery
             ->toArray();
 
         return [
-            'total' => ($byStatus['active'] ?? 0) + ($byStatus['archived'] ?? 0),
+            'total' => $byStatus['active'] ?? 0,
             'lead' => $byStatus['lead'] ?? 0,
             'prospect' => $byStatus['prospect'] ?? 0,
             'active' => $byStatus['active'] ?? 0,
