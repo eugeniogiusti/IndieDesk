@@ -158,4 +158,11 @@ return [
     'billing_tool' => 'Tool di Fatturazione',
     'billing_tool_url' => 'URL del Tool di Fatturazione',
     'billing_tool_url_hint' => 'Inserisci il link del tool che usi per emettere fatture.',
+    'google_calendar_connect' => 'Connetti',
+    'google_calendar_disconnect' => 'Disconnetti',
+    'google_calendar_connected_as' => 'Connesso come',
+    'google_calendar_hint' => 'Collega il tuo Google Calendar per sincronizzare automaticamente i follow-up dei clienti.',
+    'google_calendar_connected' => 'Google Calendar collegato con successo',
+    'google_calendar_disconnected' => 'Google Calendar disconnesso',
+    'google_calendar_connect_failed' => 'Collegamento a Google Calendar non riuscito, riprova',
 ];

@@ -134,6 +134,13 @@ return [
     'billing_tool' => 'Billing Tool',
     'billing_tool_url' => 'Billing Tool URL',
     'billing_tool_url_hint' => 'Enter the link of the tool you use to issue invoices.',
+    'google_calendar_connect' => 'Connect',
+    'google_calendar_disconnect' => 'Disconnect',
+    'google_calendar_connected_as' => 'Connected as',
+    'google_calendar_hint' => 'Link your Google Calendar to automatically sync client follow-ups.',
+    'google_calendar_connected' => 'Google Calendar connected successfully',
+    'google_calendar_disconnected' => 'Google Calendar disconnected',
+    'google_calendar_connect_failed' => 'Failed to connect Google Calendar, please try again',
 
     // Documents tab
     'documents_tab' => 'Documents',

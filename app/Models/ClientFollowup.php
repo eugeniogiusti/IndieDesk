@@ -41,9 +41,10 @@ class ClientFollowup extends Model implements CalendarEventable
     {
         $clientName = $this->client?->name ?? '';
         $typeLabel  = __('clients.followup.type_' . $this->type);
+        $prefix     = $this->completed ? '✅' : '📞';
 
         return new CalendarEvent(
-            title: "📞 Follow-up: {$clientName} — {$typeLabel}",
+            title: "{$prefix} Follow-up: {$clientName} — {$typeLabel}",
             description: $this->buildCalendarDescription(),
             startDate: $this->contacted_at->startOfDay(),
             endDate: null,

@@ -10,6 +10,7 @@ use App\Http\Controllers\Settings\ProfileController;
 use App\Http\Controllers\Settings\LocaleController;
 use App\Http\Controllers\Settings\AiSettingsController;
 use App\Http\Controllers\Settings\BusinessSettingsController;
+use App\Http\Controllers\Settings\GoogleCalendarSettingsController;
 use App\Http\Controllers\Settings\AtecoCodeController;
 use App\Http\Controllers\Settings\BusinessDocumentController;
 use App\Http\Controllers\Clients\ClientController;
@@ -210,6 +211,10 @@ Route::middleware(['auth', 'verified', '2fa'])->group(function () {
         // AI Settings Routes - API key management
         Route::get('/ai', [AiSettingsController::class, 'edit'])->name('settings.ai.edit');
         Route::patch('/ai', [AiSettingsController::class, 'update'])->name('settings.ai.update');
+        // Google Calendar OAuth connection
+        Route::get('/google-calendar/connect', [GoogleCalendarSettingsController::class, 'connect'])->name('settings.google-calendar.connect');
+        Route::get('/google-calendar/callback', [GoogleCalendarSettingsController::class, 'callback'])->name('settings.google-calendar.callback');
+        Route::delete('/google-calendar/disconnect', [GoogleCalendarSettingsController::class, 'disconnect'])->name('settings.google-calendar.disconnect');
     });
     
     // ==========================================

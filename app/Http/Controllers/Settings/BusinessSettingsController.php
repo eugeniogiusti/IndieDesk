@@ -7,6 +7,7 @@ use App\Http\Requests\Settings\UpdateBusinessSettingsRequest;
 use App\Models\AtecoCode;
 use App\Models\BusinessDocument;
 use App\Models\BusinessSettings;
+use App\Models\GoogleCalendarSettings;
 use App\Services\Settings\BusinessSettingsService;
 
 class BusinessSettingsController extends Controller
@@ -23,8 +24,9 @@ class BusinessSettingsController extends Controller
         $settings       = BusinessSettings::current();
         $atecoCodes     = AtecoCode::orderBy('is_primary', 'desc')->orderBy('code')->get();
         $businessDocs   = BusinessDocument::latest('uploaded_at')->get();
+        $googleCalendar = GoogleCalendarSettings::current();
 
-        return view('settings.business', compact('settings', 'atecoCodes', 'businessDocs'));
+        return view('settings.business', compact('settings', 'atecoCodes', 'businessDocs', 'googleCalendar'));
     }
 
     /**

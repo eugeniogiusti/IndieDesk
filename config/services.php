@@ -37,6 +37,9 @@ return [
 
     'google' => [
         'calendar_embed_url' => env('GOOGLE_CALENDAR_EMBED_URL'),
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => null,
     ],
 
     'stripe' => [

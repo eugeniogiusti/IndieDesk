@@ -59,6 +59,46 @@
         </div>
     </div>
 
+    {{-- Google Calendar Section --}}
+    <div>
+        <div class="flex items-center gap-3 mb-4">
+            <svg class="w-6 h-6" viewBox="0 0 24 24">
+                <path fill="#4285F4" d="M22 6.6v10.8c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6.6l10 6.4 10-6.4z"/>
+                <path fill="#34A853" d="M22 6.6L12 13 2 6.6 2 6c0-1.1.9-2 2-2h16c1.1 0 2 .9 2 2v.6z"/>
+            </svg>
+            <h3 class="text-base font-semibold text-gray-900 dark:text-white">Google Calendar</h3>
+        </div>
+
+        <div class="rounded-lg bg-gray-50 dark:bg-gray-700/50 border border-gray-200 dark:border-gray-600 p-4">
+            @if($googleCalendar->isConnected())
+                <div class="flex items-center justify-between gap-4">
+                    <p class="text-sm text-gray-700 dark:text-gray-300">
+                        {{ __('business_settings.google_calendar_connected_as') }}
+                        <span class="font-semibold">{{ $googleCalendar->email }}</span>
+                    </p>
+                    <form method="POST" action="{{ route('settings.google-calendar.disconnect') }}">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                                class="px-3 py-1.5 text-sm border border-red-300 dark:border-red-700 rounded-lg text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition">
+                            {{ __('business_settings.google_calendar_disconnect') }}
+                        </button>
+                    </form>
+                </div>
+            @else
+                <div class="flex items-center justify-between gap-4">
+                    <p class="text-sm text-gray-600 dark:text-gray-400">
+                        {{ __('business_settings.google_calendar_hint') }}
+                    </p>
+                    <a href="{{ route('settings.google-calendar.connect') }}"
+                       class="px-3 py-1.5 text-sm bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg transition whitespace-nowrap">
+                        {{ __('business_settings.google_calendar_connect') }}
+                    </a>
+                </div>
+            @endif
+        </div>
+    </div>
+
     {{-- Billing Tool Section --}}
     <div>
         <div class="flex items-center gap-3 mb-4">
