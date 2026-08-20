@@ -232,6 +232,7 @@ return [
             'second_contact' => '2° contatto fatto',
             'exhausted' => 'Esauriti (3+)',
             'today' => 'Contattati oggi',
+            'date' => 'Filtra per data follow-up',
         ],
         'validation' => [
             'type_required' => 'Il tipo è obbligatorio',

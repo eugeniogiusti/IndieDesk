@@ -231,6 +231,7 @@ return [
             'second_contact' => '2nd contact made',
             'exhausted' => 'Exhausted (3+)',
             'today' => 'Contacted today',
+            'date' => 'Filter by follow-up date',
         ],
         'validation' => [
             'type_required' => 'Type is required',
