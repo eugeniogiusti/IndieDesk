@@ -307,6 +307,10 @@ class Payment extends Model implements CalendarEventable
     {
         return array_merge(
             $this->only(array_merge(['id'], $this->fillable)),
+            [
+                'paid_at'  => $this->paid_at?->format('Y-m-d') ?? '',
+                'due_date' => $this->due_date?->format('Y-m-d') ?? '',
+            ],
             $extra
         );
     }

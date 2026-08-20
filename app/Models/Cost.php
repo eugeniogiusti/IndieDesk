@@ -191,6 +191,9 @@ class Cost extends Model
     {
         return array_merge(
             $this->only(array_merge(['id'], $this->fillable)),
+            [
+                'paid_at' => $this->paid_at?->format('Y-m-d') ?? '',
+            ],
             $extra
         );
     }
