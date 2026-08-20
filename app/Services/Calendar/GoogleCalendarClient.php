@@ -3,6 +3,7 @@
 namespace App\Services\Calendar;
 
 use App\Models\GoogleCalendarSettings;
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -41,6 +42,39 @@ class GoogleCalendarClient
         }
 
         return $response->json('id');
+    }
+
+    /**
+     * Look for a pre-existing event on the given day whose title contains
+     * the given text (e.g. a follow-up added manually before auto-sync
+     * existed). Returns its id if found, to avoid creating a duplicate.
+     */
+    public function findEventIdOnDate(Carbon $date, string $titleContains): ?string
+    {
+        $token = $this->getValidAccessToken();
+
+        if (!$token) {
+            return null;
+        }
+
+        $response = Http::withToken($token)->get(self::EVENTS_URL, [
+            'timeMin' => $date->copy()->startOfDay()->toRfc3339String(),
+            'timeMax' => $date->copy()->endOfDay()->toRfc3339String(),
+            'q' => $titleContains,
+            'singleEvents' => 'true',
+        ]);
+
+        if ($response->failed()) {
+            return null;
+        }
+
+        foreach ($response->json('items', []) as $item) {
+            if (str_contains($item['summary'] ?? '', $titleContains)) {
+                return $item['id'];
+            }
+        }
+
+        return null;
     }
 
     /**

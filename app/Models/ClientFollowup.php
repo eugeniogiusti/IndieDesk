@@ -39,18 +39,29 @@ class ClientFollowup extends Model implements CalendarEventable
 
     public function toCalendarEvent(): CalendarEvent
     {
-        $clientName = $this->client?->name ?? '';
-        $typeLabel  = __('clients.followup.type_' . $this->type);
-        $prefix     = $this->completed ? '✅' : '📞';
+        $prefix = $this->completed ? '✅' : '📞';
 
         return new CalendarEvent(
-            title: "{$prefix} Follow-up: {$clientName} — {$typeLabel}",
+            title: "{$prefix} {$this->calendarTitleBody()}",
             description: $this->buildCalendarDescription(),
             startDate: $this->contacted_at->startOfDay(),
             endDate: null,
             location: null,
             isAllDay: true,
         );
+    }
+
+    /**
+     * Stable part of the event title (no completed-state prefix), used to
+     * match this follow-up against a pre-existing calendar event when the
+     * link was previously created manually (i.e. google_event_id unknown).
+     */
+    public function calendarTitleBody(): string
+    {
+        $clientName = $this->client?->name ?? '';
+        $typeLabel  = __('clients.followup.type_' . $this->type);
+
+        return "Follow-up: {$clientName} — {$typeLabel}";
     }
 
     public function googleCalendarUrl(): ?string

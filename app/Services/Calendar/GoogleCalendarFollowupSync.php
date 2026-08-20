@@ -27,11 +27,15 @@ class GoogleCalendarFollowupSync
             return;
         }
 
-        // No event yet, or the update failed because it no longer exists on Google's side.
-        $eventId = $this->client->createEvent($event);
+        // No linked event yet (or the update failed because it no longer exists on
+        // Google's side) — look for one that was added manually before auto-sync
+        // existed, to avoid creating a duplicate, before falling back to creating one.
+        $eventId = $this->client->findEventIdOnDate($followup->contacted_at, $followup->calendarTitleBody())
+            ?? $this->client->createEvent($event);
 
         if ($eventId) {
             $followup->forceFill(['google_event_id' => $eventId])->saveQuietly();
+            $this->client->updateEvent($eventId, $event);
         }
     }
 
