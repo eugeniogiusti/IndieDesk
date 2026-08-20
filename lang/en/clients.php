@@ -230,6 +230,7 @@ return [
             'first_contact' => '1st contact made',
             'second_contact' => '2nd contact made',
             'exhausted' => 'Exhausted (3+)',
+            'today' => 'Contacted today',
         ],
         'validation' => [
             'type_required' => 'Type is required',

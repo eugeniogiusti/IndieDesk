@@ -25,11 +25,17 @@ class ClientFollowupStatsQuery
             })
             ->map->count();
 
+        $today = Client::query()
+            ->whereIn('status', ['lead', 'prospect'])
+            ->whereHas('followups', fn (Builder $query) => $query->where('completed', true)->whereDate('contacted_at', today()))
+            ->count();
+
         return [
             'never' => $counts['never'] ?? 0,
             'first_contact' => $counts['first_contact'] ?? 0,
             'second_contact' => $counts['second_contact'] ?? 0,
             'exhausted' => $counts['exhausted'] ?? 0,
+            'today' => $today,
         ];
     }
 }

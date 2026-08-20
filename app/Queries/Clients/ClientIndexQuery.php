@@ -51,6 +51,10 @@ class ClientIndexQuery
                     default => null,
                 };
             })
+            ->when(request('contacted_today'), function ($query) {
+                $query->whereIn('status', ['lead', 'prospect'])
+                    ->whereHas('followups', fn (Builder $q) => $q->where('completed', true)->whereDate('contacted_at', today()));
+            })
             ->when(request('acquisition_source'), function ($query) {
                 $query->where('acquisition_source', request('acquisition_source'));
             })

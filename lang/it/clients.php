@@ -231,6 +231,7 @@ return [
             'first_contact' => '1° contatto fatto',
             'second_contact' => '2° contatto fatto',
             'exhausted' => 'Esauriti (3+)',
+            'today' => 'Contattati oggi',
         ],
         'validation' => [
             'type_required' => 'Il tipo è obbligatorio',
