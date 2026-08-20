@@ -271,11 +271,16 @@ class Project extends Model implements CalendarEventable
 
     private function buildCalendarTitle(): string
     {
+        return "📋 {$this->calendarTitleBody()}";
+    }
+
+    public function calendarTitleBody(): string
+    {
         $prefix = $this->isInternal()
             ? __('projects.internal_project')
             : $this->client->name;
 
-        return "📋 {$prefix}: {$this->name} - " . __('projects.due_date');
+        return "{$prefix}: {$this->name} - " . __('projects.due_date');
     }
 
     private function buildCalendarDescription(): string

@@ -7,12 +7,12 @@ use App\Http\Requests\Clients\StoreClientFollowupRequest;
 use App\Http\Requests\Clients\UpdateClientFollowupRequest;
 use App\Models\Client;
 use App\Models\ClientFollowup;
-use App\Services\Calendar\GoogleCalendarFollowupSync;
+use App\Services\Calendar\GoogleCalendarSync;
 
 class ClientFollowupController extends Controller
 {
     public function __construct(
-        private GoogleCalendarFollowupSync $calendarSync
+        private GoogleCalendarSync $calendarSync
     ) {}
 
     /**

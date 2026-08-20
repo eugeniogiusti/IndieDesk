@@ -10,9 +10,14 @@ use App\Http\Requests\Payments\UpdatePaymentRequest;
 use App\Queries\Payments\PaymentIndexQuery;
 use App\Queries\Payments\PaymentStatsQuery;
 use App\Services\Taxes\PaymentTaxCalculator;
+use App\Services\Calendar\GoogleCalendarSync;
 
 class PaymentController extends Controller
 {
+    public function __construct(
+        private GoogleCalendarSync $calendarSync
+    ) {}
+
     /**
      * Display a listing of payments (global index with filters)
      */
@@ -30,7 +35,9 @@ class PaymentController extends Controller
      */
     public function store(StorePaymentRequest $request, Project $project)
     {
-        $project->payments()->create($request->validated());
+        $payment = $project->payments()->create($request->validated());
+
+        $this->calendarSync->sync($payment);
 
         return redirect()
             ->route('projects.show', ['project' => $project, 'tab' => 'payments'])
@@ -44,6 +51,8 @@ class PaymentController extends Controller
     {
         $payment->update($request->validated());
 
+        $this->calendarSync->sync($payment);
+
         return redirect()
             ->route('projects.show', ['project' => $project, 'tab' => 'payments'])
             ->with('success', __('payments.updated_successfully'));
@@ -54,6 +63,8 @@ class PaymentController extends Controller
      */
     public function destroy(Project $project, Payment $payment)
     {
+        $this->calendarSync->delete($payment);
+
         $payment->delete();
 
         return redirect()

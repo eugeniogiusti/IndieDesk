@@ -12,10 +12,15 @@ use App\Queries\Projects\ProjectIndexQuery;
 use App\Queries\Projects\ProjectStatsQuery;
 use App\Queries\Projects\ProjectProfitStatsQuery;
 use App\Queries\Projects\ProjectShowQuery;
+use App\Services\Calendar\GoogleCalendarSync;
 
 
 class ProjectController extends Controller
 {
+    public function __construct(
+        private GoogleCalendarSync $calendarSync
+    ) {}
+
     /**
      * Retrieves paginated projects with applied filters and calculates
      * aggregated statistics for index page cards.
@@ -42,6 +47,8 @@ class ProjectController extends Controller
         if ($project->type === 'saas') {
             $project->clients()->sync($clientIds);
         }
+
+        $this->calendarSync->sync($project);
 
         return redirect()->route('projects.index')
             ->with('success', __('projects.created_successfully'));
@@ -78,6 +85,8 @@ class ProjectController extends Controller
         // multiple linked clients, so clear it if the type changed away.
         $project->clients()->sync($project->type === 'saas' ? $clientIds : []);
 
+        $this->calendarSync->sync($project);
+
         // if the request arrives from show, return to show
         if ($request->input('back') === 'show') {
             return redirect()->route('projects.show', $project)
@@ -106,6 +115,8 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        $this->calendarSync->delete($project);
+
         $project->delete();
 
         return redirect()->route('projects.index')
@@ -119,6 +130,8 @@ class ProjectController extends Controller
     {
         $project = Project::withTrashed()->findOrFail($id);
         $project->restore();
+
+        $this->calendarSync->sync($project);
 
         return redirect()->route('trash.index')
             ->with('success', __('projects.restored_successfully'));

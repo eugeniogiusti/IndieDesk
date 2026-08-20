@@ -158,7 +158,12 @@ class Meeting extends Model implements CalendarEventable
 
     private function buildCalendarTitle(): string
     {
-        return "🗓️ Meeting: [{$this->project->name}] {$this->title}";
+        return "🗓️ {$this->calendarTitleBody()}";
+    }
+
+    public function calendarTitleBody(): string
+    {
+        return "Meeting: [{$this->project->name}] {$this->title}";
     }
 
     private function buildCalendarDescription(): string

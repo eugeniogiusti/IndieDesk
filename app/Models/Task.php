@@ -164,7 +164,12 @@ class Task extends Model implements CalendarEventable
 
     private function buildCalendarTitle(): string
     {
-        return "📋 Task: [{$this->project->name}] {$this->title}";
+        return "📋 {$this->calendarTitleBody()}";
+    }
+
+    public function calendarTitleBody(): string
+    {
+        return "Task: [{$this->project->name}] {$this->title}";
     }
 
     private function buildCalendarDescription(): string

@@ -10,11 +10,13 @@ use App\Http\Requests\Tasks\UpdateTaskRequest;
 use App\Queries\Tasks\TaskIndexQuery;
 use App\Queries\Tasks\TaskStatsQuery;
 use App\Services\Tasks\TaskDocumentService;
+use App\Services\Calendar\GoogleCalendarSync;
 
 class TaskController extends Controller
 {
     public function __construct(
-        private TaskDocumentService $taskDocumentService
+        private TaskDocumentService $taskDocumentService,
+        private GoogleCalendarSync $calendarSync
     ) {}
 
 
@@ -46,6 +48,8 @@ class TaskController extends Controller
             $this->taskDocumentService->upload($task, $request->file('file'), ['name' => $name]);
         }
 
+        $this->calendarSync->sync($task);
+
         return redirect()
             ->route('projects.show', ['project' => $project, 'tab' => 'tasks'])
             ->with('success', __('tasks.created_successfully'));
@@ -64,6 +68,8 @@ class TaskController extends Controller
             $this->taskDocumentService->upload($task, $request->file('file'), ['name' => $name]);
         }
 
+        $this->calendarSync->sync($task);
+
         return redirect()
             ->route('projects.show', ['project' => $project, 'tab' => 'tasks'])
             ->with('success', __('tasks.updated_successfully'));
@@ -77,6 +83,8 @@ class TaskController extends Controller
         $newStatus = $task->status === 'done' ? 'todo' : 'done';
         $task->update(['status' => $newStatus]);
 
+        $this->calendarSync->sync($task);
+
         return response()->json([
             'status' => $task->status,
             'isDone' => $task->isDone(),
@@ -88,6 +96,8 @@ class TaskController extends Controller
      */
     public function destroy(Project $project, Task $task)
     {
+        $this->calendarSync->delete($task);
+
         $task->delete();
 
         return redirect()

@@ -231,7 +231,12 @@ class Payment extends Model implements CalendarEventable
 
     private function buildCalendarTitle(): string
     {
-        return "💰 " . __('payments.invoice') . ": [{$this->project->name}] {$this->getFormattedAmount()}";
+        return "💰 {$this->calendarTitleBody()}";
+    }
+
+    public function calendarTitleBody(): string
+    {
+        return __('payments.invoice') . ": [{$this->project->name}] {$this->getFormattedAmount()}";
     }
 
     private function buildCalendarDescription(): string

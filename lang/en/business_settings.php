@@ -137,7 +137,7 @@ return [
     'google_calendar_connect' => 'Connect',
     'google_calendar_disconnect' => 'Disconnect',
     'google_calendar_connected_as' => 'Connected as',
-    'google_calendar_hint' => 'Link your Google Calendar to automatically sync client follow-ups.',
+    'google_calendar_hint' => 'Link your Google Calendar to automatically sync client follow-ups, project deadlines, tasks, meetings, and payments.',
     'google_calendar_connected' => 'Google Calendar connected successfully',
     'google_calendar_disconnected' => 'Google Calendar disconnected',
     'google_calendar_connect_failed' => 'Failed to connect Google Calendar, please try again',

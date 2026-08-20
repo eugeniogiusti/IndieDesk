@@ -9,9 +9,14 @@ use App\Http\Requests\Meetings\StoreMeetingRequest;
 use App\Http\Requests\Meetings\UpdateMeetingRequest;
 use App\Queries\Meetings\MeetingIndexQuery;
 use App\Queries\Meetings\MeetingStatsQuery;
+use App\Services\Calendar\GoogleCalendarSync;
 
 class MeetingController extends Controller
 {
+    public function __construct(
+        private GoogleCalendarSync $calendarSync
+    ) {}
+
     /**
      * Display a listing of meetings (global index with filters)
      */
@@ -19,7 +24,7 @@ class MeetingController extends Controller
     {
         $meetings = $indexQuery->handle();
         $stats = $statsQuery->handle();
-        
+
         return view('meetings.index', compact('meetings', 'stats'));
     }
 
@@ -28,7 +33,9 @@ class MeetingController extends Controller
      */
     public function store(StoreMeetingRequest $request, Project $project)
     {
-        $project->meetings()->create($request->validated());
+        $meeting = $project->meetings()->create($request->validated());
+
+        $this->calendarSync->sync($meeting);
 
         return redirect()
             ->route('projects.show', ['project' => $project, 'tab' => 'meetings'])
@@ -42,6 +49,8 @@ class MeetingController extends Controller
     {
         $meeting->update($request->validated());
 
+        $this->calendarSync->sync($meeting);
+
         return redirect()
             ->route('projects.show', ['project' => $project, 'tab' => 'meetings'])
             ->with('success', __('meetings.updated_successfully'));
@@ -52,6 +61,8 @@ class MeetingController extends Controller
      */
     public function destroy(Project $project, Meeting $meeting)
     {
+        $this->calendarSync->delete($meeting);
+
         $meeting->delete();
 
         return redirect()
@@ -66,6 +77,8 @@ class MeetingController extends Controller
     {
         $meeting->update(['status' => 'completed']);
 
+        $this->calendarSync->sync($meeting);
+
         return redirect()
             ->route('projects.show', ['project' => $project, 'tab' => 'meetings'])
             ->with('success', __('meetings.marked_completed'));
@@ -77,6 +90,8 @@ class MeetingController extends Controller
     public function markCancelled(Project $project, Meeting $meeting)
     {
         $meeting->update(['status' => 'cancelled']);
+
+        $this->calendarSync->sync($meeting);
 
         return redirect()
             ->route('projects.show', ['project' => $project, 'tab' => 'meetings'])
