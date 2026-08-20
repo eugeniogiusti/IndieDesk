@@ -29,5 +29,14 @@
             @csrf
             @method('DELETE')
         </form>
+
+        {{-- Hidden form for Google Calendar disconnect (outside main form to avoid nested forms) --}}
+        <form id="google-calendar-disconnect-form"
+              method="POST"
+              action="{{ route('settings.google-calendar.disconnect') }}"
+              class="hidden">
+            @csrf
+            @method('DELETE')
+        </form>
     </div>
 </x-app-layout>

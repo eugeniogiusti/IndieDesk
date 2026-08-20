@@ -135,6 +135,15 @@ class Tax extends Model implements CalendarEventable
         );
     }
 
+    public function calendarTitleBody(): string
+    {
+        return __('taxes.calendar_title', [
+            'due_date'    => $this->due_date->format('d/m/Y'),
+            'description' => $this->description,
+            'year'        => $this->reference_year,
+        ]);
+    }
+
     public function googleCalendarUrl(): ?string
     {
         if (!$this->hasCalendarDate()) {

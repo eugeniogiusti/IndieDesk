@@ -123,12 +123,27 @@ class GoogleCalendarClient
 
     private function buildPayload(CalendarEvent $event): array
     {
-        return [
+        $payload = [
             'summary' => $event->title,
             'description' => $event->description,
-            'start' => ['date' => $event->startDate->format('Y-m-d')],
-            'end' => ['date' => $event->startDate->copy()->addDay()->format('Y-m-d')],
         ];
+
+        if ($event->isAllDay) {
+            $payload['start'] = ['date' => $event->startDate->format('Y-m-d')];
+            $payload['end'] = ['date' => ($event->endDate ?? $event->startDate)->copy()->addDay()->format('Y-m-d')];
+        } else {
+            $timeZone = $event->startDate->getTimezone()->getName();
+            $endDate = $event->endDate ?? $event->startDate->copy()->addHour();
+
+            $payload['start'] = ['dateTime' => $event->startDate->toRfc3339String(), 'timeZone' => $timeZone];
+            $payload['end'] = ['dateTime' => $endDate->toRfc3339String(), 'timeZone' => $timeZone];
+        }
+
+        if ($event->location) {
+            $payload['location'] = $event->location;
+        }
+
+        return $payload;
     }
 
     /**

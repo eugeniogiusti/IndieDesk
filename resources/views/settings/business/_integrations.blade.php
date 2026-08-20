@@ -76,14 +76,11 @@
                         {{ __('business_settings.google_calendar_connected_as') }}
                         <span class="font-semibold">{{ $googleCalendar->email }}</span>
                     </p>
-                    <form method="POST" action="{{ route('settings.google-calendar.disconnect') }}">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit"
-                                class="px-3 py-1.5 text-sm border border-red-300 dark:border-red-700 rounded-lg text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition">
-                            {{ __('business_settings.google_calendar_disconnect') }}
-                        </button>
-                    </form>
+                    <button type="button"
+                            onclick="document.getElementById('google-calendar-disconnect-form').submit()"
+                            class="px-3 py-1.5 text-sm border border-red-300 dark:border-red-700 rounded-lg text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/20 transition">
+                        {{ __('business_settings.google_calendar_disconnect') }}
+                    </button>
                 </div>
             @else
                 <div class="flex items-center justify-between gap-4">
