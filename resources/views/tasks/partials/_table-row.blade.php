@@ -41,29 +41,30 @@
         </div>
     </td>
 
-    {{-- Status Badge (reactive to toggle) --}}
+    {{-- Status Badge (reactive to toggle) & Priority Badge --}}
     <td class="px-4 py-3">
-        {{-- Show original status when not changed --}}
-        <span x-show="currentStatus === '{{ $task->status }}'" x-cloak>
-            <x-tasks.status-badge :status="$task->status" />
-        </span>
+        <div class="space-y-1">
+            {{-- Show original status when not changed --}}
+            <span x-show="currentStatus === '{{ $task->status }}'" x-cloak>
+                <x-tasks.status-badge :status="$task->status" />
+            </span>
 
-        {{-- Show 'done' badge when toggled to done --}}
-        <span x-show="currentStatus === 'done' && '{{ $task->status }}' !== 'done'" x-cloak
-              class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
-            {{ __('tasks.status_done') }}
-        </span>
+            {{-- Show 'done' badge when toggled to done --}}
+            <span x-show="currentStatus === 'done' && '{{ $task->status }}' !== 'done'" x-cloak
+                  class="px-2 py-1 text-xs font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                {{ __('tasks.status_done') }}
+            </span>
 
-        {{-- Show 'todo' badge when toggled from done to todo --}}
-        <span x-show="currentStatus === 'todo' && '{{ $task->status }}' === 'done'" x-cloak
-              class="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
-            {{ __('tasks.status_todo') }}
-        </span>
-    </td>
+            {{-- Show 'todo' badge when toggled from done to todo --}}
+            <span x-show="currentStatus === 'todo' && '{{ $task->status }}' === 'done'" x-cloak
+                  class="px-2 py-1 text-xs font-semibold rounded-full bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-gray-200">
+                {{ __('tasks.status_todo') }}
+            </span>
 
-    {{-- Priority Badge --}}
-    <td class="px-4 py-3">
-        <x-tasks.priority-badge :priority="$task->priority" />
+            <div>
+                <x-tasks.priority-badge :priority="$task->priority" />
+            </div>
+        </div>
     </td>
 
     {{-- Due Date --}}

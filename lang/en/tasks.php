@@ -10,9 +10,11 @@ return [
     
     // Fields
     'task_title' => 'Title',
+    'task_title_status' => 'Title/Status',
     'description' => 'Description',
     'type' => 'Type',
     'status' => 'Status',
+    'status_priority' => 'Status/Priority',
     'priority' => 'Priority',
     'due_date' => 'Due Date',
     'project' => 'Project',

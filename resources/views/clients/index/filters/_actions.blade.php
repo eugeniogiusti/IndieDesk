@@ -1,5 +1,5 @@
 {{-- Filter Actions --}}
-<div class="flex gap-2">
+<div class="md:col-span-2 flex gap-2">
     <x-button type="submit" variant="primary" class="flex-1">
         {{ __('clients.filter') }}
     </x-button>

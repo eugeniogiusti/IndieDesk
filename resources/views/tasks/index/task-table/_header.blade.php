@@ -5,10 +5,7 @@
             {{ __('tasks.project') }}
         </th>
         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-            {{ __('tasks.task_title') }}
-        </th>
-        <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
-            {{ __('tasks.status') }}
+            {{ __('tasks.task_title_status') }}
         </th>
         <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
             {{ __('tasks.priority') }}

@@ -88,7 +88,7 @@
 
                     {{-- Actions --}}
                     <td class="px-4 py-4 text-right">
-                        <div class="flex justify-end gap-2">
+                        <div class="flex flex-col items-end gap-2">
                             {{-- Google Calendar --}}
                             @if($meeting->googleCalendarUrl())
                                 <a href="{{ $meeting->googleCalendarUrl() }}"
