@@ -9,11 +9,13 @@ use App\Models\Tax;
 use App\Queries\Taxes\TaxIndexQuery;
 use App\Queries\Taxes\TaxStatsQuery;
 use App\Services\Taxes\TaxFundService;
+use App\Services\Calendar\GoogleCalendarSync;
 
 class TaxController extends Controller
 {
     public function __construct(
-        private TaxFundService $taxFundService
+        private TaxFundService $taxFundService,
+        private GoogleCalendarSync $calendarSync
     ) {}
 
     public function index(TaxIndexQuery $indexQuery, TaxStatsQuery $statsQuery)
@@ -40,6 +42,7 @@ class TaxController extends Controller
 
         $tax = Tax::create($data);
         $this->taxFundService->syncFromTax($tax);
+        $this->calendarSync->sync($tax);
 
         return redirect()
             ->route('taxes.index')
@@ -59,6 +62,7 @@ class TaxController extends Controller
 
         $tax->update($data);
         $this->taxFundService->syncFromTax($tax);
+        $this->calendarSync->sync($tax);
 
         return redirect()
             ->route('taxes.index')
@@ -67,6 +71,8 @@ class TaxController extends Controller
 
     public function destroy(Tax $tax)
     {
+        $this->calendarSync->delete($tax);
+
         $tax->delete();
 
         return redirect()

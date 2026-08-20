@@ -121,12 +121,10 @@ class Tax extends Model implements CalendarEventable
 
     public function toCalendarEvent(): CalendarEvent
     {
+        $prefix = $this->paid_at ? '✅ ' : '';
+
         return new CalendarEvent(
-            title: __('taxes.calendar_title', [
-                'due_date'    => $this->due_date->format('d/m/Y'),
-                'description' => $this->description,
-                'year'        => $this->reference_year,
-            ]),
+            title: $prefix . $this->calendarTitleBody(),
             description: $this->buildCalendarDescription(),
             startDate: $this->due_date->startOfDay(),
             endDate: null,
@@ -166,6 +164,10 @@ class Tax extends Model implements CalendarEventable
         $lines[] = __('taxes.amount') . ': ' . number_format($this->amount, 2, ',', '.') . ' ' . $currencySymbol;
         $lines[] = __('taxes.reference_year') . ': ' . $this->reference_year;
         $lines[] = __('taxes.due_date') . ': ' . $this->due_date->format('d/m/Y');
+
+        if ($this->paid_at) {
+            $lines[] = __('taxes.paid_at') . ': ' . $this->paid_at->format('d/m/Y');
+        }
 
         if ($this->notes) {
             $lines[] = '';
