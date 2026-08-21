@@ -1,6 +1,12 @@
 <?php
 
 return [
+
+    'filters' => [
+        'period' => 'Período',
+        'date_from' => 'De',
+        'date_to' => 'Até',
+    ],
     'title' => 'Custos',
     'subtitle' => 'Acompanha as despesas e custos dos projetos',
     'cost_list' => 'Lista de Custos',

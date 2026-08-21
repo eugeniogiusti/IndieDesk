@@ -1,6 +1,12 @@
 <?php
 
 return [
+
+    'filters' => [
+        'period' => 'Periode',
+        'date_from' => 'Fra',
+        'date_to' => 'Til',
+    ],
     'title' => 'Omkostninger',
     'subtitle' => 'Spor udgifter og projektomkostninger',
     'cost_list' => 'Omkostningsliste',

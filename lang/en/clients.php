@@ -232,6 +232,9 @@ return [
             'exhausted' => 'Exhausted (3+)',
             'today' => 'Contacted today',
             'date' => 'Filter by follow-up date',
+            'label_status' => 'Follow-up status',
+            'label_contacted' => 'Contacts',
+            'label_date' => 'Follow-up date',
         ],
         'validation' => [
             'type_required' => 'Type is required',

@@ -233,6 +233,9 @@ return [
             'exhausted' => 'Esauriti (3+)',
             'today' => 'Contattati oggi',
             'date' => 'Filtra per data follow-up',
+            'label_status' => 'Stato follow-up',
+            'label_contacted' => 'Contatti',
+            'label_date' => 'Data follow-up',
         ],
         'validation' => [
             'type_required' => 'Il tipo è obbligatorio',

@@ -1,6 +1,12 @@
 <?php
 
 return [
+
+    'filters' => [
+        'period' => 'Période',
+        'date_from' => 'Du',
+        'date_to' => 'Au',
+    ],
     'title' => 'Coûts',
     'subtitle' => 'Suivi des dépenses et coûts des projets',
     'cost_list' => 'Liste des coûts',

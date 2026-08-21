@@ -1,6 +1,12 @@
 <?php
 
 return [
+
+    'filters' => [
+        'period' => '时间段',
+        'date_from' => '从',
+        'date_to' => '到',
+    ],
     'title' => '成本',
     'subtitle' => '跟踪项目支出与成本',
     'cost_list' => '成本列表',

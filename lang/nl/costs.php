@@ -1,6 +1,12 @@
 <?php
 
 return [
+
+    'filters' => [
+        'period' => 'Periode',
+        'date_from' => 'Van',
+        'date_to' => 'Tot',
+    ],
     'title' => 'Kosten',
     'subtitle' => 'Volg uitgaven en projectkosten',
     'cost_list' => 'Kostenlijst',

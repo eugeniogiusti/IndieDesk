@@ -1,6 +1,12 @@
 <?php
 
 return [
+
+    'filters' => [
+        'period' => 'Perioadă',
+        'date_from' => 'De la',
+        'date_to' => 'Până la',
+    ],
     'title' => 'Costuri',
     'subtitle' => 'Urmărește cheltuielile și costurile proiectelor',
     'cost_list' => 'Lista costurilor',

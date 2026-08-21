@@ -1,6 +1,12 @@
 <?php
 
 return [
+
+    'filters' => [
+        'period' => 'Okres',
+        'date_from' => 'Od',
+        'date_to' => 'Do',
+    ],
     'title' => 'Koszty',
     'subtitle' => 'Śledź wydatki i koszty projektów',
     'cost_list' => 'Lista kosztów',

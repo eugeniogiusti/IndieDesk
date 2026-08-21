@@ -1,6 +1,12 @@
 <?php
 
 return [
+
+    'filters' => [
+        'period' => 'Periodo',
+        'date_from' => 'Desde',
+        'date_to' => 'Hasta',
+    ],
     'title' => 'Costes',
     'subtitle' => 'Controla los gastos y costes de los proyectos',
     'cost_list' => 'Lista de costes',

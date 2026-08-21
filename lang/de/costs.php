@@ -1,6 +1,12 @@
 <?php
 
 return [
+
+    'filters' => [
+        'period' => 'Zeitraum',
+        'date_from' => 'Von',
+        'date_to' => 'Bis',
+    ],
     'title' => 'Kosten',
     'subtitle' => 'Ausgaben und Projektkosten verfolgen',
     'cost_list' => 'Kostenliste',

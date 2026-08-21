@@ -1,6 +1,12 @@
 <?php
 
 return [
+
+    'filters' => [
+        'period' => 'Period',
+        'date_from' => 'From',
+        'date_to' => 'To',
+    ],
     'title' => 'Costs',
     'subtitle' => 'Track project expenses and costs',
     'cost_list' => 'Cost List',
