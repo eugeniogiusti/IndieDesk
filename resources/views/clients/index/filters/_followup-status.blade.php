@@ -1,7 +1,8 @@
 {{-- Follow-up Status Filter --}}
-<div>
+<div class="lg:col-span-5">
     <x-form-select
         name="followup_status"
+        :label="__('clients.followup.filter.label_status')"
         :value="request('followup_status')"
         :options="[
             '' => __('clients.followup.filter.all'),

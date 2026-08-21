@@ -1,11 +1,11 @@
 {{-- Filter Actions --}}
-<div class="md:col-span-2 flex gap-2">
-    <x-button type="submit" variant="primary" class="flex-1">
-        {{ __('clients.filter') }}
-    </x-button>
-    <a href="{{ route('clients.index') }}">
-        <x-button type="button" variant="secondary">
+<div class="flex flex-col sm:flex-row sm:justify-end gap-3 pt-4 border-t border-gray-200 dark:border-gray-700">
+    <a href="{{ route('clients.index') }}" class="w-full sm:w-auto">
+        <x-button type="button" variant="secondary" size="lg" class="w-full sm:w-auto">
             {{ __('clients.reset') }}
         </x-button>
     </a>
+    <x-button type="submit" variant="primary" size="lg" class="w-full sm:w-auto">
+        {{ __('clients.filter') }}
+    </x-button>
 </div>

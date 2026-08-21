@@ -1,7 +1,8 @@
 {{-- Status Filter --}}
-<div>
+<div class="lg:col-span-3">
     <x-form-select
         name="status"
+        :label="__('clients.status')"
         :value="request('status')"
         :options="[
             '' => __('clients.all_statuses'),
