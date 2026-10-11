@@ -4,7 +4,7 @@
        class="text-sm font-medium text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400">
         {{ $cost->project->name }}
     </a>
-    @if($cost->project->client)
+    @if(! $cost->project->isSaas() && $cost->project->client)
         <div class="text-xs text-gray-500 dark:text-gray-400 mt-1">
             {{ $cost->project->client->name }}
         </div>

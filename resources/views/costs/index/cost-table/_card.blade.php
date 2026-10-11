@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    @if($cost->project->client)
+    @if(! $cost->project->isSaas() && $cost->project->client)
         <div class="text-xs text-gray-500 dark:text-gray-400">{{ $cost->project->client->name }}</div>
     @endif
 

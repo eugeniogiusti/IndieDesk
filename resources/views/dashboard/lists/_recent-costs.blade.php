@@ -22,7 +22,7 @@
                         </p>
                         <p class="text-xs text-gray-500 dark:text-gray-400">
                             {{ $cost->project?->name ?? '—' }}
-                            @if($cost->project?->getClientLabel())
+                            @if($cost->project && ! $cost->project->isSaas() && $cost->project->getClientLabel())
                                 <span class="text-gray-400 dark:text-gray-500">· {{ $cost->project->getClientLabel() }}</span>
                             @endif
                         </p>

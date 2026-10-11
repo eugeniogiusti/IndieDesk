@@ -168,6 +168,14 @@ class Project extends Model implements CalendarEventable
     }
 
     /**
+     * Check if project is a SaaS product (many linked clients)
+     */
+    public function isSaas(): bool
+    {
+        return $this->type === 'saas';
+    }
+
+    /**
      * Client name(s) to display for this project: the single client for
      * regular projects, or the comma-joined linked clients for SaaS ones.
      * Null when there's no client at all (internal project).

@@ -25,7 +25,7 @@
                             <p class="text-sm text-gray-900 dark:text-white truncate">{{ $meeting->title }}</p>
                             <p class="text-xs text-gray-500 dark:text-gray-400">
                                 {{ $meeting->project->name }}
-                                @if($meeting->project->getClientLabel())
+                                @if(! $meeting->project->isSaas() && $meeting->project->getClientLabel())
                                     <span class="text-gray-400 dark:text-gray-500">· {{ $meeting->project->getClientLabel() }}</span>
                                 @endif
                             </p>

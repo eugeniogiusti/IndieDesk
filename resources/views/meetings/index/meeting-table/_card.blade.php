@@ -14,7 +14,7 @@
            class="font-medium text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400">
             {{ $meeting->project->name }}
         </a>
-        @if($meeting->project->client)
+        @if(! $meeting->project->isSaas() && $meeting->project->client)
             <span class="text-xs text-gray-500 dark:text-gray-400">— {{ $meeting->project->client->name }}</span>
         @endif
     </div>

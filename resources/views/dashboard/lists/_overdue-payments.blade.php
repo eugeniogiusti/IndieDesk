@@ -23,7 +23,7 @@
                             </p>
                             <p class="text-xs text-gray-500 dark:text-gray-400">
                                 {{ $payment->project->name }}
-                                @if($payment->getClientLabel())
+                                @if(! $payment->project->isSaas() && $payment->getClientLabel())
                                     <span class="text-gray-400 dark:text-gray-500">· {{ $payment->getClientLabel() }}</span>
                                 @endif
                             </p>
