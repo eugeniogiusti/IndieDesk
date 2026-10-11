@@ -6,7 +6,7 @@ return [
     'select_file' => 'Vælg fil',
     'choose_file' => 'Vælg fil',     
     'or_drag' => 'eller træk herhen',        
-    'file_requirements' => 'PDF, JPG, PNG op til 5MB',
+    'file_requirements' => 'PDF, JPG, PNG op til 30MB',
     'preview' => 'Forhåndsvisning',
     'download' => 'Download',
     'delete' => 'Slet kvittering',
@@ -22,5 +22,5 @@ return [
     'file_required' => 'Vælg en fil at uploade.',
     'must_be_file' => 'Upload skal være en gyldig fil.',
     'must_be_valid_format' => 'Filen skal være PDF, JPG eller PNG.',
-    'max_size' => 'Filen må ikke overstige 5MB.',
+    'max_size' => 'Filen må ikke overstige 30MB.',
 ];

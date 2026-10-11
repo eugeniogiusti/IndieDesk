@@ -6,7 +6,7 @@ return [
     'choose_file' => 'Choose file',         
     'or_drag' => 'or drag and drop',  
     'select_file' => 'Select File',
-    'file_requirements' => 'PDF, JPG, PNG - Max 5MB',
+    'file_requirements' => 'PDF, JPG, PNG - Max 30MB',
     'preview' => 'Preview',
     'download' => 'Download',
     'delete' => 'Delete Receipt',
@@ -22,5 +22,5 @@ return [
     'file_required' => 'Please select a file to upload.',
     'must_be_file' => 'The upload must be a valid file.',
     'must_be_valid_format' => 'The file must be a PDF, JPG, or PNG.',
-    'max_size' => 'The file must not exceed 5MB.',
+    'max_size' => 'The file must not exceed 30MB.',
 ];

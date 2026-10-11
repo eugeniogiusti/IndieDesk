@@ -26,6 +26,7 @@ return [
     'type_research' => 'Дослідження',
     'type_administrative' => 'Адміністративні',
     'type_marketing' => 'Маркетинг',
+    'type_commercial' => 'Комерційні',
     'type_hardware' => 'Обладнання',
     'type_documentation' => 'Документація',
     'type_maintenance' => 'Обслуговування',

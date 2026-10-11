@@ -6,7 +6,7 @@ return [
     'select_file' => 'Datei auswählen',
     'choose_file' => 'Datei wählen',     
     'or_drag' => 'oder hierher ziehen',        
-    'file_requirements' => 'PDF, JPG, PNG bis 5MB',
+    'file_requirements' => 'PDF, JPG, PNG bis 30MB',
     'preview' => 'Vorschau',
     'download' => 'Herunterladen',
     'delete' => 'Beleg löschen',
@@ -22,5 +22,5 @@ return [
     'file_required' => 'Bitte eine Datei zum Hochladen auswählen.',
     'must_be_file' => 'Der Upload muss eine gültige Datei sein.',
     'must_be_valid_format' => 'Die Datei muss ein PDF, JPG oder PNG sein.',
-    'max_size' => 'Die Datei darf 5MB nicht überschreiten.',
+    'max_size' => 'Die Datei darf 30MB nicht überschreiten.',
 ];

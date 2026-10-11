@@ -6,7 +6,7 @@ return [
     'select_file' => 'Wybierz plik',
     'choose_file' => 'Wybierz plik',
     'or_drag' => 'lub przeciągnij tutaj',
-    'file_requirements' => 'PDF, JPG, PNG do 5MB',
+    'file_requirements' => 'PDF, JPG, PNG do 30MB',
     'preview' => 'Podgląd',
     'download' => 'Pobierz',
     'delete' => 'Usuń paragon',
@@ -22,5 +22,5 @@ return [
     'file_required' => 'Wybierz plik do przesłania.',
     'must_be_file' => 'Przesyłany plik musi być prawidłowy.',
     'must_be_valid_format' => 'Plik musi być PDF, JPG lub PNG.',
-    'max_size' => 'Plik nie może przekraczać 5MB.',
+    'max_size' => 'Plik nie może przekraczać 30MB.',
 ];

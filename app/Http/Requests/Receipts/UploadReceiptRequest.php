@@ -22,7 +22,7 @@ class UploadReceiptRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'receipt' => ['required', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:5120'], // 5MB max
+            'receipt' => ['required', 'file', 'mimes:pdf,jpg,jpeg,png', 'max:30720'], // 30MB max
         ];
     }
 

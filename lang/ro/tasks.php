@@ -26,6 +26,7 @@ return [
     'type_research' => 'Cercetare',
     'type_administrative' => 'Administrativ',
     'type_marketing' => 'Marketing',
+    'type_commercial' => 'Comercial',
     'type_hardware' => 'Hardware',
     'type_documentation' => 'Documentație',
     'type_maintenance' => 'Mentenanță',

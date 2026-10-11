@@ -6,7 +6,7 @@ return [
     'select_file' => 'Selecionar Ficheiro',
     'choose_file' => 'Escolher ficheiro',     
     'or_drag' => 'ou arrasta aqui',        
-    'file_requirements' => 'PDF, JPG, PNG até 5MB',
+    'file_requirements' => 'PDF, JPG, PNG até 30MB',
     'preview' => 'Pré-visualização',
     'download' => 'Descarregar',
     'delete' => 'Eliminar Recibo',
@@ -22,5 +22,5 @@ return [
     'file_required' => 'Seleciona um ficheiro para carregar.',
     'must_be_file' => 'O carregamento deve ser um ficheiro válido.',
     'must_be_valid_format' => 'O ficheiro deve ser PDF, JPG ou PNG.',
-    'max_size' => 'O ficheiro não deve ultrapassar 5MB.',
+    'max_size' => 'O ficheiro não deve ultrapassar 30MB.',
 ];

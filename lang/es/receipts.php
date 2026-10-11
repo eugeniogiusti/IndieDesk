@@ -6,7 +6,7 @@ return [
     'select_file' => 'Seleccionar archivo',
     'choose_file' => 'Elegir archivo',     
     'or_drag' => 'o arrastra aquí',        
-    'file_requirements' => 'PDF, JPG, PNG hasta 5MB',
+    'file_requirements' => 'PDF, JPG, PNG hasta 30MB',
     'preview' => 'Vista previa',
     'download' => 'Descargar',
     'delete' => 'Eliminar recibo',
@@ -22,5 +22,5 @@ return [
     'file_required' => 'Selecciona un archivo para subir.',
     'must_be_file' => 'La carga debe ser un archivo válido.',
     'must_be_valid_format' => 'El archivo debe ser PDF, JPG o PNG.',
-    'max_size' => 'El archivo no debe superar los 5MB.',
+    'max_size' => 'El archivo no debe superar los 30MB.',
 ];

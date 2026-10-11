@@ -26,6 +26,7 @@ return [
     'type_research' => 'Research',
     'type_administrative' => 'Administrativ',
     'type_marketing' => 'Marketing',
+    'type_commercial' => 'Vertrieb',
     'type_hardware' => 'Hardware',
     'type_documentation' => 'Dokumentation',
     'type_maintenance' => 'Wartung',

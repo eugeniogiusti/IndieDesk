@@ -6,7 +6,7 @@ return [
     'select_file' => '选择文件',
     'choose_file' => '选择文件',
     'or_drag' => '或拖拽到此处',
-    'file_requirements' => 'PDF、JPG、PNG，最大 5MB',
+    'file_requirements' => 'PDF、JPG、PNG，最大 30MB',
     'preview' => '预览',
     'download' => '下载',
     'delete' => '删除收据',
@@ -22,5 +22,5 @@ return [
     'file_required' => '请选择要上传的文件。',
     'must_be_file' => '上传内容必须是有效文件。',
     'must_be_valid_format' => '文件必须是 PDF、JPG 或 PNG。',
-    'max_size' => '文件大小不能超过 5MB。',
+    'max_size' => '文件大小不能超过 30MB。',
 ];

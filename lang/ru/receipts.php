@@ -6,7 +6,7 @@ return [
     'select_file' => 'Выберите файл',
     'choose_file' => 'Выбрать файл',
     'or_drag' => 'или перетащите сюда',
-    'file_requirements' => 'PDF, JPG, PNG до 5MB',
+    'file_requirements' => 'PDF, JPG, PNG до 30MB',
     'preview' => 'Предпросмотр',
     'download' => 'Скачать',
     'delete' => 'Удалить чек',
@@ -22,5 +22,5 @@ return [
     'file_required' => 'Выберите файл для загрузки.',
     'must_be_file' => 'Загружаемый объект должен быть корректным файлом.',
     'must_be_valid_format' => 'Файл должен быть PDF, JPG или PNG.',
-    'max_size' => 'Размер файла не должен превышать 5MB.',
+    'max_size' => 'Размер файла не должен превышать 30MB.',
 ];

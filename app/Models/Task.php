@@ -46,6 +46,7 @@ class Task extends Model implements CalendarEventable
         'research',
         'administrative',
         'marketing',
+        'commercial',
         'hardware',
         'documentation',
         'maintenance',

@@ -26,6 +26,7 @@ return [
     'type_research' => '调研',
     'type_administrative' => '行政',
     'type_marketing' => '市场营销',
+    'type_commercial' => '商务',
     'type_hardware' => '硬件',
     'type_documentation' => '文档',
     'type_maintenance' => '维护',
