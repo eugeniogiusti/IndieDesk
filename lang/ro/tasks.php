@@ -77,6 +77,8 @@ return [
     // Filters
     'all_statuses' => 'Toate stările',
     'all_types' => 'Toate tipurile',
+    'filter_due_from' => 'Termen de la',
+    'filter_due_to' => 'Termen până la',
 
     // Placeholders
     'placeholder' => [

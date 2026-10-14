@@ -41,6 +41,7 @@ return [
     'type_travel' => 'Transport/Voyages',
     'type_hardware' => 'Matériel',
     'type_meal' => 'Repas professionnel',
+    'type_fee' => 'Commissions',
 
 
     'created_successfully' => 'Coût créé avec succès',

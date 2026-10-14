@@ -41,6 +41,7 @@ return [
     'type_travel' => 'Transport/Călătorii',
     'type_hardware' => 'Hardware',
     'type_meal' => 'Masă de lucru',
+    'type_fee' => 'Comisioane',
 
 
     'created_successfully' => 'Cost creat cu succes',

@@ -77,6 +77,8 @@ return [
     // Filters
     'all_statuses' => 'Tous les statuts',
     'all_types' => 'Tous les types',
+    'filter_due_from' => 'Échéance du',
+    'filter_due_to' => 'Échéance au',
     
     // Placeholders
     'placeholder' => [

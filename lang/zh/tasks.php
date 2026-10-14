@@ -77,6 +77,8 @@ return [
     // Filters
     'all_statuses' => '所有状态',
     'all_types' => '所有类型',
+    'filter_due_from' => '截止日期从',
+    'filter_due_to' => '截止日期至',
 
     // Placeholders
     'placeholder' => [

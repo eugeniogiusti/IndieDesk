@@ -41,6 +41,7 @@ return [
     'type_travel' => 'Транспорт/Поездки',
     'type_hardware' => 'Оборудование',
     'type_meal' => 'Деловой обед',
+    'type_fee' => 'Комиссии',
 
 
     'created_successfully' => 'Расход успешно создан',

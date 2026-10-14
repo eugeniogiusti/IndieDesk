@@ -41,6 +41,7 @@ return [
     'type_travel' => '交通/出行',
     'type_hardware' => '硬件',
     'type_meal' => '工作餐',
+    'type_fee' => '手续费',
 
 
     'created_successfully' => '成本创建成功',

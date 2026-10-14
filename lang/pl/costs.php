@@ -41,6 +41,7 @@ return [
     'type_travel' => 'Transport/Podróże',
     'type_hardware' => 'Sprzęt',
     'type_meal' => 'Posiłek służbowy',
+    'type_fee' => 'Prowizje',
 
 
     'created_successfully' => 'Koszt utworzony pomyślnie',

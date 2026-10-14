@@ -77,6 +77,8 @@ return [
     // Filters
     'all_statuses' => 'Todos os estados',
     'all_types' => 'Todos os tipos',
+    'filter_due_from' => 'Prazo de',
+    'filter_due_to' => 'Prazo até',
     
     // Placeholders
     'placeholder' => [

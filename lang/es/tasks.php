@@ -77,6 +77,8 @@ return [
     // Filters
     'all_statuses' => 'Todos los estados',
     'all_types' => 'Todos los tipos',
+    'filter_due_from' => 'Vence desde',
+    'filter_due_to' => 'Vence hasta',
     
     // Placeholders
     'placeholder' => [

@@ -38,6 +38,10 @@
             'bg' => 'bg-lime-100 text-lime-800 dark:bg-lime-900/30 dark:text-lime-300',
             'icon' => '🍽️',
         ],
+        'fee' => [
+            'bg' => 'bg-rose-100 text-rose-800 dark:bg-rose-900/30 dark:text-rose-300',
+            'icon' => '💸',
+        ],
         default => [
             'bg' => 'bg-gray-100 text-gray-800 dark:bg-gray-900/30 dark:text-gray-300',
             'icon' => '❓',

@@ -28,10 +28,14 @@
                             <td>{{ $cost->paid_at->format('d/m') }}</td>
                             <td>
                                 {{ $cost->project->name }}
-                                @if($cost->project->getClientLabel())
-                                    <br><span style="font-size: 8pt; color: #999;">{{ $cost->project->getClientLabel() }}</span>
+                                @if($cost->project->isSaas())
+                                    <br><span style="font-size: 8pt; color: #0e7490;">{{ __('projects.type_saas') }}</span>
                                 @else
-                                    <br><span style="font-size: 8pt; color: #999; font-style: italic;">{{ __('statistics.detail_internal') }}</span>
+                                    @if($cost->project->getClientLabel())
+                                        <br><span style="font-size: 8pt; color: #999;">{{ $cost->project->getClientLabel() }}</span>
+                                    @else
+                                        <br><span style="font-size: 8pt; color: #999; font-style: italic;">{{ __('statistics.detail_internal') }}</span>
+                                    @endif
                                 @endif
                             </td>
                             <td>{{ __('costs.type_' . $cost->type) }}</td>
@@ -76,10 +80,14 @@
                             <td>{{ $payment->paid_at->format('d/m') }}</td>
                             <td>
                                 {{ $payment->project->name }}
-                                @if($payment->getClientLabel())
-                                    <br><span style="font-size: 8pt; color: #999;">{{ $payment->getClientLabel() }}</span>
+                                @if($payment->project->isSaas())
+                                    <br><span style="font-size: 8pt; color: #0e7490;">{{ __('projects.type_saas') }}</span>
                                 @else
-                                    <br><span style="font-size: 8pt; color: #999; font-style: italic;">{{ __('statistics.detail_internal') }}</span>
+                                    @if($payment->getClientLabel())
+                                        <br><span style="font-size: 8pt; color: #999;">{{ $payment->getClientLabel() }}</span>
+                                    @else
+                                        <br><span style="font-size: 8pt; color: #999; font-style: italic;">{{ __('statistics.detail_internal') }}</span>
+                                    @endif
                                 @endif
                             </td>
                             <td class="text-right positive">

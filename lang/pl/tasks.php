@@ -77,6 +77,8 @@ return [
     // Filters
     'all_statuses' => 'Wszystkie statusy',
     'all_types' => 'Wszystkie typy',
+    'filter_due_from' => 'Termin od',
+    'filter_due_to' => 'Termin do',
 
     // Placeholders
     'placeholder' => [

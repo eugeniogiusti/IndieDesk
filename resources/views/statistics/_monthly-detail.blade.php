@@ -49,14 +49,18 @@
                                        class="font-medium text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400">
                                         {{ $cost->project->name }}
                                     </a>
-                                    @if($cost->project->getClientLabel())
-                                        <span class="block text-xs text-gray-400 dark:text-gray-500">
-                                            {{ $cost->project->getClientLabel() }}
-                                        </span>
+                                    @if($cost->project->isSaas())
+                                        <span class="block mt-1"><x-projects.type-badge type="saas" /></span>
                                     @else
-                                        <span class="block text-xs text-gray-400 dark:text-gray-500 italic">
-                                            {{ __('statistics.detail_internal') }}
-                                        </span>
+                                        @if($cost->project->getClientLabel())
+                                            <span class="block text-xs text-gray-400 dark:text-gray-500">
+                                                {{ $cost->project->getClientLabel() }}
+                                            </span>
+                                        @else
+                                            <span class="block text-xs text-gray-400 dark:text-gray-500 italic">
+                                                {{ __('statistics.detail_internal') }}
+                                            </span>
+                                        @endif
                                     @endif
                                 </td>
                                 <td class="px-4 py-3 whitespace-nowrap text-sm text-gray-500 dark:text-gray-400">
@@ -125,14 +129,18 @@
                                        class="font-medium text-gray-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400">
                                         {{ $payment->project->name }}
                                     </a>
-                                    @if($payment->getClientLabel())
-                                        <span class="block text-xs text-gray-400 dark:text-gray-500">
-                                            {{ $payment->getClientLabel() }}
-                                        </span>
+                                    @if($payment->project->isSaas())
+                                        <span class="block mt-1"><x-projects.type-badge type="saas" /></span>
                                     @else
-                                        <span class="block text-xs text-gray-400 dark:text-gray-500 italic">
-                                            {{ __('statistics.detail_internal') }}
-                                        </span>
+                                        @if($payment->getClientLabel())
+                                            <span class="block text-xs text-gray-400 dark:text-gray-500">
+                                                {{ $payment->getClientLabel() }}
+                                            </span>
+                                        @else
+                                            <span class="block text-xs text-gray-400 dark:text-gray-500 italic">
+                                                {{ __('statistics.detail_internal') }}
+                                            </span>
+                                        @endif
                                     @endif
                                 </td>
                                 <td class="px-4 py-3 whitespace-nowrap text-right text-sm">

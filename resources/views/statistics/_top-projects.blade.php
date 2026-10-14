@@ -35,7 +35,11 @@
                             </a>
                         </td>
                         <td class="px-4 py-3 text-gray-500 dark:text-gray-400">
-                            {{ $row['project']->getClientLabel() ?? '—' }}
+                            @if($row['project']->isSaas())
+                                <x-projects.type-badge type="saas" />
+                            @else
+                                {{ $row['project']->getClientLabel() ?? '—' }}
+                            @endif
                         </td>
                         <td class="px-4 py-3 text-right text-emerald-600 dark:text-emerald-400">
                             +{{ number_format($row['income'], 2, ',', '.') }} {{ $currencySymbol }}

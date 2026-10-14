@@ -77,6 +77,8 @@ return [
     // Filters
     'all_statuses' => 'Все статусы',
     'all_types' => 'Все типы',
+    'filter_due_from' => 'Срок с',
+    'filter_due_to' => 'Срок по',
 
     // Placeholders
     'placeholder' => [

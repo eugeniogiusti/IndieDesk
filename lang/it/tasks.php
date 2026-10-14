@@ -79,6 +79,8 @@ return [
     // Filters
     'all_statuses' => 'Tutti gli stati',
     'all_types' => 'Tutti i tipi',
+    'filter_due_from' => 'Scadenza da',
+    'filter_due_to' => 'Scadenza a',
     
     // Placeholders
     'placeholder' => [

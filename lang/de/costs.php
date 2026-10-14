@@ -41,6 +41,7 @@ return [
     'type_travel' => 'Transport/Reisen',
     'type_hardware' => 'Hardware',
     'type_meal' => 'Geschäftsessen',
+    'type_fee' => 'Gebühren',
 
 
     'created_successfully' => 'Kosten erfolgreich erstellt',

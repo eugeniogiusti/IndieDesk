@@ -77,6 +77,8 @@ return [
     // Filters
     'all_statuses' => 'Alle statussen',
     'all_types' => 'Alle types',
+    'filter_due_from' => 'Deadline vanaf',
+    'filter_due_to' => 'Deadline tot',
     
     // Placeholders
     'placeholder' => [

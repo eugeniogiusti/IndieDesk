@@ -77,6 +77,8 @@ return [
     // Filters
     'all_statuses' => 'Усі статуси',
     'all_types' => 'Усі типи',
+    'filter_due_from' => 'Термін з',
+    'filter_due_to' => 'Термін по',
 
     // Placeholders
     'placeholder' => [

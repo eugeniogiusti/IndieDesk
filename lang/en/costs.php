@@ -41,6 +41,7 @@ return [
     'type_travel' => 'Transport/Travel',
     'type_hardware' => 'Hardware',
     'type_meal' => 'Business Meal',
+    'type_fee' => 'Fees',
 
 
     'created_successfully' => 'Cost created successfully',

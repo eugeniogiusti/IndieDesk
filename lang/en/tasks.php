@@ -79,6 +79,8 @@ return [
     // Filters
     'all_statuses' => 'All statuses',
     'all_types' => 'All types',
+    'filter_due_from' => 'Due from',
+    'filter_due_to' => 'Due to',
     
     // Placeholders
     'placeholder' => [

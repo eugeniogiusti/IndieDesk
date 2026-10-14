@@ -77,6 +77,8 @@ return [
     // Filters
     'all_statuses' => 'Alle statuser',
     'all_types' => 'Alle typer',
+    'filter_due_from' => 'Forfald fra',
+    'filter_due_to' => 'Forfald til',
     
     // Placeholders
     'placeholder' => [

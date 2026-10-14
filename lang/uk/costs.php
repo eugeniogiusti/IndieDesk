@@ -41,6 +41,7 @@ return [
     'type_travel' => 'Транспорт/Подорожі',
     'type_hardware' => 'Обладнання',
     'type_meal' => 'Ділова їжа',
+    'type_fee' => 'Комісії',
 
 
     'created_successfully' => 'Витрату успішно створено',

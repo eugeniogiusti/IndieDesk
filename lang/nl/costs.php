@@ -41,6 +41,7 @@ return [
     'type_travel' => 'Transport/Reizen',
     'type_hardware' => 'Hardware',
     'type_meal' => 'Zakelijke maaltijd',
+    'type_fee' => 'Kosten en commissies',
 
 
     'created_successfully' => 'Kosten succesvol aangemaakt',

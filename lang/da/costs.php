@@ -41,6 +41,7 @@ return [
     'type_travel' => 'Transport/Rejser',
     'type_hardware' => 'Hardware',
     'type_meal' => 'Erhvervsmåltid',
+    'type_fee' => 'Gebyrer',
 
 
     'created_successfully' => 'Omkostning oprettet',

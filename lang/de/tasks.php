@@ -77,6 +77,8 @@ return [
     // Filters
     'all_statuses' => 'Alle Status',
     'all_types' => 'Alle Typen',
+    'filter_due_from' => 'Fällig ab',
+    'filter_due_to' => 'Fällig bis',
     
     // Placeholders
     'placeholder' => [
