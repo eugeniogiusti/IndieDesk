@@ -20,7 +20,7 @@ export default function clientModal() {
                 // Basic
                 name: '',
                 email: '',
-                status: 'lead',
+                status: 'active',
                 acquisition_source: '',
                 vat_number: '',
                 phone_prefix: '',

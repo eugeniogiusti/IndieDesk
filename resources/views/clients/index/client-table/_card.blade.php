@@ -14,11 +14,6 @@
                 {{ $client->getAcquisitionSourcePlatform() }}
             </span>
         @endif
-        @if($client->needsFollowup())
-            <span class="inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold rounded-full bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-400">
-                {{ __('clients.followup.last_contact') }}: {{ \Carbon\Carbon::parse($client->followups_max_contacted_at)->format('d/m/Y') }}
-            </span>
-        @endif
     </div>
 
     <div class="flex items-center justify-between pt-1">

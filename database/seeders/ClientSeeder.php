@@ -61,7 +61,7 @@ class ClientSeeder extends Seeder
             [
                 'name'                   => 'Caffè Digitale SRL',
                 'email'                  => 'admin@caffedigitale.it',
-                'status'                 => 'lead',
+                'status'                 => 'active',
                 'vat_number'             => 'IT09876543210',
                 'phone_prefix'           => '+39',
                 'phone'                  => '3289876543',

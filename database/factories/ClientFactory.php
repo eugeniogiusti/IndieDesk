@@ -22,7 +22,7 @@ class ClientFactory extends Factory
         return [
             'name' => fake()->company(),
             'email' => fake()->unique()->companyEmail(),
-            'status' => fake()->randomElement(['lead', 'active', 'archived']),
+            'status' => fake()->randomElement(['active', 'archived']),
             'vat_number' => fake()->numerify('IT###########'),
             'phone_prefix' => '+39',
             'phone' => fake()->numerify('3#########'),
@@ -37,16 +37,6 @@ class ClientFactory extends Factory
             'linkedin' => 'https://linkedin.com/company/' . fake()->slug(),
             'notes' => fake()->optional()->paragraph(),
         ];
-    }
-
-    /**
-     * Indicate that the client is a lead.
-     */
-    public function lead(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'status' => 'lead',
-        ]);
     }
 
     /**

@@ -26,7 +26,7 @@ test('clients index page is displayed', function () {
 
 test('clients index can filter by status', function () {
     Client::factory()->active()->count(2)->create();
-    Client::factory()->lead()->count(3)->create();
+    Client::factory()->archived()->count(3)->create();
 
     $response = $this
         ->actingAs($this->user)
@@ -75,7 +75,7 @@ test('client can be created with valid data', function () {
     $clientData = [
         'name' => 'New Client',
         'email' => 'newclient@example.com',
-        'status' => 'lead',
+        'status' => 'active',
     ];
 
     $response = $this
@@ -88,7 +88,7 @@ test('client can be created with valid data', function () {
     $this->assertDatabaseHas('clients', [
         'name' => 'New Client',
         'email' => 'newclient@example.com',
-        'status' => 'lead',
+        'status' => 'active',
     ]);
 });
 
@@ -125,7 +125,7 @@ test('client cannot be created without required fields', function () {
         ->actingAs($this->user)
         ->post(route('clients.store'), []);
 
-    $response->assertSessionHasErrors(['name', 'email', 'status']);
+    $response->assertSessionHasErrors(['name', 'status']);
 });
 
 test('client cannot be created with duplicate email', function () {
@@ -136,7 +136,7 @@ test('client cannot be created with duplicate email', function () {
         ->post(route('clients.store'), [
             'name' => 'New Client',
             'email' => 'existing@example.com',
-            'status' => 'lead',
+            'status' => 'active',
         ]);
 
     $response->assertSessionHasErrors('email');
@@ -154,13 +154,24 @@ test('client cannot be created with invalid status', function () {
     $response->assertSessionHasErrors('status');
 });
 
+test('client cannot be created with legacy lead or prospect status', function (string $status) {
+    $response = $this
+        ->actingAs($this->user)
+        ->post(route('clients.store'), [
+            'name' => 'New Client',
+            'status' => $status,
+        ]);
+
+    $response->assertSessionHasErrors('status');
+})->with(['lead', 'prospect']);
+
 test('client cannot be created with invalid email', function () {
     $response = $this
         ->actingAs($this->user)
         ->post(route('clients.store'), [
             'name' => 'New Client',
             'email' => 'not-an-email',
-            'status' => 'lead',
+            'status' => 'active',
         ]);
 
     $response->assertSessionHasErrors('email');
@@ -172,7 +183,7 @@ test('client cannot be created with invalid website url', function () {
         ->post(route('clients.store'), [
             'name' => 'New Client',
             'email' => 'new@example.com',
-            'status' => 'lead',
+            'status' => 'active',
             'website' => 'not-a-url',
         ]);
 
@@ -286,7 +297,7 @@ test('soft deleted client can be restored', function () {
         ->actingAs($this->user)
         ->post(route('clients.restore', $client->id));
 
-    $response->assertRedirect(route('clients.index'));
+    $response->assertRedirect(route('trash.index'));
     $response->assertSessionHas('success');
 
     $client->refresh();
@@ -314,7 +325,7 @@ test('client can be permanently deleted', function () {
         ->actingAs($this->user)
         ->delete(route('clients.force-delete', $clientId));
 
-    $response->assertRedirect(route('clients.index'));
+    $response->assertRedirect(route('trash.index'));
     $response->assertSessionHas('success');
 
     $this->assertDatabaseMissing('clients', ['id' => $clientId]);

@@ -15,7 +15,7 @@ test('index query returns paginated results', function () {
 
 test('index query filters by status', function () {
     Client::factory()->active()->count(3)->create();
-    Client::factory()->lead()->count(2)->create();
+    Client::factory()->archived()->count(2)->create();
 
     // Simulate request with status filter
     request()->merge(['status' => 'active']);
@@ -99,7 +99,7 @@ test('index query can sort by custom field', function () {
 
 test('index query combines status filter and search', function () {
     Client::factory()->active()->create(['name' => 'Acme Active']);
-    Client::factory()->lead()->create(['name' => 'Acme Lead']);
+    Client::factory()->archived()->create(['name' => 'Acme Archived']);
     Client::factory()->active()->create(['name' => 'Beta Active']);
 
     request()->merge(['status' => 'active', 'search' => 'Acme']);

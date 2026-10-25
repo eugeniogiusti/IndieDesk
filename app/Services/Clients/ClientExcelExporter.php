@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 /**
  * Exports the clients list to an .xlsx file, honoring the same filters
- * (status, follow-up status, acquisition source, search) as the clients
+ * (status, acquisition source, search) as the clients
  * index page.
  */
 class ClientExcelExporter

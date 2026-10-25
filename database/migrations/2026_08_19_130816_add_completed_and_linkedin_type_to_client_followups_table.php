@@ -16,7 +16,10 @@ return new class extends Migration
             $table->boolean('completed')->default(true)->after('note');
         });
 
-        DB::statement("ALTER TABLE client_followups MODIFY COLUMN type ENUM('call', 'email', 'whatsapp', 'linkedin', 'meeting', 'note') NOT NULL");
+        // SQLite has no native ENUM type, so this MySQL-specific DDL only applies there.
+        if (DB::getDriverName() === 'mysql') {
+            DB::statement("ALTER TABLE client_followups MODIFY COLUMN type ENUM('call', 'email', 'whatsapp', 'linkedin', 'meeting', 'note') NOT NULL");
+        }
     }
 
     /**
@@ -24,7 +27,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement("ALTER TABLE client_followups MODIFY COLUMN type ENUM('call', 'email', 'whatsapp', 'meeting', 'note') NOT NULL");
+        if (DB::getDriverName() === 'mysql') {
+            DB::statement("ALTER TABLE client_followups MODIFY COLUMN type ENUM('call', 'email', 'whatsapp', 'meeting', 'note') NOT NULL");
+        }
 
         Schema::table('client_followups', function (Blueprint $table) {
             $table->dropColumn('completed');

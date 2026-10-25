@@ -35,29 +35,8 @@ class ClientIndexQuery
     public function query(): Builder
     {
         return Client::query()
-            ->withCount(['followups' => fn (Builder $query) => $query->where('completed', true)])
-            ->withMax(['followups' => fn (Builder $query) => $query->where('completed', true)], 'contacted_at')
             ->when(request('status'), function ($query) {
                 $query->where('status', request('status'));
-            })
-            ->when(request('followup_status'), function ($query) {
-                $query->whereIn('status', ['lead', 'prospect']);
-
-                match (request('followup_status')) {
-                    'never' => $query->having('followups_count', '=', 0),
-                    'first_contact' => $query->having('followups_count', '=', 1),
-                    'second_contact' => $query->having('followups_count', '=', 2),
-                    'exhausted' => $query->having('followups_count', '>=', 3),
-                    default => null,
-                };
-            })
-            ->when(request('contacted_today'), function ($query) {
-                $query->whereIn('status', ['lead', 'prospect'])
-                    ->whereHas('followups', fn (Builder $q) => $q->where('completed', true)->whereDate('contacted_at', today()));
-            })
-            ->when(request('followup_date'), function ($query) {
-                $query->whereIn('status', ['lead', 'prospect'])
-                    ->whereHas('followups', fn (Builder $q) => $q->where('completed', true)->whereDate('contacted_at', request('followup_date')));
             })
             ->when(request('acquisition_source'), function ($query) {
                 $query->where('acquisition_source', request('acquisition_source'));

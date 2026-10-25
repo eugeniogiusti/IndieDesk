@@ -77,23 +77,6 @@ class Client extends Model
     }
 
     /**
-     * Get the followups for the client, ordered by most recent first.
-     */
-    public function followups()
-    {
-        return $this->hasMany(ClientFollowup::class)->orderByDesc('contacted_at');
-    }
-
-    /**
-     * Check if the client is still in the pipeline (lead or prospect) and
-     * therefore needs follow-up tracking, as opposed to active/archived clients.
-     */
-    public function needsFollowup(): bool
-    {
-        return in_array($this->status, ['lead', 'prospect'], true);
-    }
-
-    /**
      * Total projects linked to this client: directly-owned (client_id) plus
      * SaaS projects linked via the client_project pivot.
      */
@@ -195,22 +178,6 @@ class Client extends Model
     public function scopeActive($query)
     {
         return $query->where('status', 'active');
-    }
-
-    /**
-     * Scope a query to only include leads.
-     */
-    public function scopeLeads($query)
-    {
-        return $query->where('status', 'lead');
-    }
-
-    /**
-     * Scope a query to only include prospects.
-     */
-    public function scopeProspects($query)
-    {
-        return $query->where('status', 'prospect');
     }
 
     /**

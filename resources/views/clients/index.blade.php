@@ -5,8 +5,6 @@
 
         @include('clients.index._stats-cards')
 
-        @include('clients.index._followup-stats-cards')
-
         @include('clients.index._filters')
 
         @if($clients->count() > 0)

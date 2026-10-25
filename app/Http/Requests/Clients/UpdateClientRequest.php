@@ -27,7 +27,7 @@ class UpdateClientRequest extends FormRequest
         return [
             // Required fields
             'name' => 'required|string|max:255',
-            'status' => 'required|in:lead,prospect,active,archived',
+            'status' => 'required|in:active,archived',
             'acquisition_source' => 'nullable|in:search_linkedin,search_google,search_instagram,search_x,search_facebook,search_thread,search_bluesky,organic_website,organic_blog,organic_facebook,organic_instagram,organic_reddit,organic_x,organic_thread,organic_bluesky,ads_google,ads_facebook,ads_instagram,ads_reddit,sponsorship_influencer,other_word_of_mouth,other_cold_contact',
 
             // Optional contact fields

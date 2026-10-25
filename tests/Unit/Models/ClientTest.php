@@ -8,7 +8,6 @@ use App\Models\Client;
 
 test('active scope returns only active clients', function () {
     Client::factory()->active()->count(2)->create();
-    Client::factory()->lead()->count(3)->create();
     Client::factory()->archived()->count(1)->create();
 
     $activeClients = Client::active()->get();
@@ -17,20 +16,8 @@ test('active scope returns only active clients', function () {
     expect($activeClients->every(fn ($client) => $client->status === 'active'))->toBeTrue();
 });
 
-test('leads scope returns only lead clients', function () {
-    Client::factory()->active()->count(2)->create();
-    Client::factory()->lead()->count(3)->create();
-    Client::factory()->archived()->count(1)->create();
-
-    $leads = Client::leads()->get();
-
-    expect($leads)->toHaveCount(3);
-    expect($leads->every(fn ($client) => $client->status === 'lead'))->toBeTrue();
-});
-
 test('archived scope returns only archived clients', function () {
     Client::factory()->active()->count(2)->create();
-    Client::factory()->lead()->count(3)->create();
     Client::factory()->archived()->count(1)->create();
 
     $archived = Client::archived()->get();
@@ -86,11 +73,14 @@ test('client has correct fillable attributes', function () {
     $expectedFillable = [
         'name',
         'email',
+        'stripe_customer_id',
         'status',
+        'acquisition_source',
         'vat_number',
         'phone_prefix',
         'phone',
         'pec',
+        'email_fatturazione',
         'billing_address',
         'billing_city',
         'billing_zip',
@@ -114,7 +104,7 @@ test('client factory creates valid client', function () {
 
     expect($client->name)->not->toBeEmpty();
     expect($client->email)->not->toBeEmpty();
-    expect($client->status)->toBeIn(['lead', 'active', 'archived']);
+    expect($client->status)->toBeIn(['active', 'archived']);
 });
 
 test('client factory minimal state creates client with only required fields', function () {

@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\Client;
 use App\Http\Requests\Clients\StoreClientRequest;
 use App\Http\Requests\Clients\UpdateClientRequest;
-use App\Queries\Clients\ClientFollowupStatsQuery;
 use App\Queries\Clients\ClientIndexQuery;
 use App\Queries\Clients\ClientShowQuery;
 use App\Queries\Clients\ClientStatsQuery;
@@ -21,9 +20,8 @@ class ClientController extends Controller
     {
         $clients = (new ClientIndexQuery())->handle();
         $stats = (new ClientStatsQuery())->handle();
-        $followupStats = (new ClientFollowupStatsQuery())->handle();
 
-        return view('clients.index', compact('clients', 'stats', 'followupStats'));
+        return view('clients.index', compact('clients', 'stats'));
     }
 
     /**
